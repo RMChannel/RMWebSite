@@ -1,0 +1,40 @@
+:root {
+    --card-size: 150px;
+}
+
+#griglia {
+    height: calc(var(--card-size) * 3);
+    width: calc(var(--card-size) *4);
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.card {
+    width: var(--card-size);
+    height: var(--card-size);
+    background-image: url('background.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: black solid 4px;
+    cursor: pointer;
+}
+
+.car {
+    background-image: url('images/car.png');
+}
+.duck {
+    background-image: url('images/duck.png');
+}
+.pc {
+    background-image: url('images/pc.png');
+}
+.phone {
+    background-image: url('images/phone.png');
+}
+.razzo {
+    background-image: url('images/razzo.png');
+}
+.truck {
+    background-image: url('images/truck.png');
+}

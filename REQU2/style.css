@@ -1,0 +1,35 @@
+titolo {
+    font-size: 30pt;
+    color: red;
+    font-family: fantasy;
+    text-align:center;
+}
+titolo2 {
+    font-size: 30pt;
+    color: red;
+    font-family: fantasy;
+    text-align:left;
+}
+desc {
+    font-size: 15pt;
+    color: rgb(102, 102, 255);
+    font-family: fantasy;
+    text-align: center;
+}
+desc2 {
+    font-size: 15pt;
+    color: rgb(102, 102, 255);
+    font-family: fantasy;
+    text-align: left;
+}
+text {
+    font-size:20pt;
+    color:white;
+    font-family:fantasy;
+}
+elenco {
+    font-size:15pt;
+    color:darkorange;
+    font-family: fantasy;
+    text-align: center;
+}

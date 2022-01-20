@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+.container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:600px;
+    margin: 50px auto;
+}
+body {
+    background-color: rgb(78, 0, 180);
+    font-family: 'Press Start 2P', cursive;
+    line-height: 1.4;
+    color: #FFFFFF;
+}
+ul {
+    list-style-type: none;
+}
+li {
+    margin-bottom: 16px;
+    text-align: center;
+}
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+}
+a:hover{
+    color:red;
+}
+footer {
+    margin-top: 500px;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+}
+
+/*SEZIONE GIOCHI*/
+.board {
+    display:flex;
+    flex-direction: row;
+}
+.game {
+    padding: 12px;
+}
+.description {
+    padding: 12px;
+    width: 300px;
+}

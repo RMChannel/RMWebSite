@@ -1,0 +1,35 @@
+:root{
+    --cell-size: 120px;
+    --cell-gutter: 60px;
+}
+
+#grid{
+    width: calc(var(--cell-size)*3 + var(--cell-gutter));
+    height: calc(var(--cell-size)*3 + var(--cell-gutter));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.cell{
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background-color: white;
+    background-size: contain;
+    background-repeat: none;
+    background-position: center;
+    cursor: pointer;
+}
+
+.bug{
+    background-image: url("bug.jpg");
+}
+
+.bugd{
+    background-image: url("bug_destroyed.jpg");
+}
+h3 {
+    margin-bottom: 12px;
+}
