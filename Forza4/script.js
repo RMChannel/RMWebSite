@@ -45,6 +45,10 @@ for (let i=0; i<cells.length; i++) {
         }
     });
 }
+
+function restart() {
+    location.reload();
+}
 /*
 function CheckVictory() {
     let z=0;
