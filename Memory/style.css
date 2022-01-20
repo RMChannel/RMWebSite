@@ -38,3 +38,8 @@
 .truck {
     background-image: url('images/truck.png');
 }
+
+img {
+    border:2px solid red;
+    cursor: pointer;
+}

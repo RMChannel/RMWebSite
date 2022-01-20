@@ -3,6 +3,7 @@ const deck=[...cards, ...cards];
 const grid=document.getElementById('griglia');
 const winread=document.getElementById('win');
 const error2=document.getElementById('errors');
+const audio= new Audio('victory.mp3');
 let pick=[];
 let errorsc=0;
 deck.sort(function() {
@@ -51,6 +52,13 @@ function win() {
     const flipped=document.querySelectorAll('.flipped');
     console.log(flipped);
     if(flipped.length===deck.length) {
+        audio.play();
         winread.innerText='Hai Vinto';
+        winread.style.backgroundColor="#00FF00";
+        winread.style.color="#FF0000";
     }
+}
+
+function restart() {
+    location.reload();
 }

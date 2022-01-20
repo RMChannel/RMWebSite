@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tris</title>
+        <title>Whack a Bug</title>
         <link rel="stylesheet" href="../common/style.css">
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,8 +10,8 @@
     </head>
     <body>
         <div class="board">
-            <div class="game">
-                <div id="griglia">
+            <div class="game-area">
+                <div id="grid">
                     <div class="cell"></div>
                     <div class="cell"></div>
                     <div class="cell"></div>
@@ -24,13 +24,15 @@
                 </div>
             </div>
             <div class="description">
-                <h1>Tris</h1>
-                <p>Allinea i simboli in verticale, orizzontale o diagonale</p><br>
-                <p>Riavvia:<img src="../common/reboot.png" width="15%" height="10%" onclick="restart()"></p>
-                <p>Home Page:<a href="../index.html"><img src="../common/button.png" width="18%" height="18%"></a></p>
+                <h1>Whack a Bug</h1>
+                <p>Colpisci l'icona più volte che puoi prima dello scadere del tempo!</p>
+                <h3>Tempo: <span id="time"></span></h3>
+                <h3>Punti: <span id="punteggio"></span></h3>
+                <p>Riavvia:<img src="reboot.png" width="15%" height="10%" onclick="restart()"></p>
+                <p>Home Page:<a href="../index.html"><img src="button.png" width="18%" height="18%"></a></p>
             </div>
         </div>
-        <p id="test"></p>
+        <button id="reset" hidden="true">test</button>
         <script src="script.js"></script>
     </body>
 </html>
