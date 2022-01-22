@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Papera Game</title>
+        <link rel="stylesheet" href="../common/style.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="board">
+            <div class="game">
+                <div id="griglia">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="description">
+                <h1>Papera Game</h1>
+                <p>Premi SPAZIO oppure clicca sul pulsante per saltare</p>
+                <p>Punteggio= <span id="score"></span></p>
+                <input type="button" id="jump" onclick="jump2()" style="font-family: 'Press Start 2P', cursive; height: 60px;" value="Salta"></input>
+            </div>
+            <div class="start">
+                <p>Premi il buttone per iniziare il gioco</p>
+                <img src="start.ico" width="100px" height="100px" onclick="start()">
+                <p>Riavvia:<img src="../common/reboot.png" width="17%" height="10%" onclick="restart()" class="rest"></p>
+                <p>Home Page:<a href="../index.html"><img src="../common/button.png" width="18%" height="18%" class="rest"></a></p>
+            </div>
+        </div>
+        <span id="win"></span>
+    </body>
+    <script src="script.js"></script>
+</html>

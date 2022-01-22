@@ -53,3 +53,7 @@ const timer=setInterval(() => {
         timerdisp.innerText=time;
     }
 }, (1000));
+
+function restart() {
+    location.reload();
+}

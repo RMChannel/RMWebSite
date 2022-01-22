@@ -37,6 +37,12 @@ footer {
     font-family: 'Press Start 2P', cursive;
     text-align: center;
 }
+/*.
+Ci devo lavorare ancora s
+logo2:hover{
+    transform: translate(0, -70%);
+    transition: transform 1000ms;
+}*/
 
 /*SEZIONE GIOCHI*/
 .board {

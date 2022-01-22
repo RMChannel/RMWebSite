@@ -1,0 +1,51 @@
+:root {
+    --cell-size:40px;
+    --grid-size:15;
+}
+
+#griglia {
+    width: calc(var(--cell-size) * var(--grid-size));
+    height: calc(var(--cell-size) * var(--grid-size));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    background-image: url('background.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+#griglia > div {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    font-size: 8px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.alien {
+    background-image: url('alien.png');
+}
+
+.ship {
+    background-image: url('ship.png');
+}
+
+.laser {
+    background-image: url('laser.png');
+}
+
+.explosion {
+    background-image: url('explosion.png');
+}
+
+.rest {
+    border: red 2px solid;
+    cursor: pointer;
+}
+
+#startbutton {
+    cursor: pointer;
+}

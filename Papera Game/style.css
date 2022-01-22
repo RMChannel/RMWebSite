@@ -1,0 +1,60 @@
+:root {
+    --pixel-size: 60px;
+}
+
+#griglia {
+    width: calc(var(--pixel-size)*10);
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    border-bottom: 3px solid white;
+}
+
+#griglia > div {
+    width: var(--pixel-size);
+    height: var(--pixel-size);
+}
+
+.duck {
+    background-image: url('images/duck2.png');
+    background-repeat: none;
+    background-size: contain;
+    background-position: center;
+}
+
+.rock:not(.duck) {
+    background-image: url('images/rock.png');
+    background-repeat: none;
+    background-size: contain;
+    background-position: center;
+}
+
+.rock {
+    transform: translate(-120%,0);
+    transition: transform 500ms;
+}
+
+.duckjump {
+    transform: translate(0, -120%);
+    transition: transform 200ms;
+}
+
+.duckjump2 {
+    transform: translate(0, 0%);
+    transition: transform 200ms;
+}
+
+.start {
+    margin-left: 60px;
+    width: 300px;
+}
+
+img {
+    cursor: pointer;
+}
+
+.rest {
+    border: red 2px solid;
+}
