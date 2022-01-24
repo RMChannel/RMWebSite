@@ -6,7 +6,7 @@ if (heightdevice===1032) {
     heightright=420;
 }
 else if (heightdevice===720) {
-    heightright=130;
+    heightright=120;
 }
 else {
     heightright=500;

@@ -11,12 +11,16 @@ const fire= new Audio("fire.mp3");
 const morte= new Audio("exp.mp3");
 const gameover= new Audio("gameover.mp3");
 const win= new Audio("win.mp3")
+const loggamepad= document.getElementById('gamepad');
 let restart=0;
 let score=0;
 let ivariabile=0;
 let time=500;
 let control=0;
 let play=false;
+let controla=false;
+let controlleft=false;
+let controlright=false;
 scorel.innerText=score;
 const blocks=[];
 let aliens= [];
@@ -105,17 +109,20 @@ function spacemove(event) {
     const left=space22%size===0;
     const right=space22%size===14;
     blocks[space22].classList.remove('ship');
-    if (event.code==='ArrowLeft' && !left && play===true) {
+    if (event.code==='ArrowLeft' && play===true && !left || controlleft===true && !left && play===true) {
+        controlleft=false;
         space22--;
     }
-    else if (event.code==='ArrowRight' && !right && play===true) {
+    else if (event.code==='ArrowRight' && play===true && !right || controlright===true && !right && play===true) {
+        controlright=false;
         space22++;;
     }
     blocks[space22].classList.add('ship');
 }
 
 function shoot(event) {
-    if (event.code === 'ControlLeft' && play===true) {
+    if (event.code === 'ControlLeft' && play===true || controla===true && play===true) {
+        controla=false;
         fire.play();
         let laserid=space22-15;
         let laserval=null;
@@ -193,3 +200,43 @@ function start() {
 function realrestart() {
     location.reload();
 }
+let gamepad1=navigator.getGamepads();
+
+function controller() {
+    loggamepad.innerText="Contorller Connesso";
+    contoa();
+    contoleft();
+    contoright();
+}
+
+function contoa() {
+    setInterval(() => {
+        gamepad1=navigator.getGamepads();
+        if (gamepad1[0].buttons[0].pressed==true) {
+            controla=true;
+            shoot(true);
+        }
+    }, 100);
+}
+
+function contoleft() {
+    setInterval(() => {
+        gamepad1=navigator.getGamepads();
+        if (gamepad1[0].buttons[14].pressed==true) {
+            controlleft=true;
+            spacemove(true);
+        }
+    }, 100);
+}
+
+function contoright() {
+    setInterval(() => {
+        gamepad1=navigator.getGamepads();
+        if (gamepad1[0].buttons[15].pressed==true) {
+            controlright=true;
+            spacemove(true);
+        }
+    }, 100);
+}
+
+window.addEventListener("gamepadconnected",controller);
