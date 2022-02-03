@@ -5,7 +5,7 @@ const subcount=document.getElementById('subcount');
 console.log(heightdevice);
 let heightright=0;
 if (heightdevice===1032) {
-    heightright=200;
+    heightright=160;
 }
 else if (heightdevice===720) {
     heightright=0;
