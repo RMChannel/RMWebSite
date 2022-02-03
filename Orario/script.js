@@ -93,7 +93,7 @@ setInterval(() => {
             counthour=9;
             materia.innerText="Informatica";
         }
-        else if ((hour<=11 && hour>=9 && minute>=15) || (hour>=9 && hour<=11 && minute<15)) {
+        else if ((hour<11 && hour>=9 && minute>=15) || (hour>=9 && hour<=11 && minute<15)) {
             counthour=11;
             materia.innerText="Scienze";
         }
@@ -115,7 +115,7 @@ setInterval(() => {
             counthour=10;
             materia.innerText="Inglese";
         }
-        else if ((hour<=12 && hour>=10 && minute>=15) || (hour>=10 && hour<=12 && minute<15)) {
+        else if ((hour<12 && hour>=10 && minute>=15) || (hour>=10 && hour<=12 && minute<15)) {
             counthour=12;
             materia.innerText="Matematica/Fisica";
         }
