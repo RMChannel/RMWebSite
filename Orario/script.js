@@ -129,7 +129,7 @@ setInterval(() => {
         }
     }
     else if (giorno===4) {
-        if ((hour>=8 && minute>=15) || (hour>=8 && hour<=10 && minute<15)) {
+        if ((hour<10 && hour>=8 && minute>=15) || (hour>=8 && hour<=10 && minute<15)) {
             counthour=10;
             materia.innerText="Matematica/Fisica";
         }
