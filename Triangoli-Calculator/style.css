@@ -1,0 +1,49 @@
+body {
+    background-color: darkblue;
+}
+
+#titlemenu {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+title1 {
+    color: white;
+    font-size: 50px;
+    font-family: 'Supermercado One', cursive;
+}
+
+subtitle {
+    color: white;
+    font-size: 20px;
+    font-family: 'Supermercado One', cursive;
+}
+
+#menu {
+    margin-top: 100px;
+}
+
+#rett {
+    float: left;
+}
+
+#smert {
+    float: right;
+}
+
+.button {
+    background-color: lightskyblue;
+    font-size: 30px;
+    font-family: 'Pacifico', cursive;
+    margin-right: 50px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+img {
+    border-radius: 20px;
+}
+
+.texbox {
+    margin-top: 20px;
+}

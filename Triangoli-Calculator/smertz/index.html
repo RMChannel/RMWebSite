@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Supermercado+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Press+Start+2P&family=Supermercado+One&display=swap" rel="stylesheet">
+    <link rel = "icon" type = "image/png" href = "../common/icotriangolus.png">
+    <link rel="stylesheet" href="../style.css">
+    <title>Triangolo Smertz Calculator</title>
+</head>
+    <body>
+        <div id="titlemenu">
+            <title1><a href="../index.html"><img src="../../common/button.png" width="50px" height="50px"></a>Triangolo Smertz</title1><br>
+            <subtitle>Inserisci i dati che hai a disposizione</subtitle><br>
+            <subtitle>Per i dati non disponibili inserisci 0</subtitle><br>
+        </div><br>
+        <div id="central">
+            <img src="../common/smertz.jpg"><input type="button" class="button" id="calcola" value="Calcola"><input type="button" class="button" id="reset" value="Reset">
+            <div id="lati">
+                <subtitle>a:</subtitle><input value="0" type="textbox" id="latoa" class="texbox"><subtitle>b:</subtitle><input value="0" type="textbox" id="latob" class="texbox"><subtitle>c:</subtitle><input value="0" type="textbox" id="latoc" class="texbox">
+            </div>
+            <div id="angoli">
+                <subtitle>α:</subtitle><input value="0" type="textbox" id="angoloa" class="texbox"><subtitle>β:</subtitle><input value="0" type="textbox" id="angolob" class="texbox"><subtitle>γ:</subtitle><input value="0" type="textbox" id="angoloc" class="texbox">
+            </div>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>
