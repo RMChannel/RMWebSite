@@ -19,9 +19,19 @@ function reset() {
 }
 
 function calcolo() {
-    var la, lb, lc, aa, ab;
+    var la, lb, lc, aa, ab, check1, check2;
+    /* CONTROLLI IMPOSSIBILITA' ANGOLI */
+    check1=angoloa.value+angoloc.value;
+    check2=angolob.value+angoloc.value;
+    if (check1>=180 || check2>=180) {
+        alert('Errore 2\n Somma angoli errata');
+    }
+    /* CONTROLLO IMPOSSIBILITA' LATI */
+    else if (latoa.value>=latoc.value || latob.value>=latoc.value) {
+        alert('Errore 3\n Lato troppo elevato');
+    }
     /* CASO ANGOLO ALPHA E IPOTENUSA */
-    if (latoc.value!=0 && angoloa.value!=0) {
+    else if (latoc.value!=0 && angoloa.value!=0) {
         lc=latoc.value;
         aa=angoloa.value;
         ab=90-aa;
@@ -133,6 +143,6 @@ function calcolo() {
         latoc.value=lc;
     }
     else {
-        alert('dati errati o insufficienti');
+        alert('Erorre 1\nDati errati o insufficienti');
     }
 }
