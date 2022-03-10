@@ -6,7 +6,7 @@ const latoc=document.getElementById('latoc');
 const angoloa=document.getElementById('angoloa');
 const angolob=document.getElementById('angolob');
 const angoloc=document.getElementById('angoloc');
-const error= new Audio('error.mp3')
+const error= new Audio('../common/error.mp3')
 
 button.addEventListener("click",calcolo);
 buttonr.addEventListener("click",reset);
@@ -25,13 +25,13 @@ function calcolo() {
     check1=Number(angoloa.value)+Number(angoloc.value);
     check2=Number(angolob.value)+Number(angoloc.value);
     if (check1>=180 || check2>=180) {
-        alert('Errore 2\n Somma angoli errata');
         error.play();
+        alert('Errore 2\n Somma angoli errata');
     }
     /* CONTROLLO IMPOSSIBILITA' LATI */
     else if ((latoa.value>=latoc.value && latoc.value!=0) || (latob.value>=latoc.value && latoc.value!=0)) {
-        alert('Errore 3\n Lato troppo elevato');
         error.play();
+        alert('Errore 3\n Lato troppo elevato');
     }
     /* CASO HO UN ANGOLO */
     else if (angoloa.value!=0 || angolob.value!=0) {
@@ -72,8 +72,8 @@ function calcolo() {
             lb=lb*lc;
         }
         else {
-            alert('Errore 4\nDati errati o insufficienti');
             error.play();
+            alert('Errore 4\nDati errati o insufficienti');
         }
         latoa.value=la;
         latob.value=lb;
@@ -114,7 +114,7 @@ function calcolo() {
         latoc.value=lc;
     }
     else {
-        alert('Errore 1\nDati errati o insufficienti');
         error.play();
+        alert('Errore 1\nDati errati o insufficienti');
     }
 }
