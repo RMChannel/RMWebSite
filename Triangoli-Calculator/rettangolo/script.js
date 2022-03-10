@@ -21,116 +21,83 @@ function reset() {
 function calcolo() {
     var la, lb, lc, aa, ab, check1, check2;
     /* CONTROLLI IMPOSSIBILITA' ANGOLI */
-    check1=angoloa.value+angoloc.value;
-    check2=angolob.value+angoloc.value;
+    check1=Number(angoloa.value)+Number(angoloc.value);
+    check2=Number(angolob.value)+Number(angoloc.value);
     if (check1>=180 || check2>=180) {
         alert('Errore 2\n Somma angoli errata');
     }
     /* CONTROLLO IMPOSSIBILITA' LATI */
-    else if (latoa.value>=latoc.value || latob.value>=latoc.value) {
+    else if ((latoa.value>=latoc.value && latoc.value!=0) || (latob.value>=latoc.value && latoc.value!=0)) {
         alert('Errore 3\n Lato troppo elevato');
     }
-    /* CASO ANGOLO ALPHA E IPOTENUSA */
-    else if (latoc.value!=0 && angoloa.value!=0) {
-        lc=latoc.value;
-        aa=angoloa.value;
-        ab=90-aa;
-        aa=(Math.PI*aa)/180;
-        la=Math.sin(aa);
-        la=la*lc;
-        lb=Math.cos(aa);
-        lb=lb*lc;
-        latoa.value=la;
-        latob.value=lb;
-        angolob.value=ab;
-    }
-    /* CASO ANGOLO BETA E IPOTENUSA */
-    else if (latoc.value!=0 && angolob.value!=0) {
-        lc=latoc.value;
-        ab=angolob.value;
-        aa=90-ab;
-        ab=(Math.PI*ab)/180;
-        lb=Math.sin(ab);
-        lb=lb*lc;
-        la=Math.cos(ab);
-        la=la*lc;
-        latoa.value=la;
-        latob.value=lb;
+    /* CASO HO UN ANGOLO */
+    else if (angoloa.value!=0 || angolob.value!=0) {
+        la=0;
+        lb=0;
+        lc=0;
+        if (angoloa.value!=0) {
+            aa=angoloa.value;
+            ab=90-aa;
+        }
+        else {
+            ab=angolob.value;
+            aa=90-ab;
+        }
         angoloa.value=aa;
-    }
-    /* CASO ANGOLO ALPHA E CATETO A */
-    else if (latoa.value!=0 && angoloa.value!=0) {
-        la=latoa.value;
-        aa=angoloa.value;
-        ab=90-aa;
-        aa=(Math.PI*aa)/180;
-        lc=la/(Math.sin(aa));
-        lb=lc*(Math.cos(aa));
+        angolob.value=ab;
+        /* LATO A */
+        if (latoa.value!=0) {
+            la=latoa.value;
+            aa=(Math.PI*aa)/180;
+            lc=la/(Math.sin(aa));
+            lb=lc*(Math.cos(aa));
+        }
+        /* LATO B */
+        else if (latob.value!=0) {
+            lb=latob.value;
+            aa=(Math.PI*aa)/180;
+            lc=lb/(Math.cos(aa));
+            la=lc*(Math.sin(aa));
+        }
+        /* LATO C */
+        else if (latoc.value!=0) {
+            lc=latoc.value;
+            aa=(Math.PI*aa)/180;
+            la=Math.sin(aa);
+            la=la*lc;
+            lb=Math.cos(aa);
+            lb=lb*lc;
+        }
+        else {
+            alert('Errore 4\nDati errati o insufficienti');
+        }
+        latoa.value=la;
+        latob.value=lb;
         latoc.value=lc;
-        latob.value=lb;
-        angolob.value=ab;
     }
-    /* CASO ANGOLO ALPHA E CATETO B */
-    else if (latob.value!=0 && angoloa.value!=0) {
-        lb=latob.value;
-        aa=angoloa.value;
-        ab=90-aa;
-        aa=(Math.PI*aa)/180;
-        lc=lb/(Math.cos(aa));
-        la=lc*(Math.sin(aa));
-        latoc.value=lc;
-        latoa.value=la;
-        angolob.value=ab;
-    }
-    /* CASO ANGOLO BETA E CATETO A */
-    else if (latoa.value!=0 && angolob.value!=0) {
-        la=latoa.value;
-        ab=angolob.value;
-        aa=90-ab;
-        ab=(Math.PI*ab)/180;
-        lc=la/(Math.cos(ab));
-        lb=lc*(Math.sin(ab));
-        latoc.value=lc;
-        latob.value=lb;
-        angoloa.value=aa;
-    }
-    /* CASO ANGOLO BETA E CATETO B */
-    else if (latob.value!=0 && angolob.value!=0) {
-        lb=latob.value;
-        ab=angolob.value;
-        aa=90-ab;
-        ab=(Math.PI*ab)/180;
-        lc=lb/(Math.sin(ab));
-        la=lc*(Math.cos(ab));
-        latoc.value=lc;
-        latoa.value=la;
-        angoloa.value=aa;
-    }
-    /* CASO IPOTENUSA E CATETO A */
-    else if (latoc.value!=0 && latoa.value!=0) {
+    /* CASO HO CATETO E IPOTENUSA */
+    else if ((latoa.value!=0 || latob.value!=0) && latoc.value!=0) {
         lc=latoc.value;
-        la=latoa.value;
-        lb=Math.sqrt((lc*lc)-(la*la));
-        aa=la/lc;
-        aa=(180*aa)/3.14;
-        ab=90-aa;
-        angoloa.value=aa;
-        angolob.value=ab;
-        latob.value=lb;
-    }
-    /* CASO IPOTENUSA E CATETO B */
-    else if (latoc.value!=0 && latob.value!=0) {
-        lc=latoc.value;
-        lb=latob.value;
-        la=Math.sqrt((lc*lc)-(lb*lb));
-        ab=lb/lc;
-        ab=(180*ab)/3.14;
-        aa=90-ab;
-        angoloa.value=aa;
-        angolob.value=ab;
+        if (latoa.value!=0) {
+            la=latoa.value;
+            lb=Math.sqrt((lc*lc)-(la*la));
+            aa=la/lc;
+            aa=(180*aa)/3.14;
+            ab=90-aa;
+        }
+        else {
+            lb=latob.value;
+            la=Math.sqrt((lc*lc)-(lb*lb));
+            ab=lb/lc;
+            ab=(180*ab)/3.14;
+            aa=90-ab;
+        }
         latoa.value=la;
+        latob.value=lb;
+        angoloa.value=aa;
+        angolob.value=ab;
     }
-    /* CASO DUE CATETI */ 
+    /* CASO HO 2 CATETI */
     else if (latoa.value!=0 && latob.value!=0) {
         la=latoa.value;
         lb=latob.value;
@@ -143,6 +110,6 @@ function calcolo() {
         latoc.value=lc;
     }
     else {
-        alert('Erorre 1\nDati errati o insufficienti');
+        alert('Errore 1\nDati errati o insufficienti');
     }
 }
