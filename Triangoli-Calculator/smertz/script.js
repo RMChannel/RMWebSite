@@ -6,6 +6,7 @@ const latoc=document.getElementById('latoc');
 const angoloa=document.getElementById('angoloa');
 const angolob=document.getElementById('angolob');
 const angoloc=document.getElementById('angoloc');
+const error= new Audio('../common/error.mp3');
 
 button.addEventListener("click",calcolo);
 buttonr.addEventListener("click",reset);
@@ -20,9 +21,40 @@ function reset() {
 }
 
 function calcolo() {
-    let la,lb,lc,aa,ab,ac;
+    let la,lb,lc,aa,ab,ac,check1,check2,check3;
+    /* CONTROLLO ANGOLI */
+    check1=Number(angoloa.value)+Number(angolob.value)+Number(angoloc.value);
+    if (check1>180) {
+        error.play();
+        alert('Errore 2:\nSomma degli angoli errata');
+    }
+    /* CONTROLLO IMPOSSIBILITA' LATI */
+    if (latoa.value>latob.value) {
+        if (latoc.value>latoa.value) {
+            check3=latoc.value;
+            check1=Number(latoa.value)+Number(latob.value);
+            check2=Number(latoa.value)-Number(latob.value);
+        }
+        else {
+            check3=latoa.value;
+            check1=Number(latob.value)+Number(latoc.value);
+            check2=Number(latob.value)-Number(latoc.value);
+        }
+    }
+    else {
+        check3=latob.value;
+        check1=Number(latob.value)+Number(latoa.value);
+        check2=Number(latob.value)-Number(latoa.value);
+    }
+    if (check2<0) {
+        check2=check2*-1;
+    }
+    if ((latoa.value!=0 && latob.value!=0 && latoc.value!=0) && ((check3>check1) || (check3<check2))) {
+        error.play();
+        alert('Errore 3\n Non rispetta la disuguaglianza triangolare');
+    }
     /* CASO TRE LATI */
-    if (latoa.value!=0 && latob.value!=0 && latoc.value!=0) {
+    else if (latoa.value!=0 && latob.value!=0 && latoc.value!=0) {
         la=latoa.value;
         lb=latob.value;
         lc=latoc.value;
@@ -39,307 +71,168 @@ function calcolo() {
         ac=180-ab-angoloa.value;
         angoloc.value=ac;
     }
-    /* CASO LATO A E ALPHA E BETA */
-    else if (latoa.value!=0 && angoloa.value!=0 && angolob.value!=0) {
-        aa=angoloa.value;
-        ab=angolob.value;
-        la=latoa.value;
-        ac=180-aa-ab;
+    /* CASO LATO E DUE ANGOLI */
+    if ((latoa.value!=0 || latob.value!=0 || latoc.value!=0) && (angoloa.value!=0 && angolob.value!=0) || (angoloa.value!=0 && angoloc.value!=0) || (angolob.value!=0 && angoloc.value!=0)) {
+        if (angoloa.value!=0 && angolob.value!=0) {
+            aa=angoloa.value;
+            ab=angolob.value;
+            ac=180-aa-ab;
+        }
+        else if (angoloa.value!=0 && angoloc.value!=0) {
+            aa=angoloa.value;
+            ac=angoloc.value;
+            ab=180-aa-ac;
+        }
+        else {
+            ab=angolob.value;
+            ac=angoloc.value;
+            aa=180-ab-ac;
+        }
+        angoloa.value=aa;
+        angolob.value=ab;
         angoloc.value=ac;
         aa=Math.sin((Math.PI*aa)/360);
         ab=Math.sin((Math.PI*ab)/360);
         ac=Math.sin((Math.PI*ac)/360);
-        lb=(la*ab)/aa;
-        lc=(la*ac)/aa;
+        if (latoa.value!=0) {
+            la=latoa.value;
+            lb=(la*ab)/aa;
+            lc=(la*ac)/aa;
+        }
+        else if (latob.value!=0) {
+            lb=latob.value;
+            la=(lb*aa)/ab;
+            lc=(la*ac)/aa;
+        }
+        else {
+            lc=latoc.value;
+            la=(lc*aa)/ac;
+            lb=(la*ab)/aa;    
+        }
+        latoa.value=la;
         latob.value=lb;
         latoc.value=lc;
     }
-    /* CASO LATO A E BETA E GAMMA */
-    else if (latoa.value!=0 && angolob.value!=0 && angoloc.value!=0) {
-        la=latoa.value;
-        ab=angolob.value;
-        ac=angoloc.value;
-        aa=180-ab-ac;
+    /* CASO DUE LATI E UN ANGOLO */
+    else if ((angoloa.value!=0 || angolob.value!=0 || angoloc.value!=0) && (latoa.value!=0 && latob.value!=0) || (latoa.value!=0 && latoc.value!=0) || (latob.value!=0 && latoc.value!=0)) {
+        var temp;
+        if (latoa.value!=0 && latob.value!=0) {
+            la=latoa.value;
+            lb=latob.value;
+            if (angoloa.value!=0) {
+                aa=angoloa.value;
+                temp=angoloa.value;
+                temp=Math.sin((Math.PI*temp)/360);
+                ab=(lb/la)*temp;
+                ab=Math.asin(ab);
+                ab=(360*ab)/Math.PI;
+                ac=180-ab-aa;
+                temp=Math.sin((Math.PI*ac)/360);
+                lc=(la*temp)/aa;
+            }
+            else if (angolob.value!=0) {
+                ab=angolob.value;
+                temp=angolob.value;
+                temp=Math.sin((Math.PI*temp)/360);
+                aa=(la/lb)*temp;
+                aa=Math.asin(aa);
+                aa=(360*aa)/Math.PI;
+                ac=180-aa-ab;
+                temp=Math.sin((Math.PI*ac)/360);
+                lc=(lb*temp)/ab;
+            }
+            else {
+                ac=angoloc.value;
+                temp=(Math.PI*ac)/180;
+                temp=Math.cos(temp);
+                lc=Math.sqrt((la*la)+(lb*lb)-(2*la*lb*temp));
+                temp=Math.sin((Math.PI*ac)/360);
+                ab=(lb*temp)/lc;
+                ab=Math.asin(ab);
+                ab=(360*ab)/Math.PI;
+                aa=180-ab-ac;
+            }
+        }
+        else if (latoa.value!=0 && latoc.value!=0) {
+            la=latoa.value;
+            lc=latoc.value;
+            if (angoloa.value!=0) {
+                aa=angoloa.value;
+                temp=Math.sin((Math.PI*aa)/360);
+                ac=(lc/la)*temp;
+                ac=Math.asin(ac);
+                ac=(360*ac)/Math.PI;
+                ab=180-ac-aa;
+                temp=Math.sin((Math.PI*ab)/360);
+                lb=(la*temp)/aa;
+            }
+            else if (angoloc.value!=0) {
+                ac=angoloc.value;
+                temp=Math.sin((Math.PI*ac)/360);
+                aa=(la/lc)*temp;
+                aa=Math.asin(aa);
+                aa=(360*aa)/Math.PI;
+                ab=180-aa-ac;
+                temp=Math.sin((Math.PI*ab)/360);
+                lb=(lc*temp)/ac;
+            }
+            else {
+                ab=angolob.value;
+                temp=(Math.PI*ab)/180;
+                temp=Math.cos(temp);
+                lb=Math.sqrt((la*la)+(lc*lc)-(2*la*lc*temp));
+                temp=Math.sin((Math.PI*ab)/360);
+                ac=(lc*temp)/lb;
+                ac=Math.asin(ac);
+                ac=(360*ac)/Math.PI;
+                aa=180-ab-ac;
+            }
+        }
+        else {
+            lb=latob.value;
+            lc=latoc.value;
+            if (angolob.value!=0) {
+                ab=angolob.value;
+                temp=Math.sin((Math.PI*ac)/360);
+                ac=(lc/lb)*temp;
+                ac=Math.asin(ac);
+                ac=(360*ac)/Math.PI;
+                aa=180-ab-ac;
+                temp=Math.sin((Math.PI*aa)/360);
+                la=(lc*temp)/ac;
+            }
+            else if (angoloc.value!=0) {
+                ac=angoloc.value;
+                temp=Math.sin((Math.PI*ac)/360);
+                ab=(lb/lc)*temp;
+                ab=Math.asin(ab);
+                ab=(360*ab)/Math.PI;
+                aa=180-ab-ac;
+                temp=Math.sin((Math.PI*aa)/360);
+                la=(lc*temp)/ac;
+            }
+            else {
+                aa=angoloa.value;
+                temp=(Math.PI*aa)/180;
+                temp=Math.cos(temp);
+                la=Math.sqrt((lb*lb)+(lc*lc)-(2*lb*lc*temp));
+                temp=Math.sin((Math.PI*aa)/360);
+                ac=(lc*temp)/la;
+                ac=Math.asin(ac);
+                ac=(360*ac)/Math.PI;
+                ab=180-ac-aa;
+            }
+        }
+        latoa.value=la;
+        latob.value=lb;
+        latoc.value=lc;
         angoloa.value=aa;
-        aa=Math.sin((Math.PI*aa)/360);
-        ab=Math.sin((Math.PI*ab)/360);
-        ac=Math.sin((Math.PI*ac)/360);
-        lb=(la*ab)/aa;
-        lc=(la*ac)/aa;
-        latob.value=lb;
-        latoc.value=lc;
-    }
-    /* CASO LATO A E ALPHA E GAMMA */
-    else if (latoa.value!=0 && angoloa.value!=0 && angoloc.value!=0) {
-        la=latoa.value;
-        aa=angoloa.value;
-        ac=angoloc.value;
-        ab=180-aa-ac;
         angolob.value=ab;
-        aa=Math.sin((Math.PI*aa)/360);
-        ab=Math.sin((Math.PI*ab)/360);
-        ac=Math.sin((Math.PI*ac)/360);
-        lb=(la*ab)/aa;
-        lc=(la*ac)/aa;
-        latob.value=lb;
-        latoc.value=lc;
-    }
-    /* CASO LATO B E ALPHA E BETA */
-    else if (latob.value!=0 & angoloa.value!=0 && angolob.value!=0) {
-        lb=latob.value;
-        aa=angoloa.value;
-        ab=angolob.value;
-        ac=180-ab-aa;
         angoloc.value=ac;
-        aa=Math.sin((Math.PI*aa)/360);
-        ab=Math.sin((Math.PI*ab)/360);
-        ac=Math.sin((Math.PI*ac)/360);
-        la=(lb*aa)/ab;
-        lc=(la*ac)/aa;
-        latoa.value=la;
-        latoc.value=lc;
-    }
-    /* CASO LATO B E BETA E GAMMA */
-    else if (latob.value!=0 && angolob.value!=0 && angoloc.value!=0) {
-        lb=latob.value;
-        ab=angolob.value;
-        ac=angoloc.value;
-        aa=180-ab-ac;
-        angoloa.value=aa;
-        aa=Math.sin((Math.PI*aa)/360);
-        ab=Math.sin((Math.PI*ab)/360);
-        ac=Math.sin((Math.PI*ac)/360);
-        la=(lb*aa)/ab;
-        lc=(la*ac)/aa;
-        latoa.value=la;
-        latoc.value=lc;
-    }
-    /* CASO LATO B E ALPHA E GAMMA */
-    else if (latob.value!=0 && angoloa.value!=0 && angoloc.value!=0) {
-        lb=latob.value;
-        aa=angoloa.value;
-        ac=angoloc.value;
-        ab=180-aa-ac;
-        angolob.value=ab;
-        aa=Math.sin((Math.PI*aa)/360);
-        ab=Math.sin((Math.PI*ab)/360);
-        ac=Math.sin((Math.PI*ac)/360);
-        la=(lb*aa)/ab;
-        lc=(la*ac)/aa;
-        latoa.value=la;
-        latoc.value=lc;
-    }
-    /* CASO LATO C E ALPHA E BETA */
-    else if (latoc.value!=0 && angoloa.value!=0 && angolob.value!=0) {
-        lc=latoc.value;
-        aa=angoloa.value;
-        ab=angolob.value;
-        ac=180-aa-ab;
-        angoloc.value=ac;
-        aa=Math.sin((Math.PI*aa)/360);
-        ab=Math.sin((Math.PI*ab)/360);
-        ac=Math.sin((Math.PI*ac)/360);
-        la=(lc*aa)/ac;
-        lb=(la*ab)/aa;
-        latoa.value=la;
-        latob.value=lb;
-    }
-    /* CASO LATO C E BETA E GAMMA */
-    else if (latoc.value!=0 && angolob.value!=0 && angoloc.value!=0) {
-        lc=latoc.value;
-        ab=angolob.value;
-        ac=angoloc.value;
-        aa=180-ab-ac;
-        angoloa.value=aa;
-        aa=Math.sin((Math.PI*aa)/360);
-        ab=Math.sin((Math.PI*ab)/360);
-        ac=Math.sin((Math.PI*ac)/360);
-        la=(lc*aa)/ac;
-        lb=(la*ab)/aa;
-        latoa.value=la;
-        latob.value=lb;
-    }
-    /* CASO LATO C E ALPHA E GAMMA */
-    else if (latoc.value!=0 && angoloa.value!=0 && angoloc.value!=0) {
-        lc=latoc.value;
-        aa=angoloa.value;
-        ac=angoloc.value;
-        ab=180-aa-ac;
-        angolob.value=ab;
-        aa=Math.sin((Math.PI*aa)/360);
-        ab=Math.sin((Math.PI*ab)/360);
-        ac=Math.sin((Math.PI*ac)/360);
-        la=(lc*aa)/ac;
-        lb=(la*ab)/aa;
-        latoa.value=la;
-        latob.value=lb;
-    }
-    /* CASO LATO A E C E BETA */
-    else if (latoa.value!=0 && latoc.value!=0 && angolob.value!=0) {
-        la=latoa.value;
-        lc=latoc.value;
-        ab=angolob.value;
-        ab=(Math.PI*ab)/180;
-        ab=Math.cos(ab);
-        lb=(la*la)+(lc*lc)-(2*la*lc*ab);
-        lb=Math.sqrt(lb);
-        latob.value=lb;
-        ab=Math.sin((Math.PI*angolob.value)/360);
-        aa=(la*ab)/lb;
-        aa=Math.asin(aa);
-        aa=(360*aa)/Math.PI;
-        angoloa.value=aa;
-        angoloc.value=180-aa-angolob.value;
-    }
-    /* CASO LATO A E B E GAMMA */
-    else if (latoa.value!=0 && latob.value!=0 && angoloc.value!=0) {
-        la=latoa.value;
-        lb=latob.value;
-        ac=angoloc.value;
-        ac=(Math.PI*ac)/180;
-        ac=Math.cos(ac);
-        lc=(la*la)+(lb*lb)-(2*la*lb*ac);
-        lc=Math.sqrt(lc);
-        latoc.value=lc;
-        ac=Math.sin((Math.PI*angoloc.value)/360);
-        aa=(la*ac)/lc;
-        aa=Math.asin(aa);
-        aa=(360*aa)/Math.PI;
-        angoloa.value=aa;
-        angolob.value=180-aa-angoloc.value;
-    }
-    /* CASO LATO B E C E ALPHA */
-    else if (latob.value!=0 && latoc.value!=0 && angoloa.value!=0) {
-        lb=latob.value;
-        lc=latoc.value;
-        aa=angoloa.value;
-        aa=(Math.PI*aa)/180;
-        aa=Math.cos(aa);
-        la=(lc*lc)+(lb*lb)-(2*lc*lb*aa);
-        la=Math.sqrt(la);
-        latoa.value=la;
-        aa=Math.sin((Math.PI*angoloa.value)/360);
-        ab=(lb*aa)/la;
-        ab=Math.asin(ab);
-        ab=(360*ab)/Math.PI;
-        angolob.value=ab;
-        angoloc.value=180-ab-angoloa.value;
-    }
-    /* CASO LATO B E C E BETA */
-    else if (latob.value!=0 && latoc.value!=0 && angolob.value!=0) {
-        lb=latob.value;
-        lc=latoc.value;
-        ab=angolob.value;
-        ab=(Math.PI*ab)/180;
-        ab=Math.cos(ab);
-        la=(lc*lc)+(lb*lb)-(2*lc*lb*ab);
-        la=Math.sqrt(la);
-        latoa.value=la;
-        ab=Math.sin((Math.PI*angolob.value)/360);
-        aa=(la*ab)/lb;
-        aa=Math.asin(aa);
-        aa=(360*aa)/Math.PI;
-        angoloa.value=aa;
-        angoloc.value=180-aa-angolob.value;
-    }
-    /* CASO LATO A E B E APLHA */
-    else if (latoa.value!=0 && latob.value!=0 && angoloa.value!=0) {
-        la=latoa.value;
-        lb=latob.value;
-        aa=angoloa.value;
-        aa=Math.sin((Math.PI*aa)/360);
-        ab=(lb/la)*aa;
-        ab=Math.asin(ab);
-        ab=(360*ab)/Math.PI;
-        angolob.value=ab;
-        ac=180-ab-angoloa.value;
-        angoloc.value=ac;
-        ac=Math.sin((Math.PI*ac)/360);
-        lc=(la*ac)/aa;
-        latoc.value=lc;
-    }
-    /* CASO LATO A E B E BETA */
-    else if (latoa.value!=0 && latob.value!=0 && angolob.value!=0) {
-        la=latoa.value;
-        lb=latob.value;
-        ab=angolob.value;
-        ab=Math.sin((Math.PI*ab)/360);
-        aa=(la/lb)*ab;
-        aa=Math.asin(aa);
-        aa=(360*aa)/Math.PI;
-        angoloa.value=aa;
-        ac=180-aa-angolob.value;
-        angoloc.value=ac;
-        ac=Math.sin((Math.PI*ac)/360);
-        lc=(lb*ac)/ab;
-        latoc.value=lc;
-    }
-    /* CASO LATO A E C E ALPHA */
-    else if (latoa.value!=0 && latoc.value!=0 && angoloa.value!=0) {
-        la=latoa.value;
-        lc=latoc.value;
-        aa=angoloa.value;
-        aa=Math.sin((Math.PI*aa)/360);
-        ac=(lc/la)*aa;
-        ac=Math.asin(ac);
-        ac=(360*ac)/Math.PI;
-        angoloc.value=ac;
-        ab=180-ac-angoloa.value;
-        angolob.value=ab;
-        ab=Math.sin((Math.PI*ab)/360);
-        lb=(la*ab)/aa;
-        latob.value=lb;
-    }
-    /* CASO LATO A E C E GAMMA */
-    else if (latoa.value!=0 && latoc.value!=0 && angoloc.value!=0) {
-        la=latoa.value;
-        lc=latoc.value;
-        ac=angoloc.value;
-        ac=Math.sin((Math.PI*ac)/360);
-        aa=(la/lc)*ac;
-        aa=Math.asin(aa);
-        aa=(360*aa)/Math.PI;
-        angoloa.value=aa;
-        ab=180-aa-angoloc.value;
-        angolob.value=ab;
-        ab=Math.sin((Math.PI*ab)/360);
-        lb=(lc*ab)/ac;
-        latob.value=lb;
-    }
-    /* CASO LATO B E C E BETA */
-    else if (latob.value!=0 && latoc.value!=0 && angolob.value!=0) {
-        lb=latob.value;
-        lc=latoc.value;
-        ab=angolob.value;
-        ab=Math.sin((Math.PI*ac)/360);
-        ac=(lc/lb)*ab;
-        ac=Math.asin(ac);
-        ac=(360*ac)/Math.PI;
-        angoloc.value=ac;
-        aa=180-ab-angoloc.value;
-        angoloa.value=aa;
-        aa=Math.sin((Math.PI*aa)/360);
-        la=(lc*aa)/ac;
-        latoa.value=la;
-    }
-    /* CASO LATO B E C E GAMMA */
-    else if (latob.value!=0 && latoc.value!=0 && angoloc.value!=0) {
-        lb=latob.value;
-        lc=latoc.value;
-        ac=angoloc.value;
-        ac=Math.sin((Math.PI*ac)/360);
-        ab=(lb/lc)*ac;
-        ab=Math.asin(ab);
-        ab=(360*ab)/Math.PI;
-        angolob.value=ab;
-        aa=180-ab-angoloc.value;
-        angoloa.value=aa;
-        aa=Math.sin((Math.PI*aa)/360);
-        la=(lc*aa)/ac;
-        latoa.value=la;
     }
     /* CASO DATI ERRORE */
     else {
-        alert('Errore:\nDati insufficienti')
+        error.play();
+        alert('Errore 1:\nDati insufficienti');
     }
 }

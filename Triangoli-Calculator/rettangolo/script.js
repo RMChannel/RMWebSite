@@ -6,7 +6,7 @@ const latoc=document.getElementById('latoc');
 const angoloa=document.getElementById('angoloa');
 const angolob=document.getElementById('angolob');
 const angoloc=document.getElementById('angoloc');
-const error= new Audio('../common/error.mp3')
+const error= new Audio('../common/error.mp3');
 
 button.addEventListener("click",calcolo);
 buttonr.addEventListener("click",reset);
@@ -29,9 +29,25 @@ function calcolo() {
         alert('Errore 2\n Somma angoli errata');
     }
     /* CONTROLLO IMPOSSIBILITA' LATI */
-    else if ((latoa.value>=latoc.value && latoc.value!=0) || (latob.value>=latoc.value && latoc.value!=0)) {
+    check1=Number(latoa.value)+Number(latob.value);
+    check2=Number(latoa.value)-Number(latob.value);
+    if (check2<0) {
+        check2=check2*-1;
+    }
+    if ((Number(latoc.value)<check1 && latoc.value!=0) || (Number(latoc.value)>check2 && latoc.value!=0 && latob.value!=0 && latoa.value!=0)) {
         error.play();
-        alert('Errore 3\n Lato troppo elevato');
+        alert('Errore 3\n Non rispetta la disuguaglianza triangolare');
+    }
+    /* CASO 3 LATI */
+    else if (latoa.value!=0 && latob.value!=0 && latoc.value!=0) {
+        la=latoa.value;
+        lb=latob.value;
+        lc=latoc.value;
+        aa=Math.asin(la/lc);
+        aa=(90*aa)/(Math.PI/2);
+        ab=90-aa;
+        angoloa.value=aa;
+        angolob.value=ab;
     }
     /* CASO HO UN ANGOLO */
     else if (angoloa.value!=0 || angolob.value!=0) {
