@@ -10,14 +10,43 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mouse+Memoirs&display=swap" rel="stylesheet">
     <title>Monopoly 2.0</title>
+    <a href="../index.html"><img src="../common/button.png" width="50px" height="50px"></a>
 </head>
     <body>
-        <img src="Images/wallpaper.png">
+        <img id="titleimg" src="Images/wallpaper.png">
         <br>
         <div id="selplayer">
             <p class="title">Quanti giocatori giocano?</p>
-            <input type="number" class="input1" max="4" min="1">
-            <input type="button" class="button1" name="inputplayer" value="Gioca">
+            <input type="number" class="input1" max="4" min="1" id="numberinsert">
+            <br>
+            <input type="button" id="button1" class="button1" name="inputplayer" onclick="playerassing()" value="Gioca">
+        </div>
+        <div id="menu">
+            <div id="playermenu">
+                <h1 class="players" id="p1"></h1>
+                <h1 class="players" id="p2"></h1>
+                <h1 class="players" id="p3"></h1>
+                <h1 class="players" id="p4"></h1>
+            </div>
+            <div id="functions">
+                <p class="title">Seleziona la funzione:</p>
+                <input type="button" id="via" class="button1" name="via" value="Via!" onclick="Via()">
+                <input type="button" id="tasse" class="button1" name="tasse" value="Tasse!" onclick="tasse()">
+            </div>
+            <div id="Via">
+                <p class="title">Seleziona il giocatore che è passato dal Via!:</p>
+                <input type="button" id="via1" class="button1" name="via1" value="P1" onclick="Via1()">
+                <input type="button" id="via2" class="button1" name="via2" value="P2" onclick="Via2()">
+                <input type="button" id="via3" class="button1" name="via3" value="P3" onclick="Via3()">
+                <input type="button" id="via4" class="button1" name="via4" value="P4" onclick="Via4()">
+            </div>
+            <div id="tassemenu1">
+                <input type="button" id="tassep1" class="button1" name="tassep1" value="P1" onclick="tassesel()">
+                <input type="button" id="tassep2" class="button1" name="tassep2" value="P2" onclick="tassesel()">
+                <input type="button" id="tassep3" class="button1" name="tassep3" value="P3" onclick="tassesel()">
+                <input type="button" id="tassep4" class="button1" name="tassep4" value="P4" onclick="tassesel()">
+            </div>
         </div>
     </body>
+    <script src="script.js"></script>
 </html>

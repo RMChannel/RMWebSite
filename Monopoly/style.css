@@ -1,23 +1,38 @@
 body {
     background-color: #091678;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .title {
-    font-size: 30px;
+    font-size: 50px;
     font-family: 'Mouse Memoirs', sans-serif;
     font-weight: 1000;
     color: white;
 }
 
+#via3 {
+    display:none;
+}
+
+#via4 {
+    display: none;
+}
+
 #selplayer {
-    border-style: dashed;
+    width: fit-content;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .input1 {
-    width: 50px;
+    width: 70px;
     height: 100px;
     font-size: 30px;
     border-radius: 100px;
+    text-align: center;
 }
 
 .button1 {
@@ -26,8 +41,60 @@ body {
     border-radius: 100px;
     width: 100px;
     height: 100px;
+    font-family: 'Mouse Memoirs', sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+.button1:hover {
+    color: yellow;
 }
 
 input {
     cursor: pointer;
+}
+
+#titleimg {
+    max-width:100%;
+    height:auto;
+}
+
+#menu {
+    display:none;
+}
+
+.players {
+    color: white;
+    font-family: 'Mouse Memoirs', sans-serif;
+    border: 8px solid black;
+    border-radius: 100px;
+    background-color: darkblue;
+    font-size: 50px;
+    margin: 10px;
+}
+
+#p3 {
+    display: none;
+}
+
+#p4 {
+    display:none;
+}
+
+#playermenu {
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+}
+
+#Via {
+    display: none;
+}
+
+#functions {
+    display: block;
+}
+
+#tassemenu1 {
+    display: none;
 }
