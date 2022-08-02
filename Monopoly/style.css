@@ -20,6 +20,14 @@ body {
     display: none;
 }
 
+#tassep3 {
+    display: none;
+}
+
+#tassep4 {
+    display: none;
+}
+
 #selplayer {
     width: fit-content;
     display:flex;
@@ -96,5 +104,30 @@ input {
 }
 
 #tassemenu1 {
+    display: none;
+}
+
+#tassemenu2 {
+    display: none;
+}
+
+#acquisto {
+    font-size: 15px;
+    text-align: center;
+}
+
+#acquistomenu {
+    display: none;
+}
+
+#acquistomenu2 {
+    display: none;
+}
+
+#acquisto3 {
+    display: none;
+}
+
+#acquisto4 {
     display: none;
 }
