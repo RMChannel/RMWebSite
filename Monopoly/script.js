@@ -4,14 +4,14 @@ let p2s=1500;
 let p3s=1500;
 let p4s=1500;
 let ta,pa;
+let ppa=0;
 const error= new Audio('sounds/error.mp3');
 const press= new Audio('sounds/presssound.mp3');
 const cash= new Audio('sounds/cash.mp3');
 const lost= new Audio('sounds/lost.mp3');
 const name = [ "Vicolo Stretto", "Vicolo Corto","Stazione SUD","Bastioni Gran Sasso","Viale Monterosa","Viale Vesuvio","Via Accademia","Societa' Elettrica","Corso Ateneo","Piazza Universita'","Stazione OVEST","Via Verdi","Corso Raffaello","Piazza Dante","Via Marcolo Polo","Corso Magellano","Largo Colombo","Stazione NORD","Viale Costantino","Viale Traiano","Societa' Acqua Potabile","Piazza Giulio Cesare","Via Roma","Corso Impero","Largo Augusto","Stazione EST","Viale Dei Giardini","Parco della Vittoria" ];
-const casavalore = [ 50,50,0,50,50,50,100,0,100,100,0,100,100,100,150,150,150,0,150,150,0,150,200,200,200,0,200,200 ];
-const valipoteca = [ 30,30,100,50,50,60,60,70,75,70,80,100,90,90,100,110,110,120,100,130,75,140,150,160,100,175,200 ];
-let proprieta;
+const price=[ 60,60,100,100,120,140,140,160,180,180,200,220,220,240,260,260,280,300,300,320,350,400,150,150,200,200,200,200 ];
+let proprieta= [];
 
 function playerassing() {
     press.play();
@@ -23,6 +23,7 @@ function playerassing() {
     else {
         game();
     }
+   
 }
 
 function reloadplayers() {
@@ -53,8 +54,15 @@ function hideall() {
     document.getElementById("Via").style.display="none";
     document.getElementById("tassemenu1").style.display="none";
     document.getElementById("tassemenu2").style.display="none";
-    document.getElementById("acquistomenu2").style.display="none";
     document.getElementById("acquistomenu").style.display="none";
+    document.getElementById("acquistomenu2").style.display="none";
+    document.getElementById("acquistomenu3").style.display="none";
+    let i=0;
+    while (i<28) {
+        let temp=i.toString();
+        document.getElementById(temp).style.display="none";
+        i++;
+    }
 }
 
 function Via() {
@@ -169,34 +177,94 @@ function acquisto() {
 }
 
 function acquisto1() {
-    press.play();
+    press.play();   
     pa=1;
     document.getElementById("acquistomenu").style.display="none";
-    document.getElementById("acquistomenu2").style.display="flex";
+    document.getElementById("acquistomenu2").style.display="block";
+    propshow();
 }
 
 function acquisto2() {
     press.play();
     pa=2;
     document.getElementById("acquistomenu").style.display="none";
-    document.getElementById("acquistomenu2").style.display="flex";
+    document.getElementById("acquistomenu2").style.display="block";
+    propshow();
 }
 
 function acquisto3() {
     press.play();
     pa=3;
     document.getElementById("acquistomenu").style.display="none";
-    document.getElementById("acquistomenu2").style.display="flex";
+    document.getElementById("acquistomenu2").style.display="block";
+    propshow();
 }
 
 function acquisto4() {
     press.play();
     pa=4;
     document.getElementById("acquistomenu").style.display="none";
-    document.getElementById("acquistomenu2").style.display="flex";
+    document.getElementById("acquistomenu2").style.display="block";
+    propshow();
+}
+
+function propshow() {
+    let i=0;
+    let temp;
+    while (i<28) {
+        if (proprieta[i]==0) {
+            temp=i.toString();
+            document.getElementById(temp).style.display="inline";
+        }
+        i++;
+    }
+}
+
+function confermaprop() {
+    press.play();
+    console.log(ppa);
+    let temp=ppa.toString();
+    document.getElementById("acquistomenu2").style.display="none";
+    document.getElementById("acquistomenu3").style.display="flex";
+    const temp2=document.getElementById(temp);
+    var temp3=document.getElementById("28");
+    temp3.src=temp2.src;
+    temp3.style.display="inline";
+    temp3.style.width="200px";
+    temp3.style.height="350px";
+    temp3.style.cursor="pointer";
+}
+
+function acqu() {
+    cash.play();
+    if (pa==1) {
+        p1s-=price[ppa];
+    }
+    else if (pa==2) {
+        p2s-=price[ppa];
+    }
+    else if (pa==3) {
+        p3s-=price[ppa];
+    }
+    else if (pa==4) {
+        p4s-=price[ppa];
+    }
+    proprieta[ppa]=pa;
+    reloadplayers();
+    hideall();
+}
+
+function reset() {
+    press.play();
+    hideall();
 }
 
 function game() {
+    let i=0;
+    while (i<28) {
+        proprieta[i]=0;
+        i++;
+    }
     document.getElementById("selplayer").style.display="none";
     let game=true;
     document.getElementById("menu").style.display="block";

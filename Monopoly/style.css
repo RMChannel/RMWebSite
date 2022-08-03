@@ -112,7 +112,6 @@ input {
 }
 
 #acquisto {
-    font-size: 15px;
     text-align: center;
 }
 
@@ -124,10 +123,26 @@ input {
     display: none;
 }
 
+#acquistomenu3 {
+    display: none;
+}
+
 #acquisto3 {
     display: none;
 }
 
 #acquisto4 {
     display: none;
+}
+
+.proprieta {
+    margin: 20px;
+    width:300px;
+    height:450px;
+    cursor: pointer;
+    display: none;
+}
+
+.proprietamenu {
+    flex-wrap: wrap;
 }
