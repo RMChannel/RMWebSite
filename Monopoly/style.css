@@ -100,7 +100,7 @@ input {
 }
 
 #functions {
-    display: block;
+    display: inline;
 }
 
 #tassemenu1 {
@@ -135,6 +135,14 @@ input {
     display: none;
 }
 
+#visu3 {
+    display: none;
+}
+
+#visu4 {
+    display: none;
+}
+
 .proprieta {
     margin: 20px;
     width:300px;
@@ -145,4 +153,12 @@ input {
 
 .proprietamenu {
     flex-wrap: wrap;
+}
+
+#visualmenu1 {
+    display: none;
+}
+
+#visualmenu2 {
+    display: none;
 }

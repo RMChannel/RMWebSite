@@ -37,14 +37,16 @@ function reloadplayers() {
         document.getElementById("p3").style.display="block";
         document.getElementById("via3").style.display="inline-block";
         document.getElementById("tassep3").style.display="inline-block";
-        document.getElementById("acquisto3").style.display="inline-block"; 
+        document.getElementById("acquisto3").style.display="inline-block";
+        document.getElementById("visu3").style.display="inline-block"; 
         p3.innerText="P3:"+p3s+"€";
     }
     if (p==4) {
         document.getElementById("p4").style.display="block";
         document.getElementById("via4").style.display="inline-block";
         document.getElementById("tassep4").style.display="inline-block";
-        document.getElementById("acquisto4").style.display="inline-block";        
+        document.getElementById("acquisto4").style.display="inline-block"; 
+        document.getElementById("visu4").style.display="inline-block";       
         p4.innerText="P4:"+p4s+"€";
     }
 }
@@ -57,9 +59,19 @@ function hideall() {
     document.getElementById("acquistomenu").style.display="none";
     document.getElementById("acquistomenu2").style.display="none";
     document.getElementById("acquistomenu3").style.display="none";
+    document.getElementById("visualmenu1").style.display="none";
+    document.getElementById("visualmenu2").style.display="none";
     let i=0;
     while (i<28) {
         let temp=i.toString();
+        document.getElementById(temp).style.display="none";
+        i++;
+    }
+    i=0;
+    while (i<28) {
+        let temp=i.toString();
+        temp+="p";
+        console.log(temp);
         document.getElementById(temp).style.display="none";
         i++;
     }
@@ -257,6 +269,70 @@ function acqu() {
 function reset() {
     press.play();
     hideall();
+}
+
+function visuactivate() {
+    press.play();
+    hideall();
+    document.getElementById("functions").style.display="none";
+    document.getElementById("visualmenu1").style.display="block";
+}
+
+function visu2() {
+    press.play();
+    let check=false;
+    let i=0;
+    document.getElementById("visualmenu1").style.display="none";
+    document.getElementById("visualmenu2").style.display="block";
+    if (pa==1) {
+        while (i<28) {
+            if (proprieta[i]==1) {
+                check=true;
+                let temp=i.toString();
+                temp+="p";
+                document.getElementById(temp).style.display="inline";
+            }
+            i++;
+        }
+    }
+    else if (pa==2) {
+        while (i<28) {
+            if (proprieta[i]==2) {
+                check=true;
+                let temp=i.toString();
+                temp+="p";
+                document.getElementById(temp).style.display="inline";
+            }
+            i++;
+        }
+    }
+    else if (pa==3) {
+        while (i<28) {
+            if (proprieta[i]==3) {
+                check=true;
+                let temp=i.toString();
+                temp+="p";
+                document.getElementById(temp).style.display="inline";
+            }
+            i++;
+        }
+    }
+    else {
+        while (i<28) {
+            if (proprieta[i]==4) {
+                check=true;
+                let temp=i.toString();
+                temp+="p";
+                document.getElementById(temp).style.display="inline";
+            }
+            i++;
+        }
+    }
+    if (check==false) {
+        error.play();
+        alert("Errore2\nNon hai nessuna proprietà");
+        reset();
+    }
 }
 
 function game() {
