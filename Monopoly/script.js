@@ -61,6 +61,7 @@ function hideall() {
     document.getElementById("acquistomenu3").style.display="none";
     document.getElementById("visualmenu1").style.display="none";
     document.getElementById("visualmenu2").style.display="none";
+    document.getElementById("exitvis").style.display="none";
     let i=0;
     while (i<28) {
         let temp=i.toString();
@@ -284,6 +285,7 @@ function visu2() {
     let i=0;
     document.getElementById("visualmenu1").style.display="none";
     document.getElementById("visualmenu2").style.display="block";
+    document.getElementById("exitvis").style.display="block";
     if (pa==1) {
         while (i<28) {
             if (proprieta[i]==1) {

@@ -55,7 +55,7 @@ body {
 }
 
 .button1:hover {
-    color: yellow;
+    color: white;
 }
 
 input {
@@ -161,4 +161,9 @@ input {
 
 #visualmenu2 {
     display: none;
+}
+
+#exitvis {
+    display: none;
+    align-items: center;
 }
