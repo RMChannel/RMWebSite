@@ -103,30 +103,9 @@ input {
     display: inline;
 }
 
-#tassemenu1 {
-    display: none;
-}
-
-#tassemenu2 {
-    display: none;
-}
-
 #acquisto {
     text-align: center;
 }
-
-#acquistomenu {
-    display: none;
-}
-
-#acquistomenu2 {
-    display: none;
-}
-
-#acquistomenu3 {
-    display: none;
-}
-
 #acquisto3 {
     display: none;
 }
@@ -143,6 +122,14 @@ input {
     display: none;
 }
 
+#pc3 {
+    display: none;
+}
+
+#pc4 {
+    display: none;
+}
+
 .proprieta {
     margin: 20px;
     width:300px;
@@ -155,15 +142,29 @@ input {
     flex-wrap: wrap;
 }
 
-#visualmenu1 {
-    display: none;
-}
-
-#visualmenu2 {
-    display: none;
-}
-
 #exitvis {
     display: none;
     align-items: center;
+}
+#exitpote {
+    display: none;
+    align-items: center;
+}
+
+.casa {
+    background-image: url(Images/casa.png);
+    background-size: 80px;
+    background-position-x: 15px;
+    background-position-y: 10px;
+    background-repeat:no-repeat;
+    text-align: left;
+}
+
+.albergo {
+    background-image: url(Images/albergo.png);
+    background-size: 80px;
+    background-position-x: 15px;
+    background-position-y: 8px;
+    background-repeat:no-repeat;
+    text-align: left;
 }

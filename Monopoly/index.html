@@ -17,7 +17,7 @@
         <br>
         <div id="selplayer">
             <p class="title">Quanti giocatori giocano?</p>
-            <input type="number" class="input1" max="4" min="1" id="numberinsert">
+            <input type="number" class="input1" max="4" min="2" id="numberinsert">
             <br>
             <input type="button" id="button1" class="button1" name="inputplayer" onclick="playerassing()" value="Gioca">
         </div>
@@ -33,7 +33,8 @@
                 <input type="button" id="via" class="button1" name="via" value="Via!" onclick="Via()">
                 <input type="button" id="tasse" class="button1" name="tasse" value="Tasse!" onclick="tasse()">
                 <input type="button" id="acquisto" class="button1" name="acquisto" value="Acquista" onclick="acquisto()">
-                <input type="button" id="visupulsante" class="button1" name="acquisto" value="Visualizza" onclick="visuactivate()">
+                <input type="button" id="visupulsante" class="button1" name="visupulsante" value="Visualizza" onclick="visuactivate()">
+                <input type="button" id="potenziapulsante" class="button1" name="potenziapulsante" value="Potenzia" onclick="potenziactive()">
             </div>
             <div id="Via">
                 <p class="title">Seleziona il giocatore che è passato dal Via!:</p>
@@ -139,6 +140,52 @@
                     <img id="26p" class="proprieta" src="Proprieta/(27).jpg">
                     <img id="27p" class="proprieta" src="Proprieta/(28).jpg">
             </div>
+            <div id="potenziacasa1">
+                <p class="title">Seleziona il giocatore che vuole potenziare una proprietà:</p>
+                <input type="button" id="pc1" class="button1" name="pc1" value="P1" onclick="pa=1, potenziacasa()">
+                <input type="button" id="pc2" class="button1" name="pc2" value="P2" onclick="pa=2, potenziacasa()">
+                <input type="button" id="pc3" class="button1" name="pc3" value="P3" onclick="pa=3, potenziacasa()">
+                <input type="button" id="pc4" class="button1" name="pc4" value="P4" onclick="pa=4, potenziacasa()">
+            </div>
+            <div id="potenziacasa2">
+                <p class="title">Clicca sulla proprietà che vuoi potenziare:</p>
+                <input type="button" id="exitpote" class="button1" name="exitpote" value="Esci" onclick="reset()">
+                <img id="0pa" class="proprieta" src="Proprieta/ (1).jpg" onclick="ta=0,controllo()">
+                <img id="1pa" class="proprieta" src="Proprieta/ (2).jpg" onclick="ta=1, controllo()">
+                <img id="2pa" class="proprieta" src="Proprieta/ (3).jpg" onclick="ta=2, controllo()">
+                <img id="3pa" class="proprieta" src="Proprieta/ (4).jpg" onclick="ta=3, controllo()">
+                <img id="4pa" class="proprieta" src="Proprieta/ (5).jpg" onclick="ta=4, controllo()">
+                <img id="5pa" class="proprieta" src="Proprieta/ (6).jpg" onclick="ta=5, controllo()">
+                <img id="6pa" class="proprieta" src="Proprieta/ (7).jpg" onclick="ta=6, controllo()">
+                <img id="7pa" class="proprieta" src="Proprieta/ (8).jpg" onclick="ta=7, controllo()">
+                <img id="8pa" class="proprieta" src="Proprieta/ (9).jpg" onclick="ta=8, controllo()">
+                <img id="9pa" class="proprieta" src="Proprieta/ (10).jpg" onclick="ta=9, controllo()">
+                <img id="10pa" class="proprieta" src="Proprieta/ (11).jpg" onclick="ta=10, controllo()">
+                <img id="11pa" class="proprieta" src="Proprieta/ (12).jpg" onclick="ta=11, controllo()">
+                <img id="12pa" class="proprieta" src="Proprieta/ (13).jpg" onclick="ta=12, controllo()">
+                <img id="13pa" class="proprieta" src="Proprieta/ (14).jpg" onclick="ta=13, controllo()">
+                <img id="14pa" class="proprieta" src="Proprieta/ (15).jpg" onclick="ta=14, controllo()">
+                <img id="15pa" class="proprieta" src="Proprieta/ (16).jpg" onclick="ta=15, controllo()">
+                <img id="16pa" class="proprieta" src="Proprieta/ (17).jpg" onclick="ta=16, controllo()">
+                <img id="17pa" class="proprieta" src="Proprieta/ (18).jpg" onclick="ta=17, controllo()">
+                <img id="18pa" class="proprieta" src="Proprieta/ (19).jpg" onclick="ta=18, controllo()">
+                <img id="19pa" class="proprieta" src="Proprieta/ (20).jpg" onclick="ta=19, controllo()">
+                <img id="20pa" class="proprieta" src="Proprieta/ (21).jpg" onclick="ta=20, controllo()">
+                <img id="21pa" class="proprieta" src="Proprieta/ (22).jpg" onclick="ta=21, controllo()">
+                <img id="22pa" class="proprieta" src="Proprieta/ (23).jpg" onclick="ta=22, controllo()">
+                <img id="23pa" class="proprieta" src="Proprieta/ (24).jpg" onclick="ta=23, controllo()">
+                <img id="24pa" class="proprieta" src="Proprieta/(25).jpg" onclick="ta=24, controllo()">
+                <img id="25pa" class="proprieta" src="Proprieta/(26).jpg" onclick="ta=25, controllo()">
+                <img id="26pa" class="proprieta" src="Proprieta/(27).jpg" onclick="ta=26, controllo()">
+                <img id="27pa" class="proprieta" src="Proprieta/(28).jpg" onclick="ta=27, controllo()">
+        </div>
+        <div id="potenziacasa3">
+            <p class="title">Clicca sul potenziamento:</p>
+            <input type="button" id="casa1" class="button1 casa" name="casa1" value="1">
+            <input type="button" id="casa2" class="button1 casa" name="casa2" value="2">
+            <input type="button" id="casa3" class="button1 casa" name="casa3" value="3">
+            <input type="button" id="casa4" class="button1 casa" name="casa4" value="4">
+            <input type="button" id="albergo" class="button1 albergo" name="albergo" value="5">
         </div>
     </body>
     <script src="script.js"></script>
