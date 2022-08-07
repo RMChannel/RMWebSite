@@ -168,3 +168,42 @@ input {
     background-repeat:no-repeat;
     text-align: left;
 }
+
+#visupulsante {
+    background-image: url(Images/proprieta\ icon.png);
+    background-size: 95px;
+    background-repeat:no-repeat;
+    background-position-x: 1px;
+}
+
+#tasse {
+    background-size: 110px;
+    background-position-y: 1px;
+    background-position-x: -5px;
+    background-image: url(Images/tasse.jpeg);
+    background-repeat:no-repeat;
+}
+
+.nocasa {
+    background-image: url(Images/no\ casa.png);
+    background-repeat:no-repeat;
+    background-size: 80px;
+    background-position-x: 15px;
+    background-position-y: 10px;
+    text-align: left;
+}
+
+.subtitle {
+    font-size: 30px;
+    font-family: 'Mouse Memoirs', sans-serif;
+    font-weight: 1000;
+    color: white;
+}
+
+.propvis {
+    width: 450px;
+}
+
+h1 {
+    display: inline;
+}

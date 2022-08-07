@@ -3,12 +3,13 @@ let p1s=1500;
 let p2s=1500;
 let p3s=1500;
 let p4s=1500;
-let ta,pa;
+let ta,pa,ca;
 let ppa=0;
 const error= new Audio('sounds/error.mp3');
 const press= new Audio('sounds/presssound.mp3');
 const cash= new Audio('sounds/cash.mp3');
 const lost= new Audio('sounds/lost.mp3');
+const albergo= new Audio('sounds/albergo sound.mp3')
 const price=[ 60,60,100,100,120,140,140,160,180,180,200,220,220,240,260,260,280,300,300,320,350,400,150,150,200,200,200,200 ];
 const casavalore = [ 50,50,50,50,50,100,100,100,100,100,100,150,150,150,150,150,150,200,200,200,200,200 ];
 let proprieta= [];
@@ -75,6 +76,8 @@ function hideall() {
         let temp=i.toString();
         document.getElementById(temp).style.display="none";
         temp+="p";
+        document.getElementById(temp).style.display="none";
+        temp+="a";
         document.getElementById(temp).style.display="none";
         i++;
     }
@@ -270,6 +273,7 @@ function acqu() {
 
 function reset() {
     press.play();
+    reloadplayers();
     hideall();
 }
 
@@ -346,11 +350,71 @@ function potenziactive() {
 }
 
 function potenziaselect() {
-
+    press.play();
+    let soldi;
+    soldi=(lvlcasa[ta]-ca)*casavalore[ta];
+    lvlcasa[ta]=ca;
+    if (pa==1) {
+        if((soldi<0) && ((soldi*-1)>p1s)) {
+            error.play();
+            lvlcasa[ta]=(soldi/casavalore[ta])+ca;
+            alert("Errore 5\nNon hai abbastanza soldi");
+            reset();
+            return;
+        }
+        else {
+            p1s+=soldi;
+        }
+    }
+    else if (pa==2) {
+        if((soldi<0) && ((soldi*-1)>p2s)) {
+            error.play();
+            lvlcasa[ta]=(soldi/casavalore[ta])+ca;
+            alert("Errore 5\nNon hai abbastanza soldi");
+            reset();
+            return;
+        }
+        else {
+            p2s+=soldi;
+        }
+    }
+    else if (pa==3) {
+        if((soldi<0) && ((soldi*-1)>p3s)) {
+            error.play();
+            lvlcasa[ta]=(soldi/casavalore[ta])+ca;
+            alert("Errore 5\nNon hai abbastanza soldi");
+            reset();
+            return;
+        }
+        else {
+            p3s+=soldi;
+        }
+    }
+    else if (pa==4) {
+        if((soldi<0) && ((soldi*-1)>p4s)) {
+            error.play();
+            lvlcasa[ta]=(soldi/casavalore[ta])+ca;
+            alert("Errore 5\nNon hai abbastanza soldi");
+            reset();
+            return;
+        }
+        else {
+            p4s+=soldi;
+        }
+    }
+    if (lvlcasa[ta]==5) {
+        albergo.play();
+    }
+    else {
+        cash.play();
+    }
+    reset();
 }
 
 function controllo() {
+    press.play();
     let check=false;
+    let i=0;
     if ((ta==0) || (ta==1)) {
         if ((proprieta[0]==pa) && (proprieta[1]==pa)) {
             check=true;
@@ -398,8 +462,10 @@ function controllo() {
     else {
         document.getElementById("potenziacasa2").style.display="none";
         document.getElementById("potenziacasa3").style.display="block";
+        document.getElementById("powerstatus").innerHTML="Attuale potenziamento: "+lvlcasa[ta];
     }
 }
+    
 
 function potenziacasa() {
     press.play();

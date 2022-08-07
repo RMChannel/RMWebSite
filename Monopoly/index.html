@@ -181,11 +181,13 @@
         </div>
         <div id="potenziacasa3">
             <p class="title">Clicca sul potenziamento:</p>
-            <input type="button" id="casa1" class="button1 casa" name="casa1" value="1">
-            <input type="button" id="casa2" class="button1 casa" name="casa2" value="2">
-            <input type="button" id="casa3" class="button1 casa" name="casa3" value="3">
-            <input type="button" id="casa4" class="button1 casa" name="casa4" value="4">
-            <input type="button" id="albergo" class="button1 albergo" name="albergo" value="5">
+            <p class="title" id="powerstatus"></p>
+            <input type="button" id="casa0" class="button1 nocasa" name="casa1" value="0" onclick="ca=0, potenziaselect()">
+            <input type="button" id="casa1" class="button1 casa" name="casa1" value="1" onclick="ca=1, potenziaselect()">
+            <input type="button" id="casa2" class="button1 casa" name="casa2" value="2" onclick="ca=2, potenziaselect()">
+            <input type="button" id="casa3" class="button1 casa" name="casa3" value="3" onclick="ca=3, potenziaselect()">
+            <input type="button" id="casa4" class="button1 casa" name="casa4" value="4" onclick="ca=4, potenziaselect()">
+            <input type="button" id="albergo" class="button1 albergo" name="albergo" value="5" onclick="ca=5, potenziaselect()">
         </div>
     </body>
     <script src="script.js"></script>
