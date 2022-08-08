@@ -111,34 +111,67 @@
             </div>
             <input type="button" id="exitvis" class="button1" name="exitvis" value="Esci" onclick="reset()">
             <div id="visualmenu2">
-                    <img id="0p" class="proprieta" src="Proprieta/ (1).jpg">
-                    <img id="1p" class="proprieta" src="Proprieta/ (2).jpg">
-                    <img id="2p" class="proprieta" src="Proprieta/ (3).jpg">
-                    <img id="3p" class="proprieta" src="Proprieta/ (4).jpg">
-                    <img id="4p" class="proprieta" src="Proprieta/ (5).jpg">
-                    <img id="5p" class="proprieta" src="Proprieta/ (6).jpg">
-                    <img id="6p" class="proprieta" src="Proprieta/ (7).jpg">
-                    <img id="7p" class="proprieta" src="Proprieta/ (8).jpg">
-                    <img id="8p" class="proprieta" src="Proprieta/ (9).jpg">
-                    <img id="9p" class="proprieta" src="Proprieta/ (10).jpg">
-                    <img id="10p" class="proprieta" src="Proprieta/ (11).jpg">
-                    <img id="11p" class="proprieta" src="Proprieta/ (12).jpg">
-                    <img id="12p" class="proprieta" src="Proprieta/ (13).jpg">
-                    <img id="13p" class="proprieta" src="Proprieta/ (14).jpg">
-                    <img id="14p" class="proprieta" src="Proprieta/ (15).jpg">
-                    <img id="15p" class="proprieta" src="Proprieta/ (16).jpg">
-                    <img id="16p" class="proprieta" src="Proprieta/ (17).jpg">
-                    <img id="17p" class="proprieta" src="Proprieta/ (18).jpg">
-                    <img id="18p" class="proprieta" src="Proprieta/ (19).jpg">
-                    <img id="19p" class="proprieta" src="Proprieta/ (20).jpg">
-                    <img id="20p" class="proprieta" src="Proprieta/ (21).jpg">
-                    <img id="21p" class="proprieta" src="Proprieta/ (22).jpg">
-                    <img id="22p" class="proprieta" src="Proprieta/ (23).jpg">
-                    <img id="23p" class="proprieta" src="Proprieta/ (24).jpg">
-                    <img id="24p" class="proprieta" src="Proprieta/(25).jpg">
-                    <img id="25p" class="proprieta" src="Proprieta/(26).jpg">
-                    <img id="26p" class="proprieta" src="Proprieta/(27).jpg">
-                    <img id="27p" class="proprieta" src="Proprieta/(28).jpg">
+                    <p class="title">Clicca sulla proprietà per maggiori dettagli</p>
+                    <img id="0p" class="proprieta" src="Proprieta/ (1).jpg" onclick="ta=0, visu3()">
+                    <img id="1p" class="proprieta" src="Proprieta/ (2).jpg" onclick="ta=1, visu3()">
+                    <img id="2p" class="proprieta" src="Proprieta/ (3).jpg" onclick="ta=2, visu3()">
+                    <img id="3p" class="proprieta" src="Proprieta/ (4).jpg" onclick="ta=3, visu3()">
+                    <img id="4p" class="proprieta" src="Proprieta/ (5).jpg" onclick="ta=4, visu3()">
+                    <img id="5p" class="proprieta" src="Proprieta/ (6).jpg" onclick="ta=5, visu3()">
+                    <img id="6p" class="proprieta" src="Proprieta/ (7).jpg" onclick="ta=6, visu3()">
+                    <img id="7p" class="proprieta" src="Proprieta/ (8).jpg" onclick="ta=7, visu3()">
+                    <img id="8p" class="proprieta" src="Proprieta/ (9).jpg" onclick="ta=8, visu3()">
+                    <img id="9p" class="proprieta" src="Proprieta/ (10).jpg" onclick="ta=9, visu3()">
+                    <img id="10p" class="proprieta" src="Proprieta/ (11).jpg" onclick="ta=10, visu3()">
+                    <img id="11p" class="proprieta" src="Proprieta/ (12).jpg" onclick="ta=11, visu3()">
+                    <img id="12p" class="proprieta" src="Proprieta/ (13).jpg" onclick="ta=12, visu3()">
+                    <img id="13p" class="proprieta" src="Proprieta/ (14).jpg" onclick="ta=13, visu3()">
+                    <img id="14p" class="proprieta" src="Proprieta/ (15).jpg" onclick="ta=14, visu3()">
+                    <img id="15p" class="proprieta" src="Proprieta/ (16).jpg" onclick="ta=15, visu3()">
+                    <img id="16p" class="proprieta" src="Proprieta/ (17).jpg" onclick="ta=16, visu3()">
+                    <img id="17p" class="proprieta" src="Proprieta/ (18).jpg" onclick="ta=17, visu3()">
+                    <img id="18p" class="proprieta" src="Proprieta/ (19).jpg" onclick="ta=18, visu3()">
+                    <img id="19p" class="proprieta" src="Proprieta/ (20).jpg" onclick="ta=19, visu3()">
+                    <img id="20p" class="proprieta" src="Proprieta/ (21).jpg" onclick="ta=20, visu3()">
+                    <img id="21p" class="proprieta" src="Proprieta/ (22).jpg" onclick="ta=21, visu3()">
+                    <img id="22p" class="proprieta" src="Proprieta/ (23).jpg" onclick="ta=22, visu3()">
+                    <img id="23p" class="proprieta" src="Proprieta/ (24).jpg" onclick="ta=23, visu3()">
+                    <img id="24p" class="proprieta" src="Proprieta/(25).jpg" onclick="ta=24, visu3()">
+                    <img id="25p" class="proprieta" src="Proprieta/(26).jpg" onclick="ta=25, visu3()">
+                    <img id="26p" class="proprieta" src="Proprieta/(27).jpg" onclick="ta=26, visu3()">
+                    <img id="27p" class="proprieta" src="Proprieta/(28).jpg" onclick="ta=27, visu3()">
+            </div>
+            <input type="button" id="backvis" class="button1" name="backvis" value="Indietro" onclick="visu2()">
+            <div id="visualmenu3">
+                    <img id="0pav" class="proprieta" src="Proprieta/ (1).jpg">
+                    <img id="1pav" class="proprieta" src="Proprieta/ (2).jpg">
+                    <img id="2pav" class="proprieta" src="Proprieta/ (3).jpg">
+                    <img id="3pav" class="proprieta" src="Proprieta/ (4).jpg">
+                    <img id="4pav" class="proprieta" src="Proprieta/ (5).jpg">
+                    <img id="5pav" class="proprieta" src="Proprieta/ (6).jpg">
+                    <img id="6pav" class="proprieta" src="Proprieta/ (7).jpg">
+                    <img id="7pav" class="proprieta" src="Proprieta/ (8).jpg">
+                    <img id="8pav" class="proprieta" src="Proprieta/ (9).jpg">
+                    <img id="9pav" class="proprieta" src="Proprieta/ (10).jpg">
+                    <img id="10pav" class="proprieta" src="Proprieta/ (11).jpg">
+                    <img id="11pav" class="proprieta" src="Proprieta/ (12).jpg">
+                    <img id="12pav" class="proprieta" src="Proprieta/ (13).jpg">
+                    <img id="13pav" class="proprieta" src="Proprieta/ (14).jpg">
+                    <img id="14pav" class="proprieta" src="Proprieta/ (15).jpg">
+                    <img id="15pav" class="proprieta" src="Proprieta/ (16).jpg">
+                    <img id="16pav" class="proprieta" src="Proprieta/ (17).jpg">
+                    <img id="17pav" class="proprieta" src="Proprieta/ (18).jpg">
+                    <img id="18pav" class="proprieta" src="Proprieta/ (19).jpg">
+                    <img id="19pav" class="proprieta" src="Proprieta/ (20).jpg">
+                    <img id="20pav" class="proprieta" src="Proprieta/ (21).jpg">
+                    <img id="21pav" class="proprieta" src="Proprieta/ (22).jpg">
+                    <img id="22pav" class="proprieta" src="Proprieta/ (23).jpg">
+                    <img id="23pav" class="proprieta" src="Proprieta/ (24).jpg">
+                    <img id="24pav" class="proprieta" src="Proprieta/(25).jpg">
+                    <img id="25pav" class="proprieta" src="Proprieta/(26).jpg">
+                    <img id="26pav" class="proprieta" src="Proprieta/(27).jpg">
+                    <img id="27pav" class="proprieta" src="Proprieta/(28).jpg">
+                    <p class="title" id="description">Test</p>
             </div>
             <div id="potenziacasa1">
                 <p class="title">Seleziona il giocatore che vuole potenziare una proprietà:</p>

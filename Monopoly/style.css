@@ -204,6 +204,14 @@ input {
     width: 450px;
 }
 
-h1 {
-    display: inline;
+.test {
+    width: 340px;
+    position:fixed;
+    text-align: center;
+    font-family: 'Mouse Memoirs', sans-serif;
+    color: white;
+}
+
+#description {
+    display: inline-block;
 }

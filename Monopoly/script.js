@@ -5,6 +5,7 @@ let p3s=1500;
 let p4s=1500;
 let ta,pa,ca;
 let ppa=0;
+let temp2="a";
 const error= new Audio('sounds/error.mp3');
 const press= new Audio('sounds/presssound.mp3');
 const cash= new Audio('sounds/cash.mp3');
@@ -66,11 +67,13 @@ function hideall() {
     document.getElementById("acquistomenu3").style.display="none";
     document.getElementById("visualmenu1").style.display="none";
     document.getElementById("visualmenu2").style.display="none";
+    document.getElementById("visualmenu3").style.display="none";
     document.getElementById("exitvis").style.display="none";
     document.getElementById("potenziacasa1").style.display="none";
     document.getElementById("potenziacasa2").style.display="none";
     document.getElementById("exitpote").style.display="none";
     document.getElementById("potenziacasa3").style.display="none";
+    document.getElementById("backvis").style.display="none";
     let i=0;
     while (i<28) {
         let temp=i.toString();
@@ -78,6 +81,8 @@ function hideall() {
         temp+="p";
         document.getElementById(temp).style.display="none";
         temp+="a";
+        document.getElementById(temp).style.display="none";
+        temp+="v";
         document.getElementById(temp).style.display="none";
         i++;
     }
@@ -288,9 +293,14 @@ function visu2() {
     press.play();
     let check=false;
     let i=0;
+    if (temp2!="a") {
+        document.getElementById(temp2).style.display="none";
+    }
     document.getElementById("visualmenu1").style.display="none";
     document.getElementById("visualmenu2").style.display="block";
-    document.getElementById("exitvis").style.display="block";
+    document.getElementById("visualmenu3").style.display="none";
+    document.getElementById("exitvis").style.display="inline";
+    document.getElementById("backvis").style.display="none";
     if (pa==1) {
         while (i<28) {
             if (proprieta[i]==1) {
@@ -340,6 +350,16 @@ function visu2() {
         alert("Errore: 2\nNon hai nessuna proprietà");
         reset();
     }
+}
+
+function visu3() {
+    press.play();
+    document.getElementById("visualmenu2").style.display="none";
+    document.getElementById("visualmenu3").style.display="block";
+    document.getElementById("backvis").style.display="inline";
+    temp2=ta+"pav";
+    document.getElementById(temp2).style.display="inline";
+    document.getElementById("description").innerText="Livello casa: "+lvlcasa[ta];
 }
 
 function potenziactive() {
@@ -466,7 +486,6 @@ function controllo() {
     }
 }
     
-
 function potenziacasa() {
     press.play();
     let check=false;
