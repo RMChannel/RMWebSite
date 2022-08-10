@@ -3,7 +3,7 @@ let p1s=1500;
 let p2s=1500;
 let p3s=1500;
 let p4s=1500;
-let ta,pa,ca;
+let ta,pa,ca,check2;
 let ppa=0;
 let temp2="a";
 const error= new Audio('sounds/error.mp3');
@@ -13,9 +13,11 @@ const lost= new Audio('sounds/lost.mp3');
 const albergo= new Audio('sounds/albergo sound.mp3')
 const price=[ 60,60,100,100,120,140,140,160,180,180,200,220,220,240,260,260,280,300,300,320,350,400,150,150,200,200,200,200 ];
 const casavalore = [ 50,50,50,50,50,100,100,100,100,100,100,150,150,150,150,150,150,200,200,200,200,200 ];
+const valipoteca = [ 30,30,50,50,60,60,70,70,80,90,90,100,110,110,120,130,140,150,160,175,200,75,75,100,100,100,100 ];
 let proprieta= [];
 let casaproprieta= [];
 let lvlcasa= [];
+let ipoteca= [];
 
 function playerassing() {
     press.play();
@@ -44,6 +46,7 @@ function reloadplayers() {
         document.getElementById("acquisto3").style.display="inline-block";
         document.getElementById("visu3").style.display="inline-block";
         document.getElementById("pc3").style.display="inline-block";
+        document.getElementById("ipo3").style.display="inline-block";  
         p3.innerText="P3:"+p3s+"€";
     }
     if (p==4) {
@@ -52,7 +55,8 @@ function reloadplayers() {
         document.getElementById("tassep4").style.display="inline-block";
         document.getElementById("acquisto4").style.display="inline-block"; 
         document.getElementById("visu4").style.display="inline-block";  
-        document.getElementById("pc4").style.display="inline-block";       
+        document.getElementById("pc4").style.display="inline-block";
+        document.getElementById("ipo4").style.display="inline-block";       
         p4.innerText="P4:"+p4s+"€";
     }
 }
@@ -74,6 +78,10 @@ function hideall() {
     document.getElementById("exitpote").style.display="none";
     document.getElementById("potenziacasa3").style.display="none";
     document.getElementById("backvis").style.display="none";
+    document.getElementById("ipoteca1").style.display="none";
+    document.getElementById("ipoteca2").style.display="none";
+    document.getElementById("ipoteca3").style.display="none";
+    document.getElementById("ipoteca4").style.display="none";
     let i=0;
     while (i<28) {
         let temp=i.toString();
@@ -83,6 +91,8 @@ function hideall() {
         temp+="a";
         document.getElementById(temp).style.display="none";
         temp+="v";
+        document.getElementById(temp).style.display="none";
+        temp+="i";
         document.getElementById(temp).style.display="none";
         i++;
     }
@@ -353,13 +363,17 @@ function visu2() {
 }
 
 function visu3() {
+    let text;
     press.play();
     document.getElementById("visualmenu2").style.display="none";
     document.getElementById("visualmenu3").style.display="block";
     document.getElementById("backvis").style.display="inline";
     temp2=ta+"pav";
     document.getElementById(temp2).style.display="inline";
-    document.getElementById("description").innerText="Livello casa: "+lvlcasa[ta];
+    text="Livello casa: "+lvlcasa[ta]+"\nIpoteca:";
+    if (ipoteca[ta]) text+="Si";
+    else text+="No";
+    document.getElementById("description").innerText=text;
 }
 
 function potenziactive() {
@@ -475,7 +489,11 @@ function controllo() {
             check=true;
         }
     }
-    if (check==false) {
+    if (ipoteca[ta]==true) {
+        error.play();
+        alert("Errore: 5\nLa tua proprietà è ipotecata");
+    }
+    else if (check==false) {
         error.play();
         alert("Errore: 3\nNon hai un gruppo di proprietà adatto o la proprietà selezionata non è potenziabile");
     }
@@ -544,12 +562,115 @@ function potenziacasa() {
     }
 }
 
+function Ipoteca() {
+    press.play();
+    hideall();
+    document.getElementById("functions").style.display="none";
+    document.getElementById("ipoteca1").style.display="block";
+}
+
+function ipotecavisu() {
+    let i=0;
+    let check=false;
+    document.getElementById("ipoteca1").style.display="none";
+    document.getElementById("ipoteca2").style.display="block";
+    if (pa==1) {
+        while (i<28) {
+            if (proprieta[i]==1) {
+                check=true;
+                let temp=i.toString();
+                temp+="pavi";
+                document.getElementById(temp).style.display="inline";
+            }
+            i++;
+        }
+    }
+    else if (pa==2) {
+        while (i<28) {
+            if (proprieta[i]==2) {
+                check=true;
+                let temp=i.toString();
+                temp+="pavi";
+                document.getElementById(temp).style.display="inline";
+            }
+            i++;
+        }
+    }
+    else if (pa==3) {
+        while (i<28) {
+            if (proprieta[i]==3) {
+                check=true;
+                let temp=i.toString();
+                temp+="pavi";
+                document.getElementById(temp).style.display="inline";
+            }
+            i++;
+        }
+    }
+    else {
+        while (i<28) {
+            if (proprieta[i]==4) {
+                check=true;
+                let temp=i.toString();
+                temp+="pavi";
+                document.getElementById(temp).style.display="inline";
+            }
+            i++;
+        }
+    }
+    if (check==false) {
+        error.play();
+        alert("Errore: 6\nNon hai nessuna proprietà");
+        reset();
+    }
+}
+
+function ipoteca2() {
+    document.getElementById("ipoteca2").style.display="none";
+    if (ipoteca[ta]==false) {
+        var temp3=document.getElementById("28pavi");
+        document.getElementById("ipoteca3").style.display="flex";
+    }
+    else {
+        var temp3=document.getElementById("29pavi");
+        document.getElementById("ipoteca4").style.display="flex";
+    }
+    let temp=ta.toString();
+    temp+="pavi";
+    temp3.src=document.getElementById(temp).src;
+    temp3.style.display="inline";
+    temp3.style.width="200px";
+    temp3.style.height="350px";
+    temp3.style.cursor="pointer";
+}
+
+function confermipoteca() {
+    cash.play();
+    if (check2) {
+        ipoteca[ta]=true;
+        if (pa==1) p1s+=valipoteca[ta];
+        else if (pa==2) p2s+=valipoteca[ta];
+        else if (pa==3) p3s+=valipoteca[ta];
+        else p4s+=valipoteca[ta];
+    }
+    else {
+        ipoteca[ta]=false;
+        if (pa==1) p1s-=(valipoteca[ta]+(valipoteca[ta]/10));
+        else if (pa==2) p2s-=(valipoteca[ta]+(valipoteca[ta]/10));
+        else if (pa==3) p3s-=(valipoteca[ta]+(valipoteca[ta]/10));
+        else p4s-=(valipoteca[ta]+(valipoteca[ta]/10));
+    }
+    reloadplayers();
+    hideall();
+}
+
 function game() {
     let i=0;
     while (i<28) {
         proprieta[i]=0;
         casaproprieta[i]=0;
         lvlcasa[i]=0;
+        ipoteca[i]=false;
         i++;
     }
     document.getElementById("selplayer").style.display="none";

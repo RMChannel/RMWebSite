@@ -52,10 +52,12 @@ body {
     font-family: 'Mouse Memoirs', sans-serif;
     font-size: 30px;
     text-align: center;
+    transition: transform 250ms;
 }
 
 .button1:hover {
     color: white;
+    transform: translateY(-10px);
 }
 
 input {
@@ -214,4 +216,15 @@ input {
 
 #description {
     display: inline-block;
+}
+
+#via {
+    background-image: url(Images/via.png);
+    background-repeat:no-repeat;
+    background-position-x: -4px;
+    background-position-y: 48px;
+}
+
+#button1 {
+    transform: none;
 }

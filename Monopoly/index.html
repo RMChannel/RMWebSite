@@ -30,11 +30,12 @@
             </div>
             <div id="functions">
                 <p class="title">Seleziona la funzione:</p>
-                <input type="button" id="via" class="button1" name="via" value="Via!" onclick="Via()">
+                <input type="button" id="via" class="button1" name="via" value="VIA!" onclick="Via()">
                 <input type="button" id="tasse" class="button1" name="tasse" value="Tasse!" onclick="tasse()">
                 <input type="button" id="acquisto" class="button1" name="acquisto" value="Acquista" onclick="acquisto()">
                 <input type="button" id="visupulsante" class="button1" name="visupulsante" value="Visualizza" onclick="visuactivate()">
                 <input type="button" id="potenziapulsante" class="button1" name="potenziapulsante" value="Potenzia" onclick="potenziactive()">
+                <input type="button" id="ipoteca" class="button1" name="Ipoteca" value="Ipoteca" onclick="Ipoteca()">
             </div>
             <div id="Via">
                 <p class="title">Seleziona il giocatore che è passato dal Via!:</p>
@@ -171,7 +172,7 @@
                     <img id="25pav" class="proprieta" src="Proprieta/(26).jpg">
                     <img id="26pav" class="proprieta" src="Proprieta/(27).jpg">
                     <img id="27pav" class="proprieta" src="Proprieta/(28).jpg">
-                    <p class="title" id="description">Test</p>
+                    <p class="title" id="description"></p>
             </div>
             <div id="potenziacasa1">
                 <p class="title">Seleziona il giocatore che vuole potenziare una proprietà:</p>
@@ -211,8 +212,8 @@
                 <img id="25pa" class="proprieta" src="Proprieta/(26).jpg" onclick="ta=25, controllo()">
                 <img id="26pa" class="proprieta" src="Proprieta/(27).jpg" onclick="ta=26, controllo()">
                 <img id="27pa" class="proprieta" src="Proprieta/(28).jpg" onclick="ta=27, controllo()">
-        </div>
-        <div id="potenziacasa3">
+            </div>
+            <div id="potenziacasa3">
             <p class="title">Clicca sul potenziamento:</p>
             <p class="title" id="powerstatus"></p>
             <input type="button" id="casa0" class="button1 nocasa" name="casa1" value="0" onclick="ca=0, potenziaselect()">
@@ -221,7 +222,61 @@
             <input type="button" id="casa3" class="button1 casa" name="casa3" value="3" onclick="ca=3, potenziaselect()">
             <input type="button" id="casa4" class="button1 casa" name="casa4" value="4" onclick="ca=4, potenziaselect()">
             <input type="button" id="albergo" class="button1 albergo" name="albergo" value="5" onclick="ca=5, potenziaselect()">
-        </div>
+            </div>
+            <div id="ipoteca1">
+                <p class="title">Seleziona il giocatore che vuole ipotecare una proprietà:</p>
+                <input type="button" id="ipo1" class="button1" name="ipo1" value="P1" onclick="pa=1, ipotecavisu()">
+                <input type="button" id="ipo2" class="button1" name="ipo2" value="P2" onclick="pa=2, ipotecavisu()">
+                <input type="button" id="ipo3" class="button1" name="ipo3" value="P3" onclick="pa=3, ipotecavisu()">
+                <input type="button" id="ipo4" class="button1" name="ipo4" value="P4" onclick="pa=4, ipotecavisu()">
+            </div>
+            <div id="ipoteca2">
+                <p class="title">Seleziona la proprietà che vuoi ipotecare:</p>
+                <img id="0pavi" class="proprieta" src="Proprieta/ (1).jpg" onclick="ta=0, ipoteca2()">
+                <img id="1pavi" class="proprieta" src="Proprieta/ (2).jpg" onclick="ta=1, ipoteca2()">
+                <img id="2pavi" class="proprieta" src="Proprieta/ (3).jpg" onclick="ta=2, ipoteca2()">
+                <img id="3pavi" class="proprieta" src="Proprieta/ (4).jpg" onclick="ta=3, ipoteca2()">
+                <img id="4pavi" class="proprieta" src="Proprieta/ (5).jpg" onclick="ta=4, ipoteca2()">
+                <img id="5pavi" class="proprieta" src="Proprieta/ (6).jpg" onclick="ta=5, ipoteca2()">
+                <img id="6pavi" class="proprieta" src="Proprieta/ (7).jpg" onclick="ta=6, ipoteca2()">
+                <img id="7pavi" class="proprieta" src="Proprieta/ (8).jpg" onclick="ta=7, ipoteca2()">
+                <img id="8pavi" class="proprieta" src="Proprieta/ (9).jpg" onclick="ta=8, ipoteca2()">
+                <img id="9pavi" class="proprieta" src="Proprieta/ (10).jpg" onclick="ta=9, ipoteca2()">
+                <img id="10pavi" class="proprieta" src="Proprieta/ (11).jpg" onclick="ta=10, ipoteca2()">
+                <img id="11pavi" class="proprieta" src="Proprieta/ (12).jpg" onclick="ta=11, ipoteca2()">
+                <img id="12pavi" class="proprieta" src="Proprieta/ (13).jpg" onclick="ta=12, ipoteca2()">
+                <img id="13pavi" class="proprieta" src="Proprieta/ (14).jpg" onclick="ta=13, ipoteca2()">
+                <img id="14pavi" class="proprieta" src="Proprieta/ (15).jpg" onclick="ta=14, ipoteca2()">
+                <img id="15pavi" class="proprieta" src="Proprieta/ (16).jpg" onclick="ta=15, ipoteca2()">
+                <img id="16pavi" class="proprieta" src="Proprieta/ (17).jpg" onclick="ta=16, ipoteca2()">
+                <img id="17pavi" class="proprieta" src="Proprieta/ (18).jpg" onclick="ta=17, ipoteca2()">
+                <img id="18pavi" class="proprieta" src="Proprieta/ (19).jpg" onclick="ta=18, ipoteca2()">
+                <img id="19pavi" class="proprieta" src="Proprieta/ (20).jpg" onclick="ta=19, ipoteca2()">
+                <img id="20pavi" class="proprieta" src="Proprieta/ (21).jpg" onclick="ta=20, ipoteca2()">
+                <img id="21pavi" class="proprieta" src="Proprieta/ (22).jpg" onclick="ta=21, ipoteca2()">
+                <img id="22pavi" class="proprieta" src="Proprieta/ (23).jpg" onclick="ta=22, ipoteca2()">
+                <img id="23pavi" class="proprieta" src="Proprieta/ (24).jpg" onclick="ta=23, ipoteca2()">
+                <img id="24pavi" class="proprieta" src="Proprieta/(25).jpg" onclick="ta=24, ipoteca2()">
+                <img id="25pavi" class="proprieta" src="Proprieta/(26).jpg" onclick="ta=25, ipoteca2()">
+                <img id="26pavi" class="proprieta" src="Proprieta/(27).jpg" onclick="ta=26, ipoteca2()">
+                <img id="27pavi" class="proprieta" src="Proprieta/(28).jpg" onclick="ta=27, ipoteca2()">
+            </div>
+            <div id="ipoteca3">
+                <p class="title">Sei sicuro di voler ipotecare questa proprietà?
+                    <br>
+                    <input type="button" id="Yesipo" class="button1" name="Sì" value="Sì" onclick="check2=true, confermipoteca()">
+                    <input type="button" id="Noipo" class="button1" name="No" value="No" onclick="reset()">
+                </p>
+                <img id="28pavi" class="proprieta">
+            </div>
+            <div id="ipoteca4">
+                <p class="title">Sei sicuro di voler disipotecare questa proprietà?
+                    <br>
+                    <input type="button" id="Yesipo" class="button1" name="Sì" value="Sì" onclick="check2=false, confermipoteca()">
+                    <input type="button" id="Noipo" class="button1" name="No" value="No" onclick="reset()">
+                </p>
+                <img id="29pavi" class="proprieta">
+            </div>
     </body>
     <script src="script.js"></script>
 </html>
