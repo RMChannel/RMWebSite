@@ -201,20 +201,30 @@ function confermaprop() {
 }
 
 function acqu() {
-    cash.play();
-    if (pa==1) {
+    if ((pa==1) && (p1s>=price[ppa])) {
         p1s-=price[ppa];
+        proprieta[ppa]=pa;
+        cash.play();
     }
-    else if (pa==2) {
+    else if ((pa==2) && (p2s>=price[ppa])) {
         p2s-=price[ppa];
+        proprieta[ppa]=pa;
+        cash.play();
     }
-    else if (pa==3) {
+    else if ((pa==3) && (p3s>=price[ppa])) {
         p3s-=price[ppa];
+        proprieta[ppa]=pa;
+        cash.play();
     }
-    else if (pa==4) {
+    else if ((pa==4) && (p4s>=price[ppa])) {
         p4s-=price[ppa];
+        proprieta[ppa]=pa;
+        cash.play();
     }
-    proprieta[ppa]=pa;
+    else {
+        alert("Errore: 8\nNon hai abbastanza soldi per acquistare la proprietà");
+        error.play();
+    }
     reloadplayers();
     hideall();
 }
@@ -578,7 +588,6 @@ function ipoteca2() {
 }
 
 function confermipoteca() {
-    cash.play();
     if (check2) {
         ipoteca[ta]=true;
         if (pa==1) p1s+=valipoteca[ta];
@@ -587,11 +596,26 @@ function confermipoteca() {
         else p4s+=valipoteca[ta];
     }
     else {
-        ipoteca[ta]=false;
-        if (pa==1) p1s-=(valipoteca[ta]+(valipoteca[ta]/10));
-        else if (pa==2) p2s-=(valipoteca[ta]+(valipoteca[ta]/10));
-        else if (pa==3) p3s-=(valipoteca[ta]+(valipoteca[ta]/10));
-        else p4s-=(valipoteca[ta]+(valipoteca[ta]/10));
+        if ((pa==1) && (p1s>=(valipoteca[ta]+(valipoteca[ta]/10)))) {
+            p1s-=valipoteca[ta]+(valipoteca[ta]/10);
+            cash.play();
+        }
+        else if ((pa==2) && (p2s>=(valipoteca[ta]+(valipoteca[ta]/10)))) {
+            p2s-=valipoteca[ta]+(valipoteca[ta]/10);
+            cash.play();
+        }
+        else if ((pa==3) && (p3s>=(valipoteca[ta]+(valipoteca[ta]/10)))) {
+            p3s-=valipoteca[ta]+(valipoteca[ta]/10);
+            cash.play();
+        }
+        else if ((pa==4) && (p4s>=(valipoteca[ta]+(valipoteca[ta]/10)))) {
+            p4s-=valipoteca[ta]+(valipoteca[ta]/10);
+            cash.play();
+        }
+        else {
+            error.play();
+            alert("Errore 7:\nNon hai abbastanza soldi per disipotecare la tua proprietà");
+        }
     }
     reloadplayers();
     hideall();
