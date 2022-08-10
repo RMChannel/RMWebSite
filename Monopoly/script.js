@@ -105,29 +105,11 @@ function Via() {
     document.getElementById("Via").style.display="block";
 }
 
-function Via1() {
-    p1s=p1s+200;
-    cash.play();
-    hideall();
-    reloadplayers();
-}
-
 function Via2() {
-    p2s=p2s+200;
-    cash.play();
-    hideall();
-    reloadplayers();
-}
-
-function Via3() {
-    p3s=p3s+200;
-    cash.play();
-    hideall();
-    reloadplayers();
-}
-
-function Via4() {
-    p4s=p4s+200;
+    if (pa==1) p1s+=200;
+    else if (pa==2) p2s+=200;
+    else if (pa==3) p3s+=200;
+    else if (pa==4) p4s+=200;
     cash.play();
     hideall();
     reloadplayers();
@@ -138,26 +120,6 @@ function tasse() {
     hideall();
     document.getElementById("functions").style.display="none";
     document.getElementById("tassemenu1").style.display="block";
-}
-
-function taf1() {
-    ta=1;
-    tassesel();
-}
-
-function taf2() {
-    ta=2;
-    tassesel();
-}
-
-function taf3() {
-    ta=3;
-    tassesel();
-}
-
-function taf4() {
-    ta=4;
-    tassesel();
 }
 
 function tassesel() {
@@ -209,39 +171,10 @@ function acquisto() {
     document.getElementById("acquistomenu").style.display="block";
 }
 
-function acquisto1() {
-    press.play();   
-    pa=1;
-    document.getElementById("acquistomenu").style.display="none";
-    document.getElementById("acquistomenu2").style.display="block";
-    propshow();
-}
-
-function acquisto2() {
-    press.play();
-    pa=2;
-    document.getElementById("acquistomenu").style.display="none";
-    document.getElementById("acquistomenu2").style.display="block";
-    propshow();
-}
-
-function acquisto3() {
-    press.play();
-    pa=3;
-    document.getElementById("acquistomenu").style.display="none";
-    document.getElementById("acquistomenu2").style.display="block";
-    propshow();
-}
-
-function acquisto4() {
-    press.play();
-    pa=4;
-    document.getElementById("acquistomenu").style.display="none";
-    document.getElementById("acquistomenu2").style.display="block";
-    propshow();
-}
-
 function propshow() {
+    document.getElementById("acquistomenu").style.display="none";
+    document.getElementById("acquistomenu2").style.display="block";
+    press.play();
     let i=0;
     let temp;
     while (i<28) {
