@@ -228,3 +228,35 @@ input {
 #button1 {
     transform: none;
 }
+
+#potenziapulsante {
+    background-image: url(Images/levelup.png);
+    background-repeat:no-repeat;
+    background-size: 80px;
+    background-position-x: 8px;
+    background-position-y: 3px;
+}
+
+#ipo3 {
+    display: none;
+}
+
+#ipo4 {
+    display: none;
+}
+
+#affitto31 {
+    display: none;
+}
+
+#affitto41 {
+    display: none;
+}
+
+#affitto32 {
+    display: none;
+}
+
+#affitto42 {
+    display: none;
+}

@@ -18,6 +18,36 @@ let proprieta= [];
 let casaproprieta= [];
 let lvlcasa= [];
 let ipoteca= [];
+const costicasa=[
+    [2,10,30,90,160,250],
+	[4,20,60,180,320,450],
+	[6,30,90,270,400,550],
+	[6,30,90,270,400,550],
+	[8,40,100,300,450,600],
+	[10,50,150,450,625,750],
+	[10,50,150,450,625,750],
+	[12,60,180,500,700,900],
+	[14,70,200,550,750,950],
+	[14,70,200,550,750,950],
+	[16,80,220,600,800,1000],
+	[18,90,250,700,875,1050],
+	[18,90,250,700,875,1050],
+	[20,100,300,750,925,1100],
+	[22,110,330,800,975,1150],
+	[22,110,330,800,975,1150],
+	[24,120,360,850,1025,1200],
+	[26,130,390,900,1100,1275],
+	[26,130,390,900,1100,1275],
+	[28,150,450,100,1200,1400],
+	[35,175,500,100,1300,1500],
+	[50,200,600,1400,1700,2000],
+    [0,0,0,0,0],
+    [0,0,0,0,0],
+    [25,50,100,200],
+    [25,50,100,200],
+    [25,50,100,200],
+    [25,50,100,200],
+];
 
 function playerassing() {
     press.play();
@@ -46,7 +76,9 @@ function reloadplayers() {
         document.getElementById("acquisto3").style.display="inline-block";
         document.getElementById("visu3").style.display="inline-block";
         document.getElementById("pc3").style.display="inline-block";
-        document.getElementById("ipo3").style.display="inline-block";  
+        document.getElementById("ipo3").style.display="inline-block";
+        document.getElementById("affitto31").style.display="inline-block";
+        document.getElementById("affitto32").style.display="inline-block";     
         p3.innerText="P3:"+p3s+"€";
     }
     if (p==4) {
@@ -56,7 +88,9 @@ function reloadplayers() {
         document.getElementById("acquisto4").style.display="inline-block"; 
         document.getElementById("visu4").style.display="inline-block";  
         document.getElementById("pc4").style.display="inline-block";
-        document.getElementById("ipo4").style.display="inline-block";       
+        document.getElementById("ipo4").style.display="inline-block"; 
+        document.getElementById("affitto41").style.display="inline-block"; 
+        document.getElementById("affitto42").style.display="inline-block";       
         p4.innerText="P4:"+p4s+"€";
     }
 }
@@ -82,6 +116,11 @@ function hideall() {
     document.getElementById("ipoteca2").style.display="none";
     document.getElementById("ipoteca3").style.display="none";
     document.getElementById("ipoteca4").style.display="none";
+    document.getElementById("affitto1").style.display="none";
+    document.getElementById("affitto2").style.display="none";
+    document.getElementById("affitto3").style.display="none";
+    document.getElementById("affitto4").style.display="none";
+    document.getElementById("exitaff").style.display="none";
     let i=0;
     while (i<28) {
         let temp=i.toString();
@@ -93,6 +132,8 @@ function hideall() {
         temp+="v";
         document.getElementById(temp).style.display="none";
         temp+="i";
+        document.getElementById(temp).style.display="none";
+        temp+="a";
         document.getElementById(temp).style.display="none";
         i++;
     }
@@ -619,6 +660,124 @@ function confermipoteca() {
     }
     reloadplayers();
     hideall();
+}
+
+function affitto1() {
+    press.play();
+    hideall();
+    document.getElementById("functions").style.display="none";
+    document.getElementById("affitto1").style.display="block";
+    document.getElementById("exitaff").style.display="block";
+}
+
+function affitto2() {
+    press.play();
+    document.getElementById("affitto1").style.display="none";
+    document.getElementById("affitto2").style.display="block";
+}
+
+function affitto3() {
+    press.play();
+    let i=0;
+    let check=false;
+    if (pa==ca) {
+        error.play();
+        alert("Errore: 9\nHai selezionato lo stesso giocatore");
+        reset();
+        return;
+    }
+    document.getElementById("affitto2").style.display="none";
+    document.getElementById("affitto3").style.display="block";
+    while (i<28) {
+        if (proprieta[i]==ca) {
+            let temp=i.toString();
+            temp+="pavia";
+            document.getElementById(temp).style.display="inline";
+            check=true;
+        }
+        i++;
+    }
+    if (check==false) {
+        error.play();
+        alert("Errore: 8\nIl giocatore selezionato non ha proprietà, riprovare");
+        reset();
+    }
+}
+
+function affitto4() {
+    press.play();
+    if (ta<21) {
+        if (pa==1) {
+            p1s-=costicasa[lvlcasa[ta]][ta];
+        }
+        else if (pa==2) {
+            p2s-=costicasa[lvlcasa[ta]][ta];
+        }
+        else if (pa==3) {
+            p3s-=costicasa[lvlcasa[ta]][ta];
+        }
+        else if (pa==4) {
+            p4s-=costicasa[lvlcasa[ta]][ta];
+        }
+        if (ca==1) {
+            p1s+=costicasa[lvlcasa[ta]][ta];
+        }
+        else if (ca==2) {
+            p2s+=costicasa[lvlcasa[ta]][ta];
+        }
+        else if (ca==3) {
+            p3s+=costicasa[lvlcasa[ta]][ta];
+        }
+        else if (ca==4) {
+            p4s+=costicasa[lvlcasa[ta]][ta];
+        }
+        reset();
+    }
+    else if ((ta==22) || (ta==23)) {
+        document.getElementById("affitto3").style.display="none";
+        document.getElementById("affitto4").style.display="block";
+    }
+}
+
+function affitto5() {
+    let insert=document.getElementById("dadoinsert").value;
+    if ((insert<1) || (insert>12)) {
+        error.play();
+        alert("Errore: 10\nNumero di dadi inserito non valido, riprovare");
+        return;
+    }
+    else if ((proprieta[22]==ca) && (proprieta[23]==ca)) {
+        insert*=10;
+    }
+    else {
+        insert*=4;
+    }
+    if (pa==1) {
+        p1s-=insert;
+    }
+    else if (pa==2) {
+        p2s-=insert;
+    }
+    else if (pa==3) {
+        p3s-=insert;
+    }
+    else if (pa==4) {
+        p4s-=insert;
+    }
+    if (ca==1) {
+        p1s+=insert;
+    }
+    else if (ca==2) {
+        p2s+=insert;
+    }
+    else if (ca==3) {
+        p3s+=insert;
+    }
+    else if (ca==4) {
+        p4s+=insert;
+    }
+    cash.play();
+    reset();
 }
 
 function game() {

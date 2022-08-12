@@ -36,6 +36,7 @@
                 <input type="button" id="visupulsante" class="button1" name="visupulsante" value="Visualizza" onclick="visuactivate()">
                 <input type="button" id="potenziapulsante" class="button1" name="potenziapulsante" value="Potenzia" onclick="potenziactive()">
                 <input type="button" id="ipoteca" class="button1" name="Ipoteca" value="Ipoteca" onclick="Ipoteca()">
+                <input type="button" id="affitto" class="button1" name="Affitto" value="Affitto" onclick="affitto1()">
             </div>
             <div id="Via">
                 <p class="title">Seleziona il giocatore che è passato dal Via!:</p>
@@ -276,6 +277,57 @@
                     <input type="button" id="Noipo" class="button1" name="No" value="No" onclick="reset()">
                 </p>
                 <img id="29pavi" class="proprieta">
+            </div>
+            <input type="button" id="exitaff" class="button1" name="exitaff" value="Esci" onclick="reset()">
+            <div id="affitto1">
+                <p class="title">Seleziona il giocatore che deve pagare l'affitto:</p>
+                <input type="button" id="affitto11" class="button1" name="affitto11" value="P1" onclick="pa=1,affitto2()">
+                <input type="button" id="affitto21" class="button1" name="affitto21" value="P2" onclick="pa=2,affitto2()">
+                <input type="button" id="affitto31" class="button1" name="affitto31" value="P3" onclick="pa=3,affitto2()">
+                <input type="button" id="affitto41" class="button1" name="affitto41" value="P4" onclick="pa=4,affitto2()">
+            </div>
+            <div id="affitto2">
+                <p class="title">Seleziona il giocatore che deve riscuotere l'affitto:</p>
+                <input type="button" id="affitto12" class="button1" name="affitto12" value="P1" onclick="ca=1,affitto3()">
+                <input type="button" id="affitto22" class="button1" name="affitto22" value="P2" onclick="ca=2,affitto3()">
+                <input type="button" id="affitto32" class="button1" name="affitto32" value="P3" onclick="ca=3,affitto3()">
+                <input type="button" id="affitto42" class="button1" name="affitto42" value="P4" onclick="ca=4,affitto3()">
+            </div>
+            <div id="affitto3">
+                <p class="title">Clicca sulla proprietà la quale devi pagare l'affitto:</p>
+                <img id="0pavia" class="proprieta" src="Proprieta/ (1).jpg" onclick="ta=0, affitto4()">
+                <img id="1pavia" class="proprieta" src="Proprieta/ (2).jpg" onclick="ta=1, affitto4()">
+                <img id="2pavia" class="proprieta" src="Proprieta/ (3).jpg" onclick="ta=2, affitto4()">
+                <img id="3pavia" class="proprieta" src="Proprieta/ (4).jpg" onclick="ta=3, affitto4()">
+                <img id="4pavia" class="proprieta" src="Proprieta/ (5).jpg" onclick="ta=4, affitto4()">
+                <img id="5pavia" class="proprieta" src="Proprieta/ (6).jpg" onclick="ta=5, affitto4()">
+                <img id="6pavia" class="proprieta" src="Proprieta/ (7).jpg" onclick="ta=6, affitto4()">
+                <img id="7pavia" class="proprieta" src="Proprieta/ (8).jpg" onclick="ta=7, affitto4()">
+                <img id="8pavia" class="proprieta" src="Proprieta/ (9).jpg" onclick="ta=8, affitto4()">
+                <img id="9pavia" class="proprieta" src="Proprieta/ (10).jpg" onclick="ta=9, affitto4()">
+                <img id="10pavia" class="proprieta" src="Proprieta/ (11).jpg" onclick="ta=10, affitto4()">
+                <img id="11pavia" class="proprieta" src="Proprieta/ (12).jpg" onclick="ta=11, affitto4()">
+                <img id="12pavia" class="proprieta" src="Proprieta/ (13).jpg" onclick="ta=12, affitto4()">
+                <img id="13pavia" class="proprieta" src="Proprieta/ (14).jpg" onclick="ta=13, affitto4()">
+                <img id="14pavia" class="proprieta" src="Proprieta/ (15).jpg" onclick="ta=14, affitto4()">
+                <img id="15pavia" class="proprieta" src="Proprieta/ (16).jpg" onclick="ta=15, affitto4()">
+                <img id="16pavia" class="proprieta" src="Proprieta/ (17).jpg" onclick="ta=16, affitto4()">
+                <img id="17pavia" class="proprieta" src="Proprieta/ (18).jpg" onclick="ta=17, affitto4()">
+                <img id="18pavia" class="proprieta" src="Proprieta/ (19).jpg" onclick="ta=18, affitto4()">
+                <img id="19pavia" class="proprieta" src="Proprieta/ (20).jpg" onclick="ta=19, affitto4()">
+                <img id="20pavia" class="proprieta" src="Proprieta/ (21).jpg" onclick="ta=20, affitto4()">
+                <img id="21pavia" class="proprieta" src="Proprieta/ (22).jpg" onclick="ta=21, affitto4()">
+                <img id="22pavia" class="proprieta" src="Proprieta/ (23).jpg" onclick="ta=22, affitto4()">
+                <img id="23pavia" class="proprieta" src="Proprieta/ (24).jpg" onclick="ta=23, affitto4()">
+                <img id="24pavia" class="proprieta" src="Proprieta/(25).jpg" onclick="ta=24, affitto4()">
+                <img id="25pavia" class="proprieta" src="Proprieta/(26).jpg" onclick="ta=25, affitto4()">
+                <img id="26pavia" class="proprieta" src="Proprieta/(27).jpg" onclick="ta=26, affitto4()">
+                <img id="27pavia" class="proprieta" src="Proprieta/(28).jpg" onclick="ta=27, affitto4()">
+            </div>
+            <div id="affitto4">
+                <p class="title">Tira i dadi e inserisci il risultato qui sotto</p>
+                <input type="button" id="inputplayer" class="button1" name="inputplayer" onclick="affitto5()" value="Inserisci:">
+                <input type="number" class="input1" max="12" min="2" id="dadoinsert">
             </div>
     </body>
     <script src="script.js"></script>
