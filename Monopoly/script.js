@@ -707,35 +707,72 @@ function affitto3() {
 function affitto4() {
     press.play();
     if (ta<21) {
-        if (pa==1) {
-            p1s-=costicasa[lvlcasa[ta]][ta];
-        }
-        else if (pa==2) {
-            p2s-=costicasa[lvlcasa[ta]][ta];
-        }
-        else if (pa==3) {
-            p3s-=costicasa[lvlcasa[ta]][ta];
-        }
-        else if (pa==4) {
-            p4s-=costicasa[lvlcasa[ta]][ta];
-        }
-        if (ca==1) {
-            p1s+=costicasa[lvlcasa[ta]][ta];
-        }
-        else if (ca==2) {
-            p2s+=costicasa[lvlcasa[ta]][ta];
-        }
-        else if (ca==3) {
-            p3s+=costicasa[lvlcasa[ta]][ta];
-        }
-        else if (ca==4) {
-            p4s+=costicasa[lvlcasa[ta]][ta];
-        }
+        if (pa==1) p1s-=costicasa[lvlcasa[ta]][ta];
+        else if (pa==2) p2s-=costicasa[lvlcasa[ta]][ta];
+        else if (pa==3) p3s-=costicasa[lvlcasa[ta]][ta];
+        else if (pa==4) p4s-=costicasa[lvlcasa[ta]][ta];
+        if (ca==1) p1s+=costicasa[lvlcasa[ta]][ta];
+        else if (ca==2) p2s+=costicasa[lvlcasa[ta]][ta];
+        else if (ca==3) p3s+=costicasa[lvlcasa[ta]][ta];
+        else if (ca==4) p4s+=costicasa[lvlcasa[ta]][ta];
         reset();
+        cash.play();
     }
     else if ((ta==22) || (ta==23)) {
         document.getElementById("affitto3").style.display="none";
         document.getElementById("affitto4").style.display="block";
+    }
+    else {
+        let check1=false;
+        let check2=false;
+        let check3=false;
+        let check4=false;
+        if (proprieta[24]==ca) check1=true;
+        if (proprieta[25]==ca) check2=true;
+        if (proprieta[26]==ca) check3=true;
+        if (proprieta[27]==ca) check4=true;
+        if (check1 && check2 && check3 && check4) {
+            if (pa==1) p1s-=200;
+            else if (pa==2) p2s-=200;
+            else if (pa==3) p3s-=200;
+            else if (pa==4) p4s-=200;
+            if (ca==1) p1s+=200;
+            else if (ca==2) p2s+=200;
+            else if (ca==3) p3s+=200;
+            else if (ca==4) p4s+=200;
+        }
+        else if ((check1 && check2 && check3) || (check1 && check2 && check4) || (check1 && check4 && check3) || (check4 && check2 && check3)) {
+            if (pa==1) p1s-=100;
+            else if (pa==2) p2s-=100;
+            else if (pa==3) p3s-=100;
+            else if (pa==4) p4s-=100;
+            if (ca==1) p1s+=100;
+            else if (ca==2) p2s+=100;
+            else if (ca==3) p3s+=100;
+            else if (ca==4) p4s+=100;
+        }
+        else if ((check1 && check2) || (check1 && check3) || (check1 && check4) || (check2 && check1) || (check2 && check3) || (check2 && check4) || (check3 && check1) || (check3 && check2) || (check3 && check4) || (check4 && check1) || (check4 && check2) || (check4 && check3)) {
+            if (pa==1) p1s-=50;
+            else if (pa==2) p2s-=50;
+            else if (pa==3) p3s-=50;
+            else if (pa==4) p4s-=50;
+            if (ca==1) p1s+=100;
+            else if (ca==2) p2s+=50;
+            else if (ca==3) p3s+=50;
+            else if (ca==4) p4s+=50;
+        }
+        else {
+            if (pa==1) p1s-=25;
+            else if (pa==2) p2s-=25;
+            else if (pa==3) p3s-=25;
+            else if (pa==4) p4s-=25;
+            if (ca==1) p1s+=25;
+            else if (ca==2) p2s+=25;
+            else if (ca==3) p3s+=25;
+            else if (ca==4) p4s+=25;
+        }
+        cash.play();
+        reset();
     }
 }
 
@@ -746,36 +783,16 @@ function affitto5() {
         alert("Errore: 10\nNumero di dadi inserito non valido, riprovare");
         return;
     }
-    else if ((proprieta[22]==ca) && (proprieta[23]==ca)) {
-        insert*=10;
-    }
-    else {
-        insert*=4;
-    }
-    if (pa==1) {
-        p1s-=insert;
-    }
-    else if (pa==2) {
-        p2s-=insert;
-    }
-    else if (pa==3) {
-        p3s-=insert;
-    }
-    else if (pa==4) {
-        p4s-=insert;
-    }
-    if (ca==1) {
-        p1s+=insert;
-    }
-    else if (ca==2) {
-        p2s+=insert;
-    }
-    else if (ca==3) {
-        p3s+=insert;
-    }
-    else if (ca==4) {
-        p4s+=insert;
-    }
+    else if ((proprieta[22]==ca) && (proprieta[23]==ca)) insert*=10;
+    else insert*=4;
+    if (pa==1) p1s-=insert;
+    else if (pa==2) p2s-=insert;
+    else if (pa==3) p3s-=insert;
+    else if (pa==4) p4s-=insert;
+    if (ca==1) p1s+=insert;
+    else if (ca==2) p2s+=insert;
+    else if (ca==3) p3s+=insert;
+    else if (ca==4) p4s+=insert;
     cash.play();
     reset();
 }
