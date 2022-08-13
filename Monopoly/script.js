@@ -707,14 +707,17 @@ function affitto3() {
 function affitto4() {
     press.play();
     if (ta<21) {
-        if (pa==1) p1s-=costicasa[lvlcasa[ta]][ta];
-        else if (pa==2) p2s-=costicasa[lvlcasa[ta]][ta];
-        else if (pa==3) p3s-=costicasa[lvlcasa[ta]][ta];
-        else if (pa==4) p4s-=costicasa[lvlcasa[ta]][ta];
-        if (ca==1) p1s+=costicasa[lvlcasa[ta]][ta];
-        else if (ca==2) p2s+=costicasa[lvlcasa[ta]][ta];
-        else if (ca==3) p3s+=costicasa[lvlcasa[ta]][ta];
-        else if (ca==4) p4s+=costicasa[lvlcasa[ta]][ta];
+        console.log(lvlcasa[ta]);
+        console.log(ta);
+        console.log(costicasa[ta][lvlcasa[ta]]);
+        if (pa==1) p1s-=costicasa[ta][lvlcasa[ta]];
+        else if (pa==2) p2s-=costicasa[ta][lvlcasa[ta]];
+        else if (pa==3) p3s-=costicasa[ta][lvlcasa[ta]];
+        else if (pa==4) p4s-=costicasa[ta][lvlcasa[ta]];
+        if (ca==1) p1s+=costicasa[ta][lvlcasa[ta]];
+        else if (ca==2) p2s+=costicasa[ta][lvlcasa[ta]];
+        else if (ca==3) p3s+=costicasa[ta][lvlcasa[ta]];
+        else if (ca==4) p4s+=costicasa[ta][lvlcasa[ta]];
         reset();
         cash.play();
     }
@@ -795,6 +798,10 @@ function affitto5() {
     else if (ca==4) p4s+=insert;
     cash.play();
     reset();
+}
+
+function scambio() {
+    console.log("lorem ipsum");
 }
 
 function game() {
