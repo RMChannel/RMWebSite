@@ -260,3 +260,35 @@ input {
 #affitto42 {
     display: none;
 }
+
+#scambio31 {
+    display: none;
+}
+
+#scambio32 {
+    display: none;
+}
+
+#scambio41 {
+    display: none;
+}
+
+#scambio42 {
+    display: none;
+}
+
+.money {
+    background-image: url(Images/money.gif);
+    background-repeat:no-repeat;
+    background-size: 80px;
+    background-position-x: 7px;
+    background-position-y: 13px;
+}
+
+.proprietab {
+    background-image: url(Images/proprieta.jpg);
+    background-repeat:no-repeat;
+    background-size: 75px;
+    background-position-x: 7px;
+    background-position-y: 13px;
+}

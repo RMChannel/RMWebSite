@@ -330,6 +330,30 @@
                 <input type="button" id="inputplayer" class="button1" name="inputplayer" onclick="affitto5()" value="Inserisci:">
                 <input type="number" class="input1" max="12" min="2" id="dadoinsert">
             </div>
+            <div id="scambio1">
+                <p class="title">Seleziona il giocatore che vuole proporre lo scambio:</p>
+                <input type="button" id="scambio11" class="button1" name="scambio11" value="P1" onclick="ta=1, scambio1()">
+                <input type="button" id="scambio21" class="button1" name="scambio21" value="P2" onclick="ta=2, scambio1()">
+                <input type="button" id="scambio31" class="button1" name="scambio31" value="P3" onclick="ta=3, scambio1()">
+                <input type="button" id="scambio41" class="button1" name="scambio41" value="P4" onclick="ta=4, scambio1()">
+            </div>
+            <div id="scambio2">
+                <p class="title">Seleziona il giocatore a cui vuoi proporre lo scambio:</p>
+                <input type="button" id="scambio12" class="button1" name="scambio12" value="P1" onclick="pa=1, scambio2()">
+                <input type="button" id="scambio22" class="button1" name="scambio22" value="P2" onclick="pa=2, scambio2()">
+                <input type="button" id="scambio32" class="button1" name="scambio32" value="P3" onclick="pa=3, scambio2()">
+                <input type="button" id="scambio42" class="button1" name="scambio42" value="P4" onclick="pa=4, scambio2()">
+            </div>
+            <div id="scambio3">
+                <p class="title" id="player1"></p>
+                <input type="button" id="money1" class="button1 money" name="money1" value="Soldi">
+                <input type="button" id="prop1" class="button1 proprietab" name="prop1" value="Proprietà">
+            </div>
+            <div id="scambio4">
+                <p class="title" id="player2"></p>
+                <input type="button" id="money2" class="button1 money" name="money1" value="Soldi">
+                <input type="button" id="prop2" class="button1 proprietab" name="prop2" value="Proprietà">
+            </div>
     </body>
     <script src="script.js"></script>
 </html>

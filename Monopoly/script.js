@@ -78,7 +78,9 @@ function reloadplayers() {
         document.getElementById("pc3").style.display="inline-block";
         document.getElementById("ipo3").style.display="inline-block";
         document.getElementById("affitto31").style.display="inline-block";
-        document.getElementById("affitto32").style.display="inline-block";     
+        document.getElementById("affitto32").style.display="inline-block";
+        document.getElementById("scambio31").style.display="inline-block"; 
+        document.getElementById("scambio32").style.display="inline-block";       
         p3.innerText="P3:"+p3s+"€";
     }
     if (p==4) {
@@ -90,7 +92,9 @@ function reloadplayers() {
         document.getElementById("pc4").style.display="inline-block";
         document.getElementById("ipo4").style.display="inline-block"; 
         document.getElementById("affitto41").style.display="inline-block"; 
-        document.getElementById("affitto42").style.display="inline-block";       
+        document.getElementById("affitto42").style.display="inline-block"; 
+        document.getElementById("scambio41").style.display="inline-block"; 
+        document.getElementById("scambio42").style.display="inline-block";       
         p4.innerText="P4:"+p4s+"€";
     }
 }
@@ -121,6 +125,10 @@ function hideall() {
     document.getElementById("affitto3").style.display="none";
     document.getElementById("affitto4").style.display="none";
     document.getElementById("exitaff").style.display="none";
+    document.getElementById("scambio1").style.display="none";
+    document.getElementById("scambio2").style.display="none";
+    document.getElementById("scambio3").style.display="none";
+    document.getElementById("scambio4").style.display="none";
     let i=0;
     while (i<28) {
         let temp=i.toString();
@@ -801,7 +809,31 @@ function affitto5() {
 }
 
 function scambio() {
-    console.log("lorem ipsum");
+    hideall();
+    document.getElementById("functions").style.display="none";
+    document.getElementById("scambio1").style.display="block";
+}
+
+function scambio1() {
+    press.play();
+    document.getElementById("scambio1").style.display="none";
+    document.getElementById("scambio2").style.display="block";
+}
+
+function scambio2() {
+    if (ta==pa) {
+        error.play();
+        alert("Errore: 12\nGiocatori scambio uguali")
+        reset();
+        return;
+    }
+    else {    
+        press.play();
+        document.getElementById("scambio2").style.display="none";
+        document.getElementById("scambio3").style.display="block";
+        document.getElementById("player1").innerText="Giocatore: "+ta+"\nCosa vuoi proporre?";
+        document.getElementById("player2").innerText="Giocatore: "+pa+"\nCosa vuoi proporre?";
+    }
 }
 
 function game() {
@@ -814,7 +846,6 @@ function game() {
         i++;
     }
     document.getElementById("selplayer").style.display="none";
-    let game=true;
     document.getElementById("menu").style.display="block";
     reloadplayers();
     hideall();
