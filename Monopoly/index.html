@@ -346,13 +346,56 @@
             </div>
             <div id="scambio3">
                 <p class="title" id="player1"></p>
-                <input type="button" id="money1" class="button1 money" name="money1" value="Soldi">
-                <input type="button" id="prop1" class="button1 proprietab" name="prop1" value="Proprietà">
+                <p class="title" id="moneyshow"></p>
+                <input type="button" id="money1" class="button1 money" name="money1" value="Soldi" onclick="moneyscambio()">
+                <input type="button" id="prop1" class="button1 proprietab" name="prop1" value="Proprietà" onclick="propscambio()">
+                <input type="button" id="continue" class="button1" name="continue" value="Passa">
+                <input type="button" id="exitsca" class="button1" name="continue" value="Esci" onclick="reset()">
             </div>
             <div id="scambio4">
                 <p class="title" id="player2"></p>
-                <input type="button" id="money2" class="button1 money" name="money1" value="Soldi">
-                <input type="button" id="prop2" class="button1 proprietab" name="prop2" value="Proprietà">
+                <p class="title" id="moneyshow2"></p>
+                <input type="button" id="money2" class="button1 money" name="money1" value="Soldi" onclick="moneyscambio()">
+                <input type="button" id="prop2" class="button1 proprietab" name="prop2" value="Proprietà" onclick="propscambio()">
+                <input type="button" id="continue2" class="button1" name="continue" value="Termina" onclick="scambio3()">
+                <input type="button" id="exitsca" class="button1" name="continue" value="Esci" onclick="reset()">
+            </div>
+            <div id="soldiscambio">
+                <p class="title">Quanti soldi vuoi proporre?</p>
+                <input type="number" class="input2" min="1" id="moneyinsert">
+                <input type="button" id="soldigo" class="button1" name="soldigo" value="Inserisci" onclick="soldigo()">
+                <input type="button" id="return" class="button1" name="return" value="Indietro" onclick="backto()">
+            </div>
+            <div id="propscambio">
+                <p class="title">Clicca sulla proprietà che vuoi proporre:</p>
+                <img id="0paviab" class="proprieta" src="Proprieta/ (1).jpg" onclick="ca=0, propscambio2()">
+                <img id="1paviab" class="proprieta" src="Proprieta/ (2).jpg" onclick="ca=1, propscambio2()">
+                <img id="2paviab" class="proprieta" src="Proprieta/ (3).jpg" onclick="ca=2, propscambio2()">
+                <img id="3paviab" class="proprieta" src="Proprieta/ (4).jpg" onclick="ca=3, propscambio2()">
+                <img id="4paviab" class="proprieta" src="Proprieta/ (5).jpg" onclick="ca=4, propscambio2()">
+                <img id="5paviab" class="proprieta" src="Proprieta/ (6).jpg" onclick="ca=5, propscambio2()">
+                <img id="6paviab" class="proprieta" src="Proprieta/ (7).jpg" onclick="ca=6, propscambio2()">
+                <img id="7paviab" class="proprieta" src="Proprieta/ (8).jpg" onclick="ca=7, propscambio2()">
+                <img id="8paviab" class="proprieta" src="Proprieta/ (9).jpg" onclick="ca=8, propscambio2()">
+                <img id="9paviab" class="proprieta" src="Proprieta/ (10).jpg" onclick="ca=9, propscambio2()">
+                <img id="10paviab" class="proprieta" src="Proprieta/ (11).jpg" onclick="ca=10, propscambio2()">
+                <img id="11paviab" class="proprieta" src="Proprieta/ (12).jpg" onclick="ca=11, propscambio2()">
+                <img id="12paviab" class="proprieta" src="Proprieta/ (13).jpg" onclick="ca=12, propscambio2()">
+                <img id="13paviab" class="proprieta" src="Proprieta/ (14).jpg" onclick="ca=13, propscambio2()">
+                <img id="14paviab" class="proprieta" src="Proprieta/ (15).jpg" onclick="ca=14, propscambio2()">
+                <img id="15paviab" class="proprieta" src="Proprieta/ (16).jpg" onclick="ca=15, propscambio2()">
+                <img id="16paviab" class="proprieta" src="Proprieta/ (17).jpg" onclick="ca=16, propscambio2()">
+                <img id="17paviab" class="proprieta" src="Proprieta/ (18).jpg" onclick="ca=17, propscambio2()">
+                <img id="18paviab" class="proprieta" src="Proprieta/ (19).jpg" onclick="ca=18, propscambio2()">
+                <img id="19paviab" class="proprieta" src="Proprieta/ (20).jpg" onclick="ca=19, propscambio2()">
+                <img id="20paviab" class="proprieta" src="Proprieta/ (21).jpg" onclick="ca=20, propscambio2()">
+                <img id="21paviab" class="proprieta" src="Proprieta/ (22).jpg" onclick="ca=21, propscambio2()">
+                <img id="22paviab" class="proprieta" src="Proprieta/ (23).jpg" onclick="ca=22, propscambio2()">
+                <img id="23paviab" class="proprieta" src="Proprieta/ (24).jpg" onclick="ca=23, propscambio2()">
+                <img id="24paviab" class="proprieta" src="Proprieta/(25).jpg" onclick="ca=24, propscambio2()">
+                <img id="25paviab" class="proprieta" src="Proprieta/(26).jpg" onclick="ca=25, propscambio2()">
+                <img id="26paviab" class="proprieta" src="Proprieta/(27).jpg" onclick="ca=26, propscambio2()">
+                <img id="27paviab" class="proprieta" src="Proprieta/(28).jpg" onclick="ca=27, propscambio2()">
             </div>
     </body>
     <script src="script.js"></script>

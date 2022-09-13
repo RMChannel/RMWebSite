@@ -1,8 +1,5 @@
 let p=0;
-let p1s=1500;
-let p2s=1500;
-let p3s=1500;
-let p4s=1500;
+let p1s=p2s=p3s=p4s=1500;
 let ta,pa,ca,check2;
 let ppa=0;
 let temp2="a";
@@ -129,6 +126,8 @@ function hideall() {
     document.getElementById("scambio2").style.display="none";
     document.getElementById("scambio3").style.display="none";
     document.getElementById("scambio4").style.display="none";
+    document.getElementById("soldiscambio").style.display="none";
+    document.getElementById("propscambio").style.display="none";
     let i=0;
     while (i<28) {
         let temp=i.toString();
@@ -142,6 +141,8 @@ function hideall() {
         temp+="i";
         document.getElementById(temp).style.display="none";
         temp+="a";
+        document.getElementById(temp).style.display="none";
+        temp+="b";
         document.getElementById(temp).style.display="none";
         i++;
     }
@@ -808,6 +809,15 @@ function affitto5() {
     reset();
 }
 
+let soldi1b=false;
+let soldi1=soldi2=0;
+let soldi2b=false;
+let prop1b=false;
+let prop2b=false;
+let prop1=[]
+let prop2=[]
+phase=0;
+
 function scambio() {
     hideall();
     document.getElementById("functions").style.display="none";
@@ -821,6 +831,7 @@ function scambio1() {
 }
 
 function scambio2() {
+    phase=1;
     if (ta==pa) {
         error.play();
         alert("Errore: 12\nGiocatori scambio uguali")
@@ -833,6 +844,176 @@ function scambio2() {
         document.getElementById("scambio3").style.display="block";
         document.getElementById("player1").innerText="Giocatore: "+ta+"\nCosa vuoi proporre?";
         document.getElementById("player2").innerText="Giocatore: "+pa+"\nCosa vuoi proporre?";
+    }
+}
+
+function scambio3() {
+    if (soldi1b==false && prop1b==false) {
+        error.play();
+        alert("Errore: 13\nNon hai proposto nulla");
+        return;
+    }
+    else {
+        press.play();
+        document.getElementById("scambio3").style.display="none";
+        document.getElementById("scambio4").style.display="block";
+    }
+}
+
+function moneyscambio() {
+    press.play();
+    document.getElementById("scambio3").style.display="none";
+    document.getElementById("scambio4").style.display="none"
+    document.getElementById("soldiscambio").style.display="block";
+}
+
+function propscambio() {
+    press.play()
+    document.getElementById("scambio3").style.display="none"
+    document.getElementById("scambio4").style.display="none"
+    document.getElementById("propscambio").style.display="block";
+    let i=0
+    if (phase==1) {
+        while (i<28) {
+            if ((proprieta[i]==ta) && ()) {
+                let temp=i.toString();
+                temp+="paviab";
+                document.getElementById(temp).style.display="inline";
+                check2=true;
+           }
+            i++;
+        }
+    }
+    else {
+        while (i<28) {
+            if (proprieta[i]==pa) {
+                let temp=i.toString();
+                temp+="paviab";
+                document.getElementById(temp).style.display="inline";
+                check2=true;
+           }
+            i++;
+        }
+    }
+    if (!check2) {
+        error.play()
+        alert("Non hai nessuna proprietà")
+        backto()
+    }
+}
+
+function propscambio2() {
+    console.log("yes");
+}
+
+function backto() {
+    press.play();
+    hideall();
+    document.getElementById("functions").style.display="none";
+    if (phase==1) {
+        document.getElementById("scambio3").style.display="block";
+        if (soldi1b) {
+            document.getElementById("moneyshow").innerText="Soldi proposti="+soldi1+"€"
+        }
+    }
+    else if (phase==2) {
+        document.getElementById("scambio4").style.display="block";
+        if (soldi2b) {
+            document.getElementById("moneyshow2").innerText="Soldi proposti="+soldi1+"€"
+        }
+    }
+}
+
+function soldigo() {
+    soldi1=document.getElementById("moneyinsert").value
+    if (phase==1) {
+        if (ta==1) {
+            if (soldi1>p1s) {
+                error.play()
+                alert("Hai inserito un numero di soldi maggiore rispetto a quello che hai")
+                return
+            }
+            else {
+                soldi1b=true
+            }
+        }
+        else if (ta==2) {
+            if (soldi1>p2s) {
+                error.play()
+                alert("Hai inserito un numero di soldi maggiore rispetto a quello che hai")
+                return
+            }
+            else {
+                soldi1b=true
+            }
+        }
+        else if (ta==3) {
+            if (soldi1>p3s) {
+                error.play()
+                alert("Hai inserito un numero di soldi maggiore rispetto a quello che hai")
+                return
+            }
+            else {
+                soldi1b=true
+            }
+        }
+        else if (ta==4) {
+            if (soldi1>p4s) {
+                error.play()
+                alert("Hai inserito un numero di soldi maggiore rispetto a quello che hai")
+                return
+            }
+            else {
+                soldi1b=true
+            }
+        }
+    }
+    else {
+        if (pa==1) {
+            if (soldi2>p1s) {
+                error.play()
+                alert("Hai inserito un numero di soldi maggiore rispetto a quello che hai")
+                return
+            }
+            else {
+                soldi2b=true
+            }
+
+        }
+        else if (pa==2) {
+            if (soldi2>p2s) {
+                error.play()
+                alert("Hai inserito un numero di soldi maggiore rispetto a quello che hai")
+                return
+            }
+            else {
+                soldi2b=true
+            }
+        }
+        else if (pa==3) {
+            if (soldi2>p3s) {
+                error.play()
+                alert("Hai inserito un numero di soldi maggiore rispetto a quello che hai")
+                return
+            }
+            else {
+                soldi2b=true
+            }
+        }
+        else if (pa==4) {
+            if (soldi2>p4s) {
+                error.play()
+                alert("Hai inserito un numero di soldi maggiore rispetto a quello che hai")
+                return
+            }
+            else {
+                soldi2b=true
+            }
+        }
+    }
+    if ((soldi1b && phase==1) || (soldi2b && phase==2)) {
+        press.play()
+        backto()
     }
 }
 
