@@ -814,10 +814,10 @@ let soldi1=soldi2=0;
 let soldi2b=false;
 let prop1b=false;
 let prop2b=false;
-let prop1=[]
-let prop2=[]
+let prop1=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+let prop2=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 phase=0;
-
+console.log(prop1.length);
 function scambio() {
     hideall();
     document.getElementById("functions").style.display="none";
@@ -875,7 +875,7 @@ function propscambio() {
     let i=0
     if (phase==1) {
         while (i<28) {
-            if ((proprieta[i]==ta) && ()) {
+            if ((proprieta[i]==ta) && (prop1[i]!=ta)) {
                 let temp=i.toString();
                 temp+="paviab";
                 document.getElementById(temp).style.display="inline";
@@ -886,24 +886,32 @@ function propscambio() {
     }
     else {
         while (i<28) {
-            if (proprieta[i]==pa) {
+            if ((proprieta[i]==pa) && (prop2[i]!=pa)) {
                 let temp=i.toString();
                 temp+="paviab";
                 document.getElementById(temp).style.display="inline";
                 check2=true;
            }
             i++;
-        }
+        }   
     }
     if (!check2) {
         error.play()
-        alert("Non hai nessuna proprietà")
+        alert("Non hai nessuna proprietà disponibile")
         backto()
     }
 }
 
 function propscambio2() {
-    console.log("yes");
+    if (phase==1) {
+        prop1[ca]=ta
+    }
+    else {
+        prop2[ca]=pa
+    }
+    press.play()
+    backto()
+    check2=false
 }
 
 function backto() {
