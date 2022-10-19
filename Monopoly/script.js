@@ -1055,6 +1055,16 @@ function soldigo() {
     }
 }
 
+function scambio4() {
+    if (((prop1b) || (soldi1b)) && ((prop2b) || (soldi2b))) {
+        console.log("success");
+    }
+    else {
+        error.play()
+        alert("Attenzione!\nDati insufficienti per lo scambio")
+    }
+}
+
 function game() {
     let i=0;
     while (i<28) {
@@ -1063,7 +1073,7 @@ function game() {
         lvlcasa[i]=0;
         ipoteca[i]=false;
         i++;
-    }
+    }   
     document.getElementById("selplayer").style.display="none";
     document.getElementById("menu").style.display="block";
     reloadplayers();
