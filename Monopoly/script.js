@@ -11,6 +11,7 @@ const albergo= new Audio('sounds/albergo sound.mp3')
 const price=[ 60,60,100,100,120,140,140,160,180,180,200,220,220,240,260,260,280,300,300,320,350,400,150,150,200,200,200,200 ];
 const casavalore = [ 50,50,50,50,50,100,100,100,100,100,100,150,150,150,150,150,150,200,200,200,200,200 ];
 const valipoteca = [ 30,30,50,50,60,60,70,70,80,90,90,100,110,110,120,130,140,150,160,175,200,75,75,100,100,100,100 ];
+const nomiprop=["Vicolo Corto", "Vicolo Stretto", "Bastioni Gran Sasso", "Viale Monterosa", "Viale Vesuvio", "Via Accademia", "Corso Ateneo", "Piazza Università", "Via Verdi", "Corso Raffaello", "Piazza Dante", "Via Marco Polo", "Corso Magellano", "Largo Colombo", "Viale Costantino", "Viale Traiano", "Piazza Giulio Cesare", "Via Roma", "Corso Impero", "Largo Augusto", "Viale Dei Giardini", "Parco Della Vittoria", "Società Elettrica", "Società Acqua Potabile", "Stazione Nord", "Stazione Est", "Stazione Sud", "Stazione Ovest"]
 let proprieta= [];
 let casaproprieta= [];
 let lvlcasa= [];
@@ -817,7 +818,6 @@ let prop2b=false;
 let prop1=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 let prop2=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 phase=0;
-console.log(prop1.length);
 function scambio() {
     hideall();
     document.getElementById("functions").style.display="none";
@@ -853,11 +853,17 @@ function scambio3() {
         alert("Errore: 13\nNon hai proposto nulla");
         return;
     }
-    else {
-        press.play();
+    else if (phase==1) {
         document.getElementById("scambio3").style.display="none";
         document.getElementById("scambio4").style.display="block";
+        phase=2
     }
+    else {
+        document.getElementById("scambio4").style.display="none";
+        document.getElementById("scambio3").style.display="block";
+        phase=1
+    }
+    press.play();
 }
 
 function moneyscambio() {
@@ -905,9 +911,11 @@ function propscambio() {
 function propscambio2() {
     if (phase==1) {
         prop1[ca]=ta
+        prop1b=true
     }
     else {
         prop2[ca]=pa
+        prop2b=true
     }
     press.play()
     backto()
@@ -923,11 +931,33 @@ function backto() {
         if (soldi1b) {
             document.getElementById("moneyshow").innerText="Soldi proposti="+soldi1+"€"
         }
+        if (prop1b) {
+            let i=0
+            let propn1="Proprietà proposte:"
+            while (i<28) {
+                if (prop1[i]!=0) {
+                    propn1+=(" "+nomiprop[i]+", ")
+                }
+                i+=1
+            }
+            document.getElementById("propshow").innerText=propn1
+        }
     }
     else if (phase==2) {
         document.getElementById("scambio4").style.display="block";
         if (soldi2b) {
             document.getElementById("moneyshow2").innerText="Soldi proposti="+soldi1+"€"
+        }
+        if (prop2b) {
+            let i=0
+            let propn2="Proprietà proposte:"
+            while (i<28) {
+                if (prop2[i]!=0) {
+                    propn2+=(" "+nomiprop[i]+", ")
+                }
+                i+=1
+            }
+            document.getElementById("propshow").innerText=propn2
         }
     }
 }
