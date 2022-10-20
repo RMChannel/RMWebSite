@@ -294,6 +294,24 @@ input {
     display: none;
 }
 
+.scambiovisu {
+    margin: 20px;
+    width: fit-content;
+    max-width: 600px;
+}
+
+#scambio5 {
+    display: none;
+}
+
+#terminatescambio {
+    min-inline-size: -webkit-fill-available
+}
+
+.spacebetweentext {
+    margin-bottom: 20px;
+}
+
 .money {
     background-image: url(Images/money.gif);
     background-repeat:no-repeat;

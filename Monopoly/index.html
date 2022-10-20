@@ -363,6 +363,21 @@
                 <input type="button" id="continue2" class="button1" name="continue" value="Termina" onclick="scambio4()">
                 <input type="button" id="exitsca" class="button1" name="continue" value="Esci" onclick="reset()">
             </div>
+            <div id="scambio5">
+                <div class="scambiovisu" id="p1">
+                    <div class="title spacebetweentext" id="playername1"></div>
+                    <div class="title spacebetweentext" id="soldip1visu"></div>
+                    <div class="title spacebetweentext" id="prop1visu"></div>
+                    <input type="button" id="p1accept" class="button1" name="p1accept" value="P1" onclick="buttonpressed=1, acceptscambio()">
+                </div>
+                <div class="scambiovisu" id="p2">
+                    <div class="title spacebetweentext" id="playername2"></div>
+                    <div class="title spacebetweentext" id="soldip2visu"></div>
+                    <div class="title spacebetweentext" id="prop2visu"></div>
+                    <input type="button" id="p2accept" class="button1" name="p2accept" value="P2" onclick="buttonpressed=2, acceptscambio()">
+                </div>
+            </div>
+            <input type="button" id="terminatescambio" class="button1" name="terminatescambio" value="Termina" onclick="finalscambio()">
             <div id="soldiscambio">
                 <p class="title">Quanti soldi vuoi proporre?</p>
                 <input type="number" class="input2" min="1" id="moneyinsert">
