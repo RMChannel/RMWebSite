@@ -143,6 +143,7 @@ function hideall() {
     document.getElementById("soldiscambio").style.display="none";
     document.getElementById("propscambio").style.display="none";
     document.getElementById("terminatescambio").style.display="none"
+    document.getElementById("backfromscambio").style.display="none"
     let i=0;
     while (i<28) {
         let temp=i.toString();
@@ -1076,6 +1077,7 @@ function soldigo() {
 
 function scambio4() {
     if (((prop1b) || (soldi1b)) && ((prop2b) || (soldi2b))) {
+        document.getElementById("backfromscambio").style.display="block"
         document.getElementById("scambio4").style.display="none"
         document.getElementById("scambio5").style.display="flex"
         document.getElementById("playername1").innerText="Giocatore:"+ta
@@ -1141,9 +1143,11 @@ function acceptscambio() {
     }
     if ((p1accept) && (p2accept)) {
         document.getElementById("terminatescambio").style.display="block"
+        document.getElementById("backfromscambio").style.display="none"
     }
     else {
         document.getElementById("terminatescambio").style.display="none"
+        document.getElementById("backfromscambio").style.display="block"
     }
 }
 
