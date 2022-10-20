@@ -296,7 +296,6 @@ function acqu() {
 
 function reset() {
     press.play();
-    reloadplayers();
     hideall();
 }
 
@@ -826,6 +825,7 @@ function affitto5() {
 
 function scambio() {
     hideall();
+    resetscambio()
     document.getElementById("functions").style.display="none";
     document.getElementById("scambio1").style.display="block";
 }
@@ -1220,18 +1220,35 @@ function finalscambio() {
     }
     reloadplayers()
     hideall()
-    i=0
+    resetscambio()
+}
+
+function resetscambio() {
+    let i=0
     while (i<28) {
         prop1[i]=0
         prop2[i]=0
         i+=1
     }
+    soldi=0
     soldi1=0
     soldi2=0
     soldi1b=false
     soldi2b=false
     prop1b=false
     prop2b=false
+    document.getElementById("moneyshow").innerText=""
+    document.getElementById("moneyshow2").innerText=""
+    document.getElementById("propshow").innerText=""
+    document.getElementById("propshow2").innerText=""
+    document.getElementById("prop1visu").innerText=""
+    document.getElementById("prop2visu").innerText=""
+    document.getElementById("soldip1visu").innerText=""
+    document.getElementById("soldip2visu").innerText=""
+    document.getElementById("p1accept").style.color="Red"
+    document.getElementById("p2accept").style.color="Red"
+    p1accept=false
+    p2accept=false
 }
 
 function game() {
