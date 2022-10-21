@@ -327,3 +327,35 @@ input {
     background-position-x: 8px;
     background-position-y: 6px;
 }
+
+#scambiopuls {
+    background-position-x: 4px;
+    background-position-y: 5px;
+    background-image: url(Images/scambio.png);
+    background-repeat: no-repeat;
+    background-size: 85px;
+}
+
+#affitto {
+    background-image: url(Images/affitto.jpg);
+    background-repeat: no-repeat;
+    background-size: 70px;
+    background-position-x: 12px;
+    background-position-y: 11px;
+}
+
+#acquisto {
+    background-image: url(Images/vendesi.jpg);
+    background-repeat: no-repeat;
+    background-size: 80px;
+    background-position-x: 6.5px;
+    background-position-y: -4px;
+}
+
+#ipoteca {
+    background-image: url(Images/ipoteca.png);
+    background-repeat: no-repeat;
+    background-size: 80px;
+    background-position-x: 10px;
+    background-position-y: 3px;
+}
