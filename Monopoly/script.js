@@ -16,6 +16,7 @@ let proprieta= [];
 let casaproprieta= [];
 let lvlcasa= [];
 let ipoteca= [];
+let passprigione=[0,0];
 const costicasa=[
     [2,10,30,90,160,250],
 	[4,20,60,180,320,450],
@@ -90,7 +91,8 @@ function reloadplayers() {
         document.getElementById("affitto31").style.display="inline-block";
         document.getElementById("affitto32").style.display="inline-block";
         document.getElementById("scambio31").style.display="inline-block"; 
-        document.getElementById("scambio32").style.display="inline-block";       
+        document.getElementById("scambio32").style.display="inline-block";
+        document.getElementById("prigione3").style.display="inline-block";       
         p3.innerText="P3:"+p3s+"€";
     }
     if (p==4) {
@@ -104,7 +106,8 @@ function reloadplayers() {
         document.getElementById("affitto41").style.display="inline-block"; 
         document.getElementById("affitto42").style.display="inline-block"; 
         document.getElementById("scambio41").style.display="inline-block"; 
-        document.getElementById("scambio42").style.display="inline-block";       
+        document.getElementById("scambio42").style.display="inline-block";   
+        document.getElementById("prigione4").style.display="inline-block";    
         p4.innerText="P4:"+p4s+"€";
     }
 }
@@ -144,6 +147,11 @@ function hideall() {
     document.getElementById("propscambio").style.display="none";
     document.getElementById("terminatescambio").style.display="none"
     document.getElementById("backfromscambio").style.display="none"
+    document.getElementById("prigionediv1").style.display="none"
+    document.getElementById("prigionediv2").style.display="none"
+    document.getElementById("ottienipassdiv").style.display="none"
+    document.getElementById("usepassdiv").style.display="none"
+    document.getElementById("pagaprigdiv").style.display="none"
     let i=0;
     while (i<28) {
         let temp=i.toString();
@@ -1086,10 +1094,10 @@ function scambio4() {
         document.getElementById("p2accept").style.color="Red"
         document.getElementById("terminatescambio").style.display="none"
         if (soldi1b) {
-            document.getElementById("soldip1visu").innerText="Soldi proposti:"+soldi1
+            document.getElementById("soldip1visu").innerText="Soldi proposti:"+soldi1+"€"
         }
         if (soldi2b) {
-            document.getElementById("soldip2visu").innerText="Soldi proposti:"+soldi2
+            document.getElementById("soldip2visu").innerText="Soldi proposti:"+soldi2+"€"
         }
         if (prop1b) {
             let i=0
@@ -1255,6 +1263,77 @@ function resetscambio() {
     p2accept=false
 }
 
+function prigione() {
+    press.play()
+    hideall();
+    document.getElementById("functions").style.display="none";
+    document.getElementById("prigionediv1").style.display="block";
+}
+
+function prigione2() {
+    press.play()
+    document.getElementById("prigionediv1").style.display="none"
+    document.getElementById("prigionediv2").style.display="block"
+    if (passprigione.includes(ta)) {
+        document.getElementById("ottienipass").style.display="none"
+        document.getElementById("usepass").style.display=""
+    }
+    else {
+        document.getElementById("ottienipass").style.display=""
+        document.getElementById("usepass").style.display="none"
+    }
+}
+
+function ottienipass() {
+    press.play()
+    document.getElementById("prigionediv2").style.display="none";
+    document.getElementById("ottienipassdiv").style.display="block";
+}
+
+function ottienipass2() {
+    press.play()
+    passprigione[pa]=ta
+    hideall()
+}
+
+function usepass() {
+    press.play()
+    if (passprigione[0]==ta) {
+        passprigione[0]==0
+    }
+    else {
+        passprigione[1]==0
+    }
+    console.log(passprigione);
+    document.getElementById("prigionediv2").style.display="none";
+    document.getElementById("usepassdiv").style.display="block";
+    setTimeout(() => {
+        hideall()
+    }, 4000)
+}
+
+function pagaprig() {
+    press.play()
+    if (ta==1) {
+        p1s-=125
+    }
+    else if (ta==2) {
+        p2s-=125
+    }
+    else if (ta==3) {
+        p3s-=125
+    }
+    else {
+        p4s-=125
+    }
+    document.getElementById("prigionediv2").style.display="none";
+    document.getElementById("pagaprigdiv").style.display="block";
+    setTimeout(() => {
+        hideall()
+        reloadplayers()
+    }, 4000)
+}
+
 function game() {
     let i=0;
     while (i<28) {
@@ -1268,4 +1347,4 @@ function game() {
     document.getElementById("menu").style.display="block";
     reloadplayers();
     hideall();
-}
+} 

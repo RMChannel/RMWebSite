@@ -38,6 +38,7 @@
                 <input type="button" id="ipoteca" class="button1" name="Ipoteca" value="Ipoteca" onclick="Ipoteca()">
                 <input type="button" id="affitto" class="button1" name="Affitto" value="Affitto" onclick="affitto1()">
                 <input type="button" id="scambiopuls" class="button1" name="Scambio" value="Scambio" onclick="scambio()">
+                <input type="button" id="prigione" class="button1" name="Prigione" value="Prigione" onclick="prigione()">
             </div>
             <div id="Via">
                 <p class="title">Seleziona il giocatore che è passato dal Via!:</p>
@@ -424,6 +425,31 @@
                 <img id="26paviab" class="proprieta" src="Proprieta/(27).jpg" onclick="ca=26, propscambio2()">
                 <img id="27paviab" class="proprieta" src="Proprieta/(28).jpg" onclick="ca=27, propscambio2()">
             </div>
+            <div id="prigionediv1">
+                <p class="title">Seleziona il giocatore:</p>
+                <input type="button" id="exitprigione" class="button1" name="exitprigione" value="Esci" onclick="press.play(),hideall()">
+                <input type="button" id="prigione1" class="button1" name="prigione1" value="P1" onclick="ta=1, prigione2()">
+                <input type="button" id="prigione2" class="button1" name="prigione2" value="P2" onclick="ta=2, prigione2()">
+                <input type="button" id="prigione3" class="button1" name="prigione3" value="P3" onclick="ta=3, prigione2()">
+                <input type="button" id="prigione4" class="button1" name="prigione4" value="P4" onclick="ta=4, prigione2()">
+            </div>
+            <div id="prigionediv2">
+                <p class="title">Seleziona la funzione:</p>
+                <input type="button" id="ottienipass" class="button1" name="ottienipass" value="Ottieni Pass" style="font-size: x-large" onclick="ottienipass()">
+                <input type="button" id="usepass" class="button1" name="usepass" value="Utilizza Pass" style="font-size: x-large" onclick="usepass()">
+                <input type="button" id="payprison" class="button1" name="payprison" value="Paga" onclick="pagaprig()">
+            </div>
+            <div id="ottienipassdiv">
+                <p class="title">Seleziona da dove hai ottenuto il Pass gratuito:</p>
+                <input type="button" id="probabilitàpass" class="button1" name="probabilitàpass" onclick="pa=0,ottienipass2()">
+                <input type="button" id="imprevistipass" class="button1" name="imprevistipass" onclick="pa=1,ottienipass2()">
+            </div>
+            <div id="usepassdiv">
+                <p class="title">Pass Gratuito utilizzato</p>
+            </div>
+            <div id="pagaprigdiv">
+                <p class="title">Cauzione pagata</p>
+            </div>
     </body>
     <script src="script.js"></script>
-</html>
+</html> 

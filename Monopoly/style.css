@@ -28,6 +28,14 @@ body {
     display: none;
 }
 
+#prigione3 {
+    display: none;
+}
+
+#prigione4 {
+    display: none;
+}
+
 #selplayer {
     width: fit-content;
     display:flex;
@@ -358,4 +366,23 @@ input {
     background-size: 80px;
     background-position-x: 10px;
     background-position-y: 3px;
+}
+
+#probabilitàpass {
+    background-image: url(Images/probabilità.jpg);
+    background-size: 108px;
+    background-position-y: 1px;
+}
+
+#imprevistipass {
+    background-image: url(Images/imprevisti.jpg);
+    background-size: 102px;
+    background-position-x: -4.5px;
+    background-position-y: -1.5px;
+}
+
+#prigione {
+    background-image: url(Images/prigione.png);
+    background-repeat: no-repeat;
+    background-size: 90px;
 }
