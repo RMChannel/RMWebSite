@@ -137,7 +137,6 @@ function hideall() {
     document.getElementById("affitto2").style.display="none";
     document.getElementById("affitto3").style.display="none";
     document.getElementById("affitto4").style.display="none";
-    document.getElementById("exitaff").style.display="none";
     document.getElementById("scambio1").style.display="none";
     document.getElementById("scambio2").style.display="none";
     document.getElementById("scambio3").style.display="none";
@@ -306,6 +305,7 @@ function acqu() {
 function reset() {
     press.play();
     hideall();
+    reloadplayers();
 }
 
 function visuactivate() {
@@ -699,7 +699,6 @@ function affitto1() {
     hideall();
     document.getElementById("functions").style.display="none";
     document.getElementById("affitto1").style.display="block";
-    document.getElementById("exitaff").style.display="block";
 }
 
 function affitto2() {
