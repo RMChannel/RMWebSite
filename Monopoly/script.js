@@ -895,7 +895,7 @@ function propscambio() {
     let i=0
     if (phase==1) {
         while (i<28) {
-            if ((proprieta[i]==ta) && (prop1[i]!=ta)) {
+            if (proprieta[i]==ta) {
                 let temp=i.toString();
                 temp+="paviab";
                 document.getElementById(temp).style.display="inline";
@@ -906,7 +906,7 @@ function propscambio() {
     }
     else {
         while (i<28) {
-            if ((proprieta[i]==pa) && (prop2[i]!=pa)) {
+            if (proprieta[i]==pa) {
                 let temp=i.toString();
                 temp+="paviab";
                 document.getElementById(temp).style.display="inline";
@@ -924,11 +924,21 @@ function propscambio() {
 
 function propscambio2() {
     if (phase==1) {
-        prop1[ca]=ta
+        if (prop1[ca]!=0) {
+            prop1[ca]=0
+        }
+        else {
+            prop1[ca]=ta
+        }
         prop1b=true
     }
     else {
-        prop2[ca]=pa
+        if (prop2[ca]!=0) {
+            prop2[ca]=0
+        }
+        else {
+            prop2[ca]=ta
+        }
         prop2b=true
     }
     press.play()
@@ -937,6 +947,7 @@ function propscambio2() {
 }
 
 function backto() {
+    checkpropb=false
     press.play();
     hideall();
     document.getElementById("functions").style.display="none";
@@ -945,22 +956,35 @@ function backto() {
         if (soldi1b) {
             document.getElementById("moneyshow").innerText="Soldi proposti="+soldi1+"€"
         }
+        else {
+            document.getElementById("moneyshow").innerText=""
+        }
         if (prop1b) {
             let i=0
             let propn1="Proprietà proposte:"
             while (i<28) {
                 if (prop1[i]!=0) {
                     propn1+=(" "+nomiprop[i]+", ")
+                    checkpropb=true
                 }
                 i+=1
             }
-            document.getElementById("propshow").innerText=propn1
+            if (checkpropb) {
+                document.getElementById("propshow").innerText=propn1
+            }
+            else {
+                document.getElementById("propshow").innerText=""
+                prop1b=false
+            }
         }
     }
     else if (phase==2) {
         document.getElementById("scambio4").style.display="block";
         if (soldi2b) {
             document.getElementById("moneyshow2").innerText="Soldi proposti="+soldi2+"€"
+        }
+        else {
+            document.getElementById("moneyshow2").innerText=""
         }
         if (prop2b) {
             let i=0
@@ -970,18 +994,37 @@ function backto() {
                     propn2+=(" "+nomiprop[i]+", ")
                 }
                 i+=1
+                checkpropb=true
             }
-            document.getElementById("propshow2").innerText=propn2
+            if (checkpropb) {
+                document.getElementById("propshow2").innerText=propn2
+            }
+            else {
+                document.getElementById("propshow2").innerText=""
+                prop2b=false
+            }
         }
     }
 }
 
 function soldigo() {
     soldi=parseInt(document.getElementById("moneyinsert").value)
-    if (soldi<=0) {
+    if (soldi<0) {
         error.play
         alert("Hai inserito un valore non valido, riprovare")
         return
+    }
+    else if (soldi==0) {
+        press.play()
+        if (phase==1) {
+            soldi1b=false
+            soldi1=0
+        }
+        else {
+            soldi2b=false
+            soldi2=0
+        }
+        backto()
     }
     else if (phase==1) {
         if (ta==1) {
@@ -1232,6 +1275,7 @@ function finalscambio() {
     reloadplayers()
     hideall()
     resetscambio()
+    albergo.play()
 }
 
 function resetscambio() {
