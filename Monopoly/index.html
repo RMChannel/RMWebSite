@@ -39,6 +39,7 @@
                 <input type="button" id="affitto" class="button1" name="Affitto" value="Affitto" onclick="affitto1()">
                 <input type="button" id="scambiopuls" class="button1" name="Scambio" value="Scambio" onclick="scambio()">
                 <input type="button" id="prigione" class="button1" name="Prigione" value="Prigione" onclick="prigione()">
+                <input type="button" id="bancarotta" class="button1" name="Bancarotta" value="Bancarotta" onclick="bancarotta1()">
             </div>
             <div id="Via">
                 <p class="title">Seleziona il giocatore che è passato dal Via!:</p>
@@ -448,6 +449,26 @@
             </div>
             <div id="pagaprigdiv">
                 <p class="title">Cauzione pagata</p>
+            </div>
+            <div id="bancarottadiv1">
+                <p class="title">Chi vuole dichiarare bancarotta?</p>
+                <input type="button" id="exitbanca" class="button1" name="exitbanca" value="Esci" onclick="press.play(),hideall()">
+                <input type="button" id="bancarotta1p" class="button1" name="bancarotta1p" value="P1" onclick="pa=1,bancarotta2()">
+                <input type="button" id="bancarotta2p" class="button1" name="bancarotta2p" value="P2" onclick="pa=2,bancarotta2()">
+                <input type="button" id="bancarotta3p" class="button1" name="bancarotta3p" value="P3" onclick="pa=3,bancarotta2()">
+                <input type="button" id="bancarotta4p" class="button1" name="bancarotta4p" value="P4" onclick="pa=4,bancarotta2()">
+            </div>
+            <div id="bancarottadiv2">
+                <p class="title">Sei sicuro?</p>
+                <input type="button" id="truebancarotta" class="button1" name="confirmbanca" value="Sì" onclick="press.play(),bancarotta3()">
+                <input type="button" id="falsebancarotta" class="button1" name="nobanca" value="No" onclick="press.play(),hideall()">
+            </div>
+            <div id="bancarottadiv3">
+                <p class="title" id="textbancarotta"></p>
+            </div>
+            <div id="win">
+                <p class="title" id="winningtext"></p>
+                <input type="button" class="button1" id="restart" name="restart" value="Rigioca" onclick="press.play(),location.reload()">
             </div>
     </body>
     <script src="script.js"></script>

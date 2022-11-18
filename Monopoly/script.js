@@ -1,5 +1,6 @@
 let p=0;
 let p1s=p2s=p3s=p4s=1500;
+let p1p=p2p=p3p=p4p=true;
 let ta,pa,ca,check2;
 let ppa=0;
 let temp2="a";
@@ -8,6 +9,7 @@ const press= new Audio('sounds/presssound.mp3');
 const cash= new Audio('sounds/cash.mp3');
 const lost= new Audio('sounds/lost.mp3');
 const albergo= new Audio('sounds/albergo sound.mp3')
+const win=new Audio('sounds/win.mp3')
 const price=[ 60,60,100,100,120,140,140,160,180,180,200,220,220,240,260,260,280,300,300,320,350,400,150,150,200,200,200,200 ];
 const casavalore = [ 50,50,50,50,50,100,100,100,100,100,100,150,150,150,150,150,150,200,200,200,200,200 ];
 const valipoteca = [ 30,30,50,50,60,60,70,70,80,90,90,100,110,110,120,130,140,150,160,175,200,75,75,100,100,100,100 ];
@@ -73,6 +75,42 @@ function playerassing() {
    
 }
 
+function controlplayers() {
+    icontrol=0
+    if (p1p) {
+        icontrol+=1
+        player=1
+    }
+    if (p2p) {
+        icontrol+=1
+        player=2
+    }
+    if (p3p) {
+        icontrol+=1
+        player=3
+    }
+    if (p4p) {
+        icontrol+=1
+        player=4
+    }
+    if (icontrol==1) {
+        hideall()
+        win.play()
+        document.getElementById("functions").style.display="none"
+        document.getElementById("win").style.display="block"
+        document.getElementById("restart").style.display="block"
+        document.getElementById("winningtext").innerText="Il giocatore "+player+" ha vinto!!"
+        setInterval(() => {
+            if (document.getElementById("winningtext").style.color=="black") {
+                document.getElementById("winningtext").style.color="white"
+            }
+            else {
+                document.getElementById("winningtext").style.color="black"
+            }
+        }, 500);
+    }
+}
+
 function reloadplayers() {
     const p1=document.getElementById("p1");
     const p2=document.getElementById("p2");
@@ -80,7 +118,39 @@ function reloadplayers() {
     const p4=document.getElementById("p4");
     p1.innerText="P1:"+p1s+"€";
     p2.innerText="P2:"+p2s+"€";
-    if (p>2) {
+    if (!p1p) {
+        p1.innerText="";
+        document.getElementById("p1").style.display="none";
+        document.getElementById("via1").style.display="none";
+        document.getElementById("tassep1").style.display="none";
+        document.getElementById("acquisto1").style.display="none";
+        document.getElementById("visu1").style.display="none";
+        document.getElementById("pc1").style.display="none";
+        document.getElementById("ipo1").style.display="none";
+        document.getElementById("affitto11").style.display="none";
+        document.getElementById("affitto12").style.display="none";
+        document.getElementById("scambio11").style.display="none"; 
+        document.getElementById("scambio12").style.display="none";
+        document.getElementById("prigione1").style.display="none";
+        document.getElementById("bancarotta1p").style.display="none";
+    }
+    if (!p2p) {
+        p2.innerText="";
+        document.getElementById("p2").style.display="none";
+        document.getElementById("via2").style.display="none";
+        document.getElementById("tassep2").style.display="none";
+        document.getElementById("acquisto2").style.display="none";
+        document.getElementById("visu2").style.display="none";
+        document.getElementById("pc2").style.display="none";
+        document.getElementById("ipo2").style.display="none";
+        document.getElementById("affitto21").style.display="none";
+        document.getElementById("affitto22").style.display="none";
+        document.getElementById("scambio21").style.display="none"; 
+        document.getElementById("scambio22").style.display="none";
+        document.getElementById("prigione2").style.display="none";
+        document.getElementById("bancarotta2p").style.display="none";
+    }
+    if (p>2 && p3p) {
         document.getElementById("p3").style.display="block";
         document.getElementById("via3").style.display="inline-block";
         document.getElementById("tassep3").style.display="inline-block";
@@ -92,10 +162,27 @@ function reloadplayers() {
         document.getElementById("affitto32").style.display="inline-block";
         document.getElementById("scambio31").style.display="inline-block"; 
         document.getElementById("scambio32").style.display="inline-block";
-        document.getElementById("prigione3").style.display="inline-block";       
+        document.getElementById("prigione3").style.display="inline-block";
+        document.getElementById("bancarotta3p").style.display="inline-block";
         p3.innerText="P3:"+p3s+"€";
     }
-    if (p==4) {
+    else {
+        p3.innerText="";
+        document.getElementById("p3").style.display="none";
+        document.getElementById("via3").style.display="none";
+        document.getElementById("tassep3").style.display="none";
+        document.getElementById("acquisto3").style.display="none";
+        document.getElementById("visu3").style.display="none";
+        document.getElementById("pc3").style.display="none";
+        document.getElementById("ipo3").style.display="none";
+        document.getElementById("affitto31").style.display="none";
+        document.getElementById("affitto32").style.display="none";
+        document.getElementById("scambio31").style.display="none"; 
+        document.getElementById("scambio32").style.display="none";
+        document.getElementById("prigione3").style.display="none";
+        document.getElementById("bancarotta3p").style.display="none";
+    }
+    if (p==4 && p4p) {
         document.getElementById("p4").style.display="block";
         document.getElementById("via4").style.display="inline-block";
         document.getElementById("tassep4").style.display="inline-block";
@@ -108,7 +195,24 @@ function reloadplayers() {
         document.getElementById("scambio41").style.display="inline-block"; 
         document.getElementById("scambio42").style.display="inline-block";   
         document.getElementById("prigione4").style.display="inline-block";    
+        document.getElementById("bancarotta4p").style.display="inline-block";
         p4.innerText="P4:"+p4s+"€";
+    }
+    else {
+        p4.innerText="";
+        document.getElementById("p4").style.display="none";
+        document.getElementById("via4").style.display="none";
+        document.getElementById("tassep4").style.display="none";
+        document.getElementById("acquisto4").style.display="none";
+        document.getElementById("visu4").style.display="none";
+        document.getElementById("pc4").style.display="none";
+        document.getElementById("ipo4").style.display="none";
+        document.getElementById("affitto41").style.display="none";
+        document.getElementById("affitto42").style.display="none";
+        document.getElementById("scambio41").style.display="none"; 
+        document.getElementById("scambio42").style.display="none";
+        document.getElementById("prigione4").style.display="none";
+        document.getElementById("bancarotta4p").style.display="none";
     }
 }
 
@@ -151,6 +255,9 @@ function hideall() {
     document.getElementById("ottienipassdiv").style.display="none"
     document.getElementById("usepassdiv").style.display="none"
     document.getElementById("pagaprigdiv").style.display="none"
+    document.getElementById("bancarottadiv1").style.display="none"
+    document.getElementById("bancarottadiv2").style.display="none"
+    document.getElementById("bancarottadiv3").style.display="none"
     let i=0;
     while (i<28) {
         let temp=i.toString();
@@ -202,17 +309,21 @@ function tassesel() {
 }
 
 function tafp1() {
-    if (ta==1) {
+    if (ta==1 && p1s>=100) {
         p1s-=100;
     }
-    else if (ta==2) {
+    else if (ta==2 && p2s>=100) {
         p2s-=100;
     }
-    else if (ta==3) {
+    else if (ta==3 && p3s>=100) {
         p3s-=100;
     }
-    else if (ta==4) {
+    else if (ta==4 && p4s>=100) {
         p4s-=100;
+    }
+    else {
+        error.play()
+        alert("Non hai abbastanza soldi per pagare le tasse, scambia o ipoteca o dichiara bancarotta")
     }
     lost.play();
     hideall();
@@ -220,19 +331,26 @@ function tafp1() {
 }
 
 function tafp2() {
-    if (ta==1) {
+    if (ta==1 && p1s>=200) {
         p1s-=200;
+        lost.play();
     }
-    else if (ta==2) {
+    else if (ta==2 && p2s>=200) {
         p2s-=200;
+        lost.play();
     }
-    else if (ta==3) {
+    else if (ta==3 && p3s>=200) {
         p3s-=200;
+        lost.play();
     }
-    else if (ta==4) {
+    else if (ta==4 && p4s>=200) {
         p4s-=200;
+        lost.play();
     }
-    lost.play();
+    else {
+        error.play()
+        alert("Non hai abbastanza soldi per pagare le tasse, scambia o ipoteca o dichiara bancarotta")
+    }
     hideall();
     reloadplayers();
 }
@@ -1377,6 +1495,42 @@ function pagaprig() {
     }, 4000)
 }
 
+function bancarotta1() {
+    press.play()
+    hideall();
+    document.getElementById("functions").style.display="none";
+    document.getElementById("bancarottadiv1").style.display="block";
+}
+
+function bancarotta2() {
+    press.play()
+    document.getElementById("bancarottadiv1").style.display="none";
+    document.getElementById("bancarottadiv2").style.display="block";
+}
+
+function bancarotta3() {
+    if (pa==1 && p1p) {
+        p1p=false
+    }
+    else if (pa==2 && p2p) {
+        p2p=false
+    }
+    else if (pa==3 && p3p) {
+        p3p=false
+    }
+    else if (pa==4 && p4p) {
+        p4p=false
+    }
+    reloadplayers()
+    document.getElementById("bancarottadiv2").style.display="none";
+    document.getElementById("bancarottadiv3").style.display="block";
+    document.getElementById("textbancarotta").innerText="Il giocatore "+pa+" è in bancarotta";
+    setTimeout(() => {
+        hideall()
+        controlplayers()
+    }, 4000)
+}
+
 function game() {
     let i=0;
     while (i<28) {
@@ -1386,8 +1540,11 @@ function game() {
         ipoteca[i]=false;
         i++;
     }
+    if (p<4) p4p=false
+    if (p<3) p3p=false
     document.getElementById("selplayer").style.display="none";
+    document.getElementById("restart").style.display="none"
     document.getElementById("menu").style.display="block";
     reloadplayers();
     hideall();
-} 
+}

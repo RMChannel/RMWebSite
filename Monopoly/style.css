@@ -36,6 +36,14 @@ body {
     display: none;
 }
 
+#bancarotta3p {
+    display: none;
+}
+
+#bancarotta4p {
+    display: none;
+}
+
 #selplayer {
     width: fit-content;
     display:flex;
@@ -385,4 +393,16 @@ input {
     background-image: url(Images/prigione.png);
     background-repeat: no-repeat;
     background-size: 90px;
+}
+
+#bancarotta {
+    font-size: 26px;
+}
+
+#truebancarotta {
+    color: green;
+}
+
+#falsebancarotta {
+    color: red;
 }
