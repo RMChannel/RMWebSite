@@ -59,6 +59,8 @@
             </div>
             <div id="tassemenu2">
                 <p class="title">Seleziona la tassa da pagare:</p>
+                <input type="button" id="exittasse" class="button1" name="exittasse" value="Esci" onclick="press.play(),hideall()">
+                <input type="button" id="backasse" class="button1" name="backasse" value="Back" onclick="press.play(), backtasse()">
                 <input type="button" id="tassepf1" class="button1" name="tassepf1" value="100€" onclick="tafp1()">
                 <input type="button" id="tassepf2" class="button1" name="tassepf2" value="200€" onclick="tafp2()">
             </div>
@@ -101,6 +103,7 @@
                     <img id="25" class="proprieta" src="Proprieta/(26).jpg" onclick="ppa=25; confermaprop(); press.play();">
                     <img id="26" class="proprieta" src="Proprieta/(27).jpg" onclick="ppa=26; confermaprop(); press.play();">
                     <img id="27" class="proprieta" src="Proprieta/(28).jpg" onclick="ppa=27; confermaprop(); press.play();">
+                    <img id="backfromprop" class="proprieta" src="Images/back.png" style="display:inline; height: 300px;" onclick="press.play(), backprop()">
                 </div>
             </div>
             <div id="acquistomenu3">

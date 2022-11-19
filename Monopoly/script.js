@@ -1531,6 +1531,16 @@ function bancarotta3() {
     }, 4000)
 }
 
+function backtasse() {
+    document.getElementById("tassemenu1").style.display="block"
+    document.getElementById("tassemenu2").style.display="none"
+}
+
+function backprop() {
+    document.getElementById("acquistomenu").style.display="block"
+    document.getElementById("acquistomenu2").style.display="none"
+}
+
 function game() {
     let i=0;
     while (i<28) {
