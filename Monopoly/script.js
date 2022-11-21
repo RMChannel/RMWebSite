@@ -1021,7 +1021,7 @@ function passscambio() {
         else pass1n=2
         document.getElementById("passshow").style.display="block"
     }
-    else if (pass1) {
+    else if (pass1 && phase==1) {
         pass1=false
         pass1n=0
         document.getElementById("passshow").style.display="none"
@@ -1032,7 +1032,7 @@ function passscambio() {
         else pass1n=2
         document.getElementById("passshow2").style.display="block"
     }
-    else if (pass2) {
+    else if (pass2 && phase==2) {
         pass2=false
         pass2n=0
         document.getElementById("passshow2").style.display="none"
@@ -1436,6 +1436,22 @@ function finalscambio() {
             }
             i+=1
         }
+    }
+    if (pass1) {
+        if (passprigione[0]==ta) {
+            passprigione[0]=pa
+        }
+        else {
+            passprigione[0]=pa
+        }
+    if (pass2) {
+        if (passprigione[0]==pa) {
+            passprigione[0]=ta
+        }
+        else {
+            passprigione[0]=ta
+        }
+    }
     }
     reloadplayers()
     hideall()
