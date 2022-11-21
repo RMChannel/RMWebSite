@@ -57,6 +57,10 @@ let prop1b=false;
 let prop2b=false;
 let prop1=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 let prop2=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+let pass1=false;
+let pass2=false;
+let pass1n=0;
+let pass2n=0;
 phase=0;
 buttonpressed=0;
 p1accept=false
@@ -426,6 +430,12 @@ function reset() {
     reloadplayers();
 }
 
+function resetacq() {
+    press.play()
+    document.getElementById("acquistomenu3").style.display="none"
+    document.getElementById("acquistomenu2").style.display="block"
+}
+
 function visuactivate() {
     press.play();
     hideall();
@@ -646,7 +656,7 @@ function potenziacasa() {
     document.getElementById("potenziacasa2").style.display="block";
     document.getElementById("exitpote").style.display="block";
     if (pa==1) {
-        while (i<28) {
+        while (i<22) {
             if (proprieta[i]==1) {
                 check=true;
                 let temp=i.toString();
@@ -657,7 +667,7 @@ function potenziacasa() {
         }
     }
     else if (pa==2) {
-        while (i<28) {
+        while (i<22) {
             if (proprieta[i]==2) {
                 check=true;
                 let temp=i.toString();
@@ -668,7 +678,7 @@ function potenziacasa() {
         }
     }
     else if (pa==3) {
-        while (i<28) {
+        while (i<22) {
             if (proprieta[i]==3) {
                 check=true;
                 let temp=i.toString();
@@ -679,7 +689,7 @@ function potenziacasa() {
         }
     }
     else {
-        while (i<28) {
+        while (i<22) {
             if (proprieta[i]==4) {
                 check=true;
                 let temp=i.toString();
@@ -691,7 +701,7 @@ function potenziacasa() {
     }
     if (check==false) {
         error.play();
-        alert("Errore: 4\nNon hai nessuna proprietà");
+        alert("Errore: 4\nNon hai nessuna proprietà potenziabile");
         reset();
     }
 }
@@ -823,9 +833,11 @@ function affitto2() {
     press.play();
     document.getElementById("affitto1").style.display="none";
     document.getElementById("affitto2").style.display="block";
+    document.getElementById("affitto"+pa+"2").style.display="none"
 }
 
 function affitto3() {
+    document.getElementById("affitto"+pa+"2").style.display="inline"
     press.play();
     let i=0;
     let check=false;
@@ -838,7 +850,7 @@ function affitto3() {
     document.getElementById("affitto2").style.display="none";
     document.getElementById("affitto3").style.display="block";
     while (i<28) {
-        if (proprieta[i]==ca) {
+        if (proprieta[i]==ca && ipoteca[i]==0) {
             let temp=i.toString();
             temp+="pavia";
             document.getElementById(temp).style.display="inline";
@@ -848,7 +860,7 @@ function affitto3() {
     }
     if (check==false) {
         error.play();
-        alert("Errore: 8\nIl giocatore selezionato non ha proprietà, riprovare");
+        alert("Errore: 8\nIl giocatore selezionato non ha proprietà disponibili, riprovare");
         reset();
     }
 }
@@ -960,9 +972,12 @@ function scambio1() {
     press.play();
     document.getElementById("scambio1").style.display="none";
     document.getElementById("scambio2").style.display="block";
+    document.getElementById("scambio"+ta+"2").style.display="none";
+    document.getElementById("backto1").value="P"+ta
 }
 
 function scambio2() {
+    document.getElementById("scambio"+ta+"2").style.display="inline";
     phase=1;
     if (ta==pa) {
         error.play();
@@ -980,7 +995,7 @@ function scambio2() {
 }
 
 function scambio3() {
-    if (soldi1b==false && prop1b==false) {
+    if (soldi1b==false && prop1b==false && pass1==false) {
         error.play();
         alert("Errore: 13\nNon hai proposto nulla");
         return;
@@ -996,6 +1011,36 @@ function scambio3() {
         phase=1
     }
     press.play();
+}
+
+function passscambio() {
+    press.play()
+    if (!pass1 && phase==1 && (passprigione[0]==ta || passprigione[1]==ta)) {
+        pass1=true
+        if (passprigione[0]==ta) pass1n=1
+        else pass1n=2
+        document.getElementById("passshow").style.display="block"
+    }
+    else if (pass1) {
+        pass1=false
+        pass1n=0
+        document.getElementById("passshow").style.display="none"
+    }
+    else if (!pass2 && phase==2 && (passprigione[0]==pa || passprigione[1]==pa)) {
+        pass2=true
+        if (passprigione[0]==pa) pass1n=1
+        else pass1n=2
+        document.getElementById("passshow2").style.display="block"
+    }
+    else if (pass2) {
+        pass2=false
+        pass2n=0
+        document.getElementById("passshow2").style.display="none"
+    }
+    else {
+        error.play;
+        alert("Non hai nessun pass per la prigione");
+    }
 }
 
 function moneyscambio() {
@@ -1244,7 +1289,7 @@ function soldigo() {
 }
 
 function scambio4() {
-    if (((prop1b) || (soldi1b)) && ((prop2b) || (soldi2b))) {
+    if (((prop1b) || (soldi1b) || (pass1)) && ((prop2b) || (soldi2b) || (pass2))) {
         document.getElementById("backfromscambio").style.display="block"
         document.getElementById("scambio4").style.display="none"
         document.getElementById("scambio5").style.display="flex"
@@ -1281,6 +1326,8 @@ function scambio4() {
             }
             document.getElementById("prop2visu").innerText=propn2
         }
+        if (pass1) document.getElementById("pass1visu").innerText="Pass Prigione proposto"
+        if (pass2) document.getElementById("pass2visu").innerText="Pass Prigione proposto"
     }
     else {
         error.play()
@@ -1422,6 +1469,13 @@ function resetscambio() {
     document.getElementById("p2accept").style.color="Red"
     p1accept=false
     p2accept=false
+}
+
+function returnscambio() {
+    press.play()
+    document.getElementById("scambio2").style.display="none"
+    document.getElementById("scambio1").style.display="block"
+    document.getElementById("scambio"+ta+"2").style.display="inline";
 }
 
 function prigione() {

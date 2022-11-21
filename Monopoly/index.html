@@ -109,7 +109,8 @@
             <div id="acquistomenu3">
                 <p class="title">Sei sicuro di voler acquistare questa proprietà?<br>
                     <input type="button" id="Yesacqu" class="button1" name="Sì" value="Sì" onclick="acqu()">
-                    <input type="button" id="Noacqu" class="button1" name="No" value="No" onclick="reset()">
+                    <input type="button" id="Noacqu" class="button1" name="No" value="No" onclick="resetacq()">
+                    <input type="button" id="exitacquisto2" class="button1" name="exitacquisto2" value="Esci" style="display:block; margin-top: 13px;" onclick="press.play(),hideall()">
                 </p>
                 <img id="28" src="Proprieta/(28).jpg">               
             </div>
@@ -351,6 +352,8 @@
             </div>
             <div id="scambio2">
                 <p class="title">Seleziona il giocatore a cui vuoi proporre lo scambio:</p>
+                <input type="button" id="exitscambio2" class="button1" name="exitscambio2" value="Esci" onclick="press.play(),hideall()">
+                <input type="button" id="exitscambio3" class="button1" name="exitscambio3" value="Indietro" onclick="returnscambio()">
                 <input type="button" id="scambio12" class="button1" name="scambio12" value="P1" onclick="pa=1, scambio2()">
                 <input type="button" id="scambio22" class="button1" name="scambio22" value="P2" onclick="pa=2, scambio2()">
                 <input type="button" id="scambio32" class="button1" name="scambio32" value="P3" onclick="pa=3, scambio2()">
@@ -360,17 +363,21 @@
                 <p class="title" id="player1"></p>
                 <p class="title" id="moneyshow"></p>
                 <P class="title" id="propshow"></P>
+                <p class="title" id="passshow" style="display: none;">Pass per la prigione proposto</p>
                 <input type="button" id="money1" class="button1 money" name="money1" value="Soldi" onclick="moneyscambio()">
                 <input type="button" id="prop1" class="button1 proprietab" name="prop1" value="Proprietà" onclick="propscambio()">
-                <input type="button" id="continue" class="button1" name="continue" value="Passa" onclick="scambio3()">
+                <input type="button" id="pass1" class="button1" name="pass1" value="Pass" onclick="passscambio()">
+                <input type="button" id="continue" class="button1" name="continue" value="Continua" onclick="scambio3()">
                 <input type="button" id="exitsca" class="button1" name="continue" value="Esci" onclick="reset(), resetscambio()">
             </div>
             <div id="scambio4">
                 <p class="title" id="player2"></p>
                 <p class="title" id="moneyshow2"></p>
                 <P class="title" id="propshow2"></P>
+                <p class="title" id="passshow2" style="display: none;">Pass per la prigione proposto</p>
                 <input type="button" id="money2" class="button1 money" name="money2" value="Soldi" onclick="moneyscambio()">
                 <input type="button" id="prop2" class="button1 proprietab" name="prop2" value="Proprietà" onclick="propscambio()">
+                <input type="button" id="pass1" class="button1" name="pass1" value="Pass" onclick="passscambio()">
                 <input type="button" id="backto1" class="button1" name="backtop1" value="P1" onclick="scambio3()">
                 <input type="button" id="continue2" class="button1" name="continue" value="Termina" onclick="scambio4()">
                 <input type="button" id="exitsca" class="button1" name="continue" value="Esci" onclick="reset()">
@@ -380,12 +387,14 @@
                     <div class="title spacebetweentext" id="playername1"></div>
                     <div class="title spacebetweentext" id="soldip1visu"></div>
                     <div class="title spacebetweentext" id="prop1visu"></div>
+                    <div class="title spacebetweentext" id="pass1visu"></div>
                     <input type="button" id="p1accept" class="button1" name="p1accept" value="P1" onclick="buttonpressed=1, acceptscambio()">
                 </div>
                 <div class="scambiovisu" id="p2">
                     <div class="title spacebetweentext" id="playername2"></div>
                     <div class="title spacebetweentext" id="soldip2visu"></div>
                     <div class="title spacebetweentext" id="prop2visu"></div>
+                    <div class="title spacebetweentext" id="pass2visu"></div>
                     <input type="button" id="p2accept" class="button1" name="p2accept" value="P2" onclick="buttonpressed=2, acceptscambio()">
                 </div>
             </div>
@@ -438,6 +447,7 @@
             </div>
             <div id="prigionediv2">
                 <p class="title">Seleziona la funzione:</p>
+                <input type="button" id="exitprigione2" class="button1" name="exitprigione2" value="Esci" onclick="press.play(),hideall()">
                 <input type="button" id="ottienipass" class="button1" name="ottienipass" value="Ottieni Pass" style="font-size: x-large" onclick="ottienipass()">
                 <input type="button" id="usepass" class="button1" name="usepass" value="Utilizza Pass" style="font-size: x-large" onclick="usepass()">
                 <input type="button" id="payprison" class="button1" name="payprison" value="Paga" onclick="pagaprig()">
