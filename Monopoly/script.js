@@ -57,8 +57,10 @@ let prop1b=false;
 let prop2b=false;
 let prop1=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 let prop2=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-let pass1=false;
-let pass2=false;
+let pass1p=false;
+let pass1i=false;
+let pass2p=false;
+let pass2i=false;
 let pass1n=0;
 let pass2n=0;
 phase=0;
@@ -262,6 +264,7 @@ function hideall() {
     document.getElementById("bancarottadiv1").style.display="none"
     document.getElementById("bancarottadiv2").style.display="none"
     document.getElementById("bancarottadiv3").style.display="none"
+    document.getElementById("passscambio").style.display="none"
     let i=0;
     while (i<28) {
         let temp=i.toString();
@@ -436,6 +439,12 @@ function resetacq() {
     document.getElementById("acquistomenu2").style.display="block"
 }
 
+function backfromacquista() {
+    press.play()
+    document.getElementById("acquistomenu2").style.display="none"
+    document.getElementById("acquistomenu").style.display="block"
+}
+
 function visuactivate() {
     press.play();
     hideall();
@@ -514,7 +523,8 @@ function visu3() {
     document.getElementById("backvis").style.display="inline";
     temp2=ta+"pav";
     document.getElementById(temp2).style.display="inline";
-    text="Livello casa: "+lvlcasa[ta]+"\nIpoteca:";
+    if (ta<22) text="Livello casa: "+lvlcasa[ta]+"\nIpoteca:";
+    else text="Ipoteca:"
     if (ipoteca[ta]) text+="Si";
     else text+="No";
     document.getElementById("description").innerText=text;
@@ -711,6 +721,12 @@ function Ipoteca() {
     hideall();
     document.getElementById("functions").style.display="none";
     document.getElementById("ipoteca1").style.display="block";
+}
+
+function backfromipoteca() {
+    press.play()
+    document.getElementById("ipoteca2").style.display="none"
+    document.getElementById("ipoteca1").style.display="block"
 }
 
 function ipotecavisu() {
@@ -995,7 +1011,7 @@ function scambio2() {
 }
 
 function scambio3() {
-    if (soldi1b==false && prop1b==false && pass1==false) {
+    if (soldi1b==false && prop1b==false && pass1i==false && pass1p==false) {
         error.play();
         alert("Errore: 13\nNon hai proposto nulla");
         return;
@@ -1013,34 +1029,77 @@ function scambio3() {
     press.play();
 }
 
-function passscambio() {
+function passscambiochoice() {
     press.play()
-    if (!pass1 && phase==1 && (passprigione[0]==ta || passprigione[1]==ta)) {
-        pass1=true
-        if (passprigione[0]==ta) pass1n=1
-        else pass1n=2
-        document.getElementById("passshow").style.display="block"
+    document.getElementById("probabilitàpass").style.display="none"
+    document.getElementById("imprevistipass").style.display="none"
+    if (phase==1 && passprigione.includes(ta)) {
+        document.getElementById("scambio3").style.display="none";
+        document.getElementById("passscambio").style.display="block"
+        if (passprigione[0]==ta) {
+            document.getElementById("probabilitàpass").style.display="block"
+        }
+        else {
+            document.getElementById("imprevistipass").style.display="block"
+        }
     }
-    else if (pass1 && phase==1) {
-        pass1=false
-        pass1n=0
-        document.getElementById("passshow").style.display="none"
-    }
-    else if (!pass2 && phase==2 && (passprigione[0]==pa || passprigione[1]==pa)) {
-        pass2=true
-        if (passprigione[0]==pa) pass1n=1
-        else pass1n=2
-        document.getElementById("passshow2").style.display="block"
-    }
-    else if (pass2 && phase==2) {
-        pass2=false
-        pass2n=0
-        document.getElementById("passshow2").style.display="none"
+    else if (phase==2 && passprigione.includes(pa)) {
+        document.getElementById("scambio4").style.display="none";
+        document.getElementById("passscambio").style.display="block"
+        if (passprigione[0]==pa) {
+            document.getElementById("probabilitàpass").style.display="block"
+        }
+        else {
+            document.getElementById("imprevistipass").style.display="block"
+        }
     }
     else {
-        error.play;
-        alert("Non hai nessun pass per la prigione");
+        error.play()
+        alert("Non hai un Pass gratuito per la prigione")
     }
+}
+
+function passscambio() {
+    press.play()
+    if (phase==1 && ca==0 && !pass1p) {
+        document.getElementById("passshowp").style.display="block"
+        pass1p=true
+    }
+    else if (phase==1 && ca==1 && !pass1i) {
+        document.getElementById("passshowi").style.display="block"
+        pass1i=true
+    }
+    else if (phase==1 && (pass1p || pass1i)) {
+        if (ca==0) {
+            document.getElementById("passshowp").style.display="none"
+            pass1p=false
+        }
+        else {
+            document.getElementById("passshowi").style.display="none"
+            pass1i=false
+        }
+    }
+    else if (phase==2 && ca==0 && !pass2p) {
+        document.getElementById("passshowp2").style.display="block"
+        pass2p=true
+    }
+    else if (phase==2 && ca==1 && !pass2i) {
+        document.getElementById("passshowi2").style.display="block"
+        pass2i=true
+    }
+    else if (phase==2 && (pass2p || pass2i)) {
+        if (ca==0) {
+            document.getElementById("passshowp2").style.display="none"
+            pass2p=false
+        }
+        else {
+            document.getElementById("passshowi2").style.display="none"
+            pass2i=false
+        }
+    }
+    if (phase==1) document.getElementById("scambio3").style.display="block";
+    else document.getElementById("scambio4").style.display="block";
+    document.getElementById("passscambio").style.display="none"
 }
 
 function moneyscambio() {
@@ -1140,6 +1199,7 @@ function backto() {
                 prop1b=false
             }
         }
+        
     }
     else if (phase==2) {
         document.getElementById("scambio4").style.display="block";
@@ -1289,7 +1349,7 @@ function soldigo() {
 }
 
 function scambio4() {
-    if (((prop1b) || (soldi1b) || (pass1)) && ((prop2b) || (soldi2b) || (pass2))) {
+    if (((prop1b) || (soldi1b) || (pass1p || pass1i)) && ((prop2b) || (soldi2b) || (pass2i || pass2p))) {
         document.getElementById("backfromscambio").style.display="block"
         document.getElementById("scambio4").style.display="none"
         document.getElementById("scambio5").style.display="flex"
@@ -1326,8 +1386,10 @@ function scambio4() {
             }
             document.getElementById("prop2visu").innerText=propn2
         }
-        if (pass1) document.getElementById("pass1visu").innerText="Pass Prigione proposto"
-        if (pass2) document.getElementById("pass2visu").innerText="Pass Prigione proposto"
+        if (pass1p) document.getElementById("pass1visup").innerText="Pass Prigione (Probabilità) proposto"
+        if (pass1i) document.getElementById("pass1visui").innerText="Pass Prigione (Imprevisti) proposto"
+        if (pass2p) document.getElementById("pass2visup").innerText="Pass Prigione (Probabilità) proposto"
+        if (pass2i) document.getElementById("pass2visui").innerText="Pass Prigione (Imprevisti) proposto"
     }
     else {
         error.play()
@@ -1437,22 +1499,10 @@ function finalscambio() {
             i+=1
         }
     }
-    if (pass1) {
-        if (passprigione[0]==ta) {
-            passprigione[0]=pa
-        }
-        else {
-            passprigione[0]=pa
-        }
-    if (pass2) {
-        if (passprigione[0]==pa) {
-            passprigione[0]=ta
-        }
-        else {
-            passprigione[0]=ta
-        }
-    }
-    }
+    if (pass1p) passprigione[0]=pa
+    if (pass1i) passprigione[1]=pa
+    if (pass2p) passprigione[0]=ta
+    if (pass2i) passprigione[1]=ta
     reloadplayers()
     hideall()
     resetscambio()
@@ -1500,13 +1550,24 @@ function prigione() {
     document.getElementById("functions").style.display="none";
     document.getElementById("prigionediv1").style.display="block";
 }
-
+phaseprison=0
 function prigione2() {
     press.play()
     document.getElementById("prigionediv1").style.display="none"
     document.getElementById("prigionediv2").style.display="block"
-    if (passprigione.includes(ta)) {
+    document.getElementById("usepass").style.display=""
+    document.getElementById("ottienipass").style.display=""
+    if (((passprigione[0]==ta) && (passprigione[1]==ta))) {
         document.getElementById("ottienipass").style.display="none"
+        document.getElementById("usepass").style.display=""
+    }
+    else if ((passprigione[0]!=0) && (passprigione[1]!=0)) {
+        document.getElementById("ottienipass").style.display="none"
+        if (passprigione.includes(ta)) document.getElementById("usepass").style.display=""
+        else document.getElementById("usepass").style.display="none"
+    }
+    else if (passprigione.includes(ta)) {
+        document.getElementById("ottienipass").style.display=""
         document.getElementById("usepass").style.display=""
     }
     else {
@@ -1519,28 +1580,46 @@ function ottienipass() {
     press.play()
     document.getElementById("prigionediv2").style.display="none";
     document.getElementById("ottienipassdiv").style.display="block";
+    document.getElementById("probabilitàpass2").style.display=""
+    document.getElementById("imprevistipass2").style.display=""
+    phaseprison=1
+    if (passprigione[0]!=0) {
+        document.getElementById("probabilitàpass2").style.display="none"
+    }
+    if (passprigione[1]!=0) {
+        document.getElementById("imprevistipass2").style.display="none"
+    }
 }
 
 function ottienipass2() {
     press.play()
-    passprigione[pa]=ta
-    hideall()
+    if (phaseprison==1) {
+        passprigione[pa]=ta
+        hideall()
+    }
+    else {
+        passprigione[pa]=0
+        document.getElementById("ottienipassdiv").style.display="none";
+        document.getElementById("usepassdiv").style.display="block";
+        setTimeout(() => {
+            hideall()
+        }, 4000)
+    }
 }
 
 function usepass() {
     press.play()
-    if (passprigione[0]==ta) {
-        passprigione[0]==0
-    }
-    else {
-        passprigione[1]==0
-    }
-    console.log(passprigione);
+    phaseprison=2
     document.getElementById("prigionediv2").style.display="none";
-    document.getElementById("usepassdiv").style.display="block";
-    setTimeout(() => {
-        hideall()
-    }, 4000)
+    document.getElementById("ottienipassdiv").style.display="block";
+    document.getElementById("probabilitàpass2").style.display="none"
+    document.getElementById("imprevistipass2").style.display="none"
+    if (passprigione[0]==ta) {
+        document.getElementById("probabilitàpass2").style.display=""
+    }
+    if (passprigione[1]==ta) {
+        document.getElementById("imprevistipass2").style.display=""
+    }
 }
 
 function pagaprig() {

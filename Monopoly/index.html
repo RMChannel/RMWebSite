@@ -73,7 +73,7 @@
                 <input type="button" id="acquisto4" class="button1" name="acquisto4" value="P4" onclick="pa=4,propshow()">
             </div>
             <div id="acquistomenu2">
-                <p class="title">Clicca sulla proprietà che vuoi acquistare:</p><br>
+                <p class="title"><input type="button" id="backacquista" class="button1" name="backacquista" value="Indietro" onclick="backfromacquista()">Clicca sulla proprietà che vuoi acquistare:</p><br>
                 <div id="proprietamenu">
                     <img id="0" class="proprieta" src="Proprieta/ (1).jpg" onclick="ppa=0; confermaprop(); press.play();">
                     <img id="1" class="proprieta" src="Proprieta/ (2).jpg" onclick="ppa=1; confermaprop(); press.play();">
@@ -245,7 +245,7 @@
                 <input type="button" id="ipo4" class="button1" name="ipo4" value="P4" onclick="pa=4, ipotecavisu()">
             </div>
             <div id="ipoteca2">
-                <p class="title">Seleziona la proprietà che vuoi ipotecare:</p>
+                <p class="title"><input type="button" id="backipoteca" class="button1" name="backipoteca" value="Indietro" onclick="backfromipoteca()">Seleziona la proprietà che vuoi ipotecare:</p>
                 <img id="0pavi" class="proprieta" src="Proprieta/ (1).jpg" onclick="ta=0, ipoteca2()">
                 <img id="1pavi" class="proprieta" src="Proprieta/ (2).jpg" onclick="ta=1, ipoteca2()">
                 <img id="2pavi" class="proprieta" src="Proprieta/ (3).jpg" onclick="ta=2, ipoteca2()">
@@ -363,10 +363,11 @@
                 <p class="title" id="player1"></p>
                 <p class="title" id="moneyshow"></p>
                 <P class="title" id="propshow"></P>
-                <p class="title" id="passshow" style="display: none;">Pass per la prigione proposto</p>
+                <p class="title" id="passshowp" style="display: none;">Pass (Probabilità) per la prigione proposto</p>
+                <p class="title" id="passshowi" style="display: none;">Pass (Imprevisti) per la prigione proposto</p>
                 <input type="button" id="money1" class="button1 money" name="money1" value="Soldi" onclick="moneyscambio()">
                 <input type="button" id="prop1" class="button1 proprietab" name="prop1" value="Proprietà" onclick="propscambio()">
-                <input type="button" id="pass1" class="button1" name="pass1" value="Pass" onclick="passscambio()">
+                <input type="button" id="pass1" class="button1" name="pass1" value="Pass" onclick="passscambiochoice()">
                 <input type="button" id="continue" class="button1" name="continue" value="Continua" onclick="scambio3()">
                 <input type="button" id="exitsca" class="button1" name="continue" value="Esci" onclick="reset(), resetscambio()">
             </div>
@@ -374,10 +375,11 @@
                 <p class="title" id="player2"></p>
                 <p class="title" id="moneyshow2"></p>
                 <P class="title" id="propshow2"></P>
-                <p class="title" id="passshow2" style="display: none;">Pass per la prigione proposto</p>
+                <p class="title" id="passshowp2" style="display: none;">Pass (Probabilità) per la prigione proposto</p>
+                <p class="title" id="passshowi2" style="display: none;">Pass (Imprevisti) per la prigione proposto</p>
                 <input type="button" id="money2" class="button1 money" name="money2" value="Soldi" onclick="moneyscambio()">
                 <input type="button" id="prop2" class="button1 proprietab" name="prop2" value="Proprietà" onclick="propscambio()">
-                <input type="button" id="pass1" class="button1" name="pass1" value="Pass" onclick="passscambio()">
+                <input type="button" id="pass2" class="button1" name="pass1" value="Pass" onclick="passscambiochoice()">
                 <input type="button" id="backto1" class="button1" name="backtop1" value="P1" onclick="scambio3()">
                 <input type="button" id="continue2" class="button1" name="continue" value="Termina" onclick="scambio4()">
                 <input type="button" id="exitsca" class="button1" name="continue" value="Esci" onclick="reset()">
@@ -387,19 +389,26 @@
                     <div class="title spacebetweentext" id="playername1"></div>
                     <div class="title spacebetweentext" id="soldip1visu"></div>
                     <div class="title spacebetweentext" id="prop1visu"></div>
-                    <div class="title spacebetweentext" id="pass1visu"></div>
+                    <div class="title spacebetweentext" id="pass1visup"></div>
+                    <div class="title spacebetweentext" id="pass1visui"></div>
                     <input type="button" id="p1accept" class="button1" name="p1accept" value="P1" onclick="buttonpressed=1, acceptscambio()">
                 </div>
                 <div class="scambiovisu" id="p2">
                     <div class="title spacebetweentext" id="playername2"></div>
                     <div class="title spacebetweentext" id="soldip2visu"></div>
                     <div class="title spacebetweentext" id="prop2visu"></div>
-                    <div class="title spacebetweentext" id="pass2visu"></div>
+                    <div class="title spacebetweentext" id="pass2visup"></div>
+                    <div class="title spacebetweentext" id="pass2visui"></div>
                     <input type="button" id="p2accept" class="button1" name="p2accept" value="P2" onclick="buttonpressed=2, acceptscambio()">
                 </div>
             </div>
             <input type="button" id="terminatescambio" class="button1" name="terminatescambio" value="Termina" onclick="finalscambio()">
             <input type="button" id="backfromscambio" class="button1" name="backfromscambio" value="Back" onclick="buttonpressed=1, backto()">
+            <div id="passscambio">
+                <p class="title">Seleziona il Pass gratuito:</p>
+                <input type="button" id="probabilitàpass" class="button1" name="probabilitàpass" onclick="ca=0,passscambio()">
+                <input type="button" id="imprevistipass" class="button1" name="imprevistipass" onclick="ca=1,passscambio()">
+            </div>
             <div id="soldiscambio">
                 <p class="title">Quanti soldi vuoi proporre?</p>
                 <input type="number" class="input2" min="1" id="moneyinsert">
@@ -454,8 +463,8 @@
             </div>
             <div id="ottienipassdiv">
                 <p class="title">Seleziona da dove hai ottenuto il Pass gratuito:</p>
-                <input type="button" id="probabilitàpass" class="button1" name="probabilitàpass" onclick="pa=0,ottienipass2()">
-                <input type="button" id="imprevistipass" class="button1" name="imprevistipass" onclick="pa=1,ottienipass2()">
+                <input type="button" id="probabilitàpass2" class="button1" name="probabilitàpass" onclick="pa=0,ottienipass2()">
+                <input type="button" id="imprevistipass2" class="button1" name="imprevistipass" onclick="pa=1,ottienipass2()">
             </div>
             <div id="usepassdiv">
                 <p class="title">Pass Gratuito utilizzato</p>

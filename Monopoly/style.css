@@ -396,6 +396,19 @@ input {
     background-position-y: -1.5px;
 }
 
+#probabilitàpass2 {
+    background-image: url(Images/probabilità.jpg);
+    background-size: 108px;
+    background-position-y: 1px;
+}
+
+#imprevistipass2 {
+    background-image: url(Images/imprevisti.jpg);
+    background-size: 102px;
+    background-position-x: -4.5px;
+    background-position-y: -1.5px;
+}
+
 #prigione {
     background-image: url(Images/prigione.png);
     background-repeat: no-repeat;
