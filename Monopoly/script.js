@@ -247,6 +247,7 @@ function hideall() {
     document.getElementById("affitto2").style.display="none";
     document.getElementById("affitto3").style.display="none";
     document.getElementById("affitto4").style.display="none";
+    document.getElementById("affittoconfirm").style.display="none"
     document.getElementById("scambio1").style.display="none";
     document.getElementById("scambio2").style.display="none";
     document.getElementById("scambio3").style.display="none";
@@ -882,11 +883,16 @@ function affitto3() {
 }
 
 function affitto4() {
+    press.play()
+    document.getElementById("affitto3").style.display="none"
+    document.getElementById("affittoconfirm").style.display="block"
+    if (ta<25) document.getElementById("propaffittoconfirm").src="Proprieta/ ("+ta+").jpg"
+    else document.getElementById("propaffittoconfirm").src="Proprieta/("+ta+").jpg"
+}
+
+function affitto41() {
     press.play();
     if (ta<21) {
-        console.log(lvlcasa[ta]);
-        console.log(ta);
-        console.log(costicasa[ta][lvlcasa[ta]]);
         if (pa==1) p1s-=costicasa[ta][lvlcasa[ta]];
         else if (pa==2) p2s-=costicasa[ta][lvlcasa[ta]];
         else if (pa==3) p3s-=costicasa[ta][lvlcasa[ta]];
@@ -899,7 +905,7 @@ function affitto4() {
         cash.play();
     }
     else if ((ta==22) || (ta==23)) {
-        document.getElementById("affitto3").style.display="none";
+        document.getElementById("affittoconfirm").style.display="none";
         document.getElementById("affitto4").style.display="block";
     }
     else {
@@ -975,6 +981,25 @@ function affitto5() {
     else if (ca==4) p4s+=insert;
     cash.play();
     reset();
+}
+
+function backfromaffitto1() {
+    press.play()
+    document.getElementById("affitto2").style.display="none"
+    document.getElementById("affitto1").style.display="block" 
+    document.getElementById("affitto"+pa+"2").style.display="inline-block"
+}
+
+function backfromaffitto2() {
+    press.play()
+    document.getElementById("affitto3").style.display="none"
+    document.getElementById("affitto2").style.display="block"
+}
+
+function backfromaffitto3() {
+    press.play()
+    document.getElementById("affittoconfirm").style.display="none"
+    document.getElementById("affitto3").style.display="block"
 }
 
 function scambio() {
@@ -1125,6 +1150,8 @@ function propscambio() {
            }
             i++;
         }
+        if (prop1b) document.getElementById("nopropscambio").style.display=""
+        else document.getElementById("nopropscambio").style.display="none"
     }
     else {
         while (i<28) {
@@ -1135,7 +1162,9 @@ function propscambio() {
                 check2=true;
            }
             i++;
-        }   
+        }
+        if (prop2b) document.getElementById("nopropscambio").style.display=""
+        else document.getElementById("nopropscambio").style.display="none"
     }
     if (!check2) {
         error.play()
@@ -1168,6 +1197,25 @@ function propscambio2() {
     check2=false
 }
 
+function nopropscambio() {
+    i=0
+    if (phase==1) {
+        prop1b=false
+        while (i<28) {
+            prop1[i]=0
+            i++
+        }
+    }
+    else {
+        prop2b=false
+        while (i<28) {
+            prop2[i]=0
+            i++
+        }
+    }
+    backto()
+}
+
 function backto() {
     checkpropb=false
     press.play();
@@ -1198,6 +1246,9 @@ function backto() {
                 document.getElementById("propshow").innerText=""
                 prop1b=false
             }
+        }
+        else {
+            document.getElementById("propshow").innerText=""
         }
         
     }

@@ -301,13 +301,14 @@
             </div>
             <div id="affitto2">
                 <p class="title">Seleziona il giocatore che deve riscuotere l'affitto:</p>
+                <input type="button" id="backfromaffitto1" class="button1" name="backfromaffitto1" value="Indietro" onclick="backfromaffitto1()">
                 <input type="button" id="affitto12" class="button1" name="affitto12" value="P1" onclick="ca=1,affitto3()">
                 <input type="button" id="affitto22" class="button1" name="affitto22" value="P2" onclick="ca=2,affitto3()">
                 <input type="button" id="affitto32" class="button1" name="affitto32" value="P3" onclick="ca=3,affitto3()">
                 <input type="button" id="affitto42" class="button1" name="affitto42" value="P4" onclick="ca=4,affitto3()">
             </div>
             <div id="affitto3">
-                <p class="title">Clicca sulla proprietà la quale devi pagare l'affitto:</p>
+                <p class="title"><input type="button" id="backfromaffitto2" class="button1" name="backfromaffitto2" value="Indietro" onclick="backfromaffitto2()">Clicca sulla proprietà la quale devi pagare l'affitto:</p>
                 <img id="0pavia" class="proprieta" src="Proprieta/ (1).jpg" onclick="ta=0, affitto4()">
                 <img id="1pavia" class="proprieta" src="Proprieta/ (2).jpg" onclick="ta=1, affitto4()">
                 <img id="2pavia" class="proprieta" src="Proprieta/ (3).jpg" onclick="ta=2, affitto4()">
@@ -337,6 +338,12 @@
                 <img id="26pavia" class="proprieta" src="Proprieta/(27).jpg" onclick="ta=26, affitto4()">
                 <img id="27pavia" class="proprieta" src="Proprieta/(28).jpg" onclick="ta=27, affitto4()">
             </div>
+            <div id="affittoconfirm">
+                <p class="title">Sei sicuro di aver scelto la proprietà giusta?</p>
+                <input type="button" class="button1" id="confirmaffitto" name="confirmaffitto" value="Sì" onclick="affitto41()">
+                <input type="button" class="button1" id="noconfirmaffitto" name="noconfirmaffitto" value="No" onclick="backfromaffitto3()">
+            </div>
+            <img id="29pavia" class="proprieta" id="propaffittoconfirm">
             <div id="affitto4">
                 <p class="title">Tira i dadi e inserisci il risultato qui sotto</p>
                 <input type="button" id="inputplayer" class="button1" name="inputplayer" onclick="affitto5()" value="Inserisci:">
@@ -416,7 +423,7 @@
                 <input type="button" id="return" class="button1" name="return" value="Indietro" onclick="backto()">
             </div>
             <div id="propscambio">
-                <p class="title">Clicca sulla proprietà che vuoi proporre:</p>
+                <p class="title"><input type="button" class="button1" id="backfromprop2" name="backfromprop2" value="indietro" onclick="backto()"><input type="button" class="button1" id="nopropscambio" name="nopropscambio" value="Annulla" onclick="nopropscambio()">Clicca sulla proprietà che vuoi proporre:</p>
                 <img id="0paviab" class="proprieta" src="Proprieta/ (1).jpg" onclick="ca=0, propscambio2()">
                 <img id="1paviab" class="proprieta" src="Proprieta/ (2).jpg" onclick="ca=1, propscambio2()">
                 <img id="2paviab" class="proprieta" src="Proprieta/ (3).jpg" onclick="ca=2, propscambio2()">
@@ -447,7 +454,7 @@
                 <img id="27paviab" class="proprieta" src="Proprieta/(28).jpg" onclick="ca=27, propscambio2()">
             </div>
             <div id="prigionediv1">
-                <p class="title">Seleziona il giocatore:</p>
+                <p class="title">Seleziona il giocatore che deve andare in prigione:</p>
                 <input type="button" id="exitprigione" class="button1" name="exitprigione" value="Esci" onclick="press.play(),hideall()">
                 <input type="button" id="prigione1" class="button1" name="prigione1" value="P1" onclick="ta=1, prigione2()">
                 <input type="button" id="prigione2" class="button1" name="prigione2" value="P2" onclick="ta=2, prigione2()">
