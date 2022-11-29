@@ -278,6 +278,8 @@ function hideall() {
         document.getElementById(temp).style.display="none";
         temp+="i";
         document.getElementById(temp).style.display="none";
+        temp2=temp+"i"
+        document.getElementById(temp2).style.display="none";
         temp+="a";
         document.getElementById(temp).style.display="none";
         temp+="b";
@@ -737,10 +739,16 @@ function ipotecavisu() {
     document.getElementById("ipoteca2").style.display="block";
     if (pa==1) {
         while (i<28) {
-            if (proprieta[i]==1) {
+            if (proprieta[i]==1 && !ipoteca[i]) {
                 check=true;
                 let temp=i.toString();
                 temp+="pavi";
+                document.getElementById(temp).style.display="inline";
+            }
+            else if (proprieta[i]==1 && ipoteca[i]) {
+                check=true
+                let temp=i.toString();
+                temp+="pavii";
                 document.getElementById(temp).style.display="inline";
             }
             i++;
@@ -748,10 +756,16 @@ function ipotecavisu() {
     }
     else if (pa==2) {
         while (i<28) {
-            if (proprieta[i]==2) {
+            if (proprieta[i]==2 && !ipoteca[i]) {
                 check=true;
                 let temp=i.toString();
                 temp+="pavi";
+                document.getElementById(temp).style.display="inline";
+            }
+            else if (proprieta[i]==2 && ipoteca[i]) {
+                check=true
+                let temp=i.toString();
+                temp+="pavii";
                 document.getElementById(temp).style.display="inline";
             }
             i++;
@@ -759,10 +773,16 @@ function ipotecavisu() {
     }
     else if (pa==3) {
         while (i<28) {
-            if (proprieta[i]==3) {
+            if (proprieta[i]==3 && !ipoteca[i]) {
                 check=true;
                 let temp=i.toString();
                 temp+="pavi";
+                document.getElementById(temp).style.display="inline";
+            }
+            else if (proprieta[i]==3 && ipoteca[i]) {
+                check=true
+                let temp=i.toString();
+                temp+="pavii";
                 document.getElementById(temp).style.display="inline";
             }
             i++;
@@ -770,10 +790,16 @@ function ipotecavisu() {
     }
     else {
         while (i<28) {
-            if (proprieta[i]==4) {
+            if (proprieta[i]==4 && !ipoteca[i]) {
                 check=true;
                 let temp=i.toString();
                 temp+="pavi";
+                document.getElementById(temp).style.display="inline";
+            }
+            else if (proprieta[i]==4 && ipoteca[i]) {
+                check=true
+                let temp=i.toString();
+                temp+="pavii";
                 document.getElementById(temp).style.display="inline";
             }
             i++;
@@ -886,8 +912,9 @@ function affitto4() {
     press.play()
     document.getElementById("affitto3").style.display="none"
     document.getElementById("affittoconfirm").style.display="block"
-    if (ta<25) document.getElementById("propaffittoconfirm").src="Proprieta/ ("+ta+").jpg"
-    else document.getElementById("propaffittoconfirm").src="Proprieta/("+ta+").jpg"
+    document.getElementById("29pavia").style.display="block"
+    if (ta<25) document.getElementById("29pavia").src="Proprieta/ ("+(ta+=1)+").jpg"
+    else document.getElementById("29pavia").src="Proprieta/("+(ta+=1)+").jpg"
 }
 
 function affitto41() {
@@ -959,6 +986,7 @@ function affitto41() {
         }
         cash.play();
         reset();
+        document.getElementById("29pavia").style.display="none"
     }
 }
 
@@ -1000,6 +1028,7 @@ function backfromaffitto3() {
     press.play()
     document.getElementById("affittoconfirm").style.display="none"
     document.getElementById("affitto3").style.display="block"
+    document.getElementById("29pavia").style.display="none"
 }
 
 function scambio() {
