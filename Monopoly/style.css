@@ -188,9 +188,14 @@ input {
     display: none;
     align-items: center;
 }
-#exitpote {
-    display: none;
+
+.exitpote {
+    display: block;
     align-items: center;
+}
+
+#exitdivpote {
+    display: flex;
 }
 
 .casa {

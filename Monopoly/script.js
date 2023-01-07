@@ -236,9 +236,9 @@ function hideall() {
     document.getElementById("exitvis").style.display="none";
     document.getElementById("potenziacasa1").style.display="none";
     document.getElementById("potenziacasa2").style.display="none";
-    document.getElementById("exitpote").style.display="none";
     document.getElementById("potenziacasa3").style.display="none";
     document.getElementById("backvis").style.display="none";
+    document.getElementById("backvis2").style.display="none";
     document.getElementById("ipoteca1").style.display="none";
     document.getElementById("ipoteca2").style.display="none";
     document.getElementById("ipoteca3").style.display="none";
@@ -266,6 +266,7 @@ function hideall() {
     document.getElementById("bancarottadiv2").style.display="none"
     document.getElementById("bancarottadiv3").style.display="none"
     document.getElementById("passscambio").style.display="none"
+    document.getElementById("29pavia").style.display="none"
     let i=0;
     while (i<28) {
         let temp=i.toString();
@@ -467,6 +468,7 @@ function visu2() {
     document.getElementById("visualmenu3").style.display="none";
     document.getElementById("exitvis").style.display="inline";
     document.getElementById("backvis").style.display="none";
+    document.getElementById("backvis2").style.display="inline";
     if (pa==1) {
         while (i<28) {
             if (proprieta[i]==1) {
@@ -524,6 +526,7 @@ function visu3() {
     document.getElementById("visualmenu2").style.display="none";
     document.getElementById("visualmenu3").style.display="block";
     document.getElementById("backvis").style.display="inline";
+    document.getElementById("backvis2").style.display="none";
     temp2=ta+"pav";
     document.getElementById(temp2).style.display="inline";
     if (ta<22) text="Livello casa: "+lvlcasa[ta]+"\nIpoteca:";
@@ -667,7 +670,6 @@ function potenziacasa() {
     let i=0;
     document.getElementById("potenziacasa1").style.display="none";
     document.getElementById("potenziacasa2").style.display="block";
-    document.getElementById("exitpote").style.display="block";
     if (pa==1) {
         while (i<22) {
             if (proprieta[i]==1) {

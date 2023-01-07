@@ -123,6 +123,7 @@
                 <input type="button" id="visu4" class="button1" name="visu4" value="P4" onclick="pa=4, visu2()">
             </div>
             <input type="button" id="exitvis" class="button1" name="exitvis" value="Esci" onclick="reset()">
+            <input type="button" id="backvis2" class="button1" name="backvis" value="Indietro" onclick="hideall(); visuactivate()">
             <div id="visualmenu2">
                     <p class="title">Clicca sulla proprietà per maggiori dettagli</p>
                     <img id="0p" class="proprieta" src="Proprieta/ (1).jpg" onclick="ta=0, visu3()">
@@ -196,7 +197,10 @@
             </div>
             <div id="potenziacasa2">
                 <p class="title">Clicca sulla proprietà che vuoi potenziare:</p>
-                <input type="button" id="exitpote" class="button1" name="exitpote" value="Esci" onclick="reset()">
+                <div id="exitdivpote">
+                <input type="button" id="exitpote" class="button1 exitpote" name="exitpote" value="Esci" onclick="reset()">
+                <input type="button" id="indietropote" class="button1 exitpote" name="indietropote" value="Indietro" onclick='document.getElementById("potenziacasa2").style.display="none"; document.getElementById("potenziacasa1").style.display="block"; press.play()'>
+                </div>
                 <img id="0pa" class="proprieta" src="Proprieta/ (1).jpg" onclick="ta=0,controllo()">
                 <img id="1pa" class="proprieta" src="Proprieta/ (2).jpg" onclick="ta=1, controllo()">
                 <img id="2pa" class="proprieta" src="Proprieta/ (3).jpg" onclick="ta=2, controllo()">
