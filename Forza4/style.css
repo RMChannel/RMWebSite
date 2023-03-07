@@ -19,6 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color:rgba(255,255,255,0.0)
 }
 
 .description {
@@ -26,5 +27,5 @@
     padding: 12px;
 }
 img {
-    border:2px solid red;
+    cursor: pointer;
 }
