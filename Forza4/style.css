@@ -26,6 +26,11 @@
     width: 600px;
     padding: 12px;
 }
+
 img {
     cursor: pointer;
+}
+
+#text {
+    color: rgba(255,0,0,1.0);
 }

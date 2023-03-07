@@ -3,7 +3,7 @@ const winsound=new Audio("win.mp3")
 let firstrun=false
 let turn=0
 game=true
-vic=document.getElementById("victory")
+text=document.getElementById("text")
 const cellcontrol=[];
 for (let i=0; i<cells.length; i++) {
     let cell=cells[i]
@@ -13,23 +13,25 @@ for (let i=0; i<cells.length; i++) {
             input=i
             if (firstrun) {
                 clearInterval(animation)
+                text.style.color=color+"1.0)"
                 cell1.style.color=color+"1.0)"
             }
             cellfunct()
             if (controlvictory()) {
                 winsound.play()
+                text.style.style="font-size: 20px;"
                 string="Il giocatore "
                 if (winner=="r") {
                     string+="Rosso"
-                    vic.style.color="rgba(255,0,0,1)"
+                    notcolor="rgba(255,0,0,1)"
                 }
                 else {
                     string+="Giallo"
-                    vic.style.color="rgba(255,200,0,1)"
+                    notcolor="rgba(255,200,0,1)"
                 }
                 string+=" ha vinto!"
                 
-                vic.innerHTML=string
+                text.innerHTML=string
                 game=false
             }
         }
@@ -41,6 +43,7 @@ for (let i=0; i<cells.length; i++) {
 
 var cell1
 var color
+var notcolor
 function cellfunct() {
     console.log(input);
     error=false
@@ -61,24 +64,30 @@ function cellfunct() {
         }
     }
     if (turn==0 && !error) {
+        text.innerText="Turno del giocatore Giallo"
         cellcontrol[input]="r"
         turn=1
         color="rgba(255,0,0,"
+        notcolor="rgba(255,200,0,"
     }
     else if (turn==1 && !error) {
+        text.innerText="Turno del giocatore Rosso"
         cellcontrol[input]="y"
         turn=0
         color="rgba(255,200,0,"
+        notcolor="rgba(255,0,0,"
     }
     cell1=cells[input]
     cell1.innerText="0"
     let i=0
     animation=setInterval(() => {
         if (i==10) {
+            text.style.color=notcolor+"1.0)"
             cell1.style.color=color+"1.0)"
             clearInterval(animation)
         }
         else {
+            text.style.color=notcolor+"0."+i+")"
             cell1.style.color=color+"0."+i+")"
         }
         i+=1
